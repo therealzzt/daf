@@ -307,7 +307,26 @@ class LlamaModel(nn.Module):
                                     "attn_bias": None,
                                     "imp_indices": None,
                                     "org_seq_len": None,
-                                    "collect": False}
+                                    "collect": False,
+
+                                    # ===== 以下为 DAF 新增字段（daf=False 时全部不生效） =====
+                                    # daf：DAF 总开关。False = 走原版 CacheBlend 逻辑，True = 走 DAF 逻辑
+                                    "daf": False,
+                                    # sel_layers（selection layers，打分层）：DAF 论文说"聚合第 2~4 层的
+                                    # 偏差信号"，Python 从 0 开始数层，所以是 [1,2,3]。
+                                    # 这些层做完整 prefill，同时累积每个 token 的偏差分数
+                                    "sel_layers": [1, 2, 3],
+                                    # dev_scores（deviation scores，偏差分数）：长度为 doc_len 的张量，
+                                    # 记录每个文档 token 在多个打分层上累积的 V 偏差
+                                    "dev_scores": None,
+                                    # doc_imp_indices：被选中的"重要文档 token"在原始完整序列中的位置。
+                                    # 和 imp_indices 的区别：它【不含】末尾的问题段，
+                                    # 深层需要靠它区分两条注意力路径
+                                    "doc_imp_indices": None,
+                                    # num_imp_tokens：重要文档 token 的数量。
+                                    # 深层输入是压缩序列 [重要文档 token | 问题 token]，
+                                    # 靠这个数字切成两段
+                                    "num_imp_tokens": 0}
         
         self.old_kvs = [[None,None]] * len(self.layers)
         
@@ -338,6 +357,11 @@ class LlamaModel(nn.Module):
                 self.cache_fuse_metadata["original_slot_mapping"] = None
                 self.cache_fuse_metadata["our_slot_mapping"] = None
                 self.cache_fuse_metadata['org_pos'] = positions[:]
+                # DAF：清掉上一次 check 残留的打分和选人结果。
+                # 否则下一个样本会在旧分数上继续累加，选人就全错了
+                self.cache_fuse_metadata["dev_scores"] = None
+                self.cache_fuse_metadata["doc_imp_indices"] = None
+                self.cache_fuse_metadata["num_imp_tokens"] = 0
             #FIXME(Jiayi): fix this clone for faster time (Is this still needed?)
             #self.cache_fuse_metadata["our_slot_mapping"] = input_metadata.slot_mapping.clone()
         else:
@@ -348,12 +372,35 @@ class LlamaModel(nn.Module):
         for i in range(len(self.layers)):
             
             if self.cache_fuse_metadata["check"]:
-                if i in self.cache_fuse_metadata["check_layers"]:
-                    temp_status = 1 # check this layer
-                    self.cache_fuse_metadata["check_layer"] = self.cache_fuse_metadata["check_layers"][check_layer_idx]
-                    check_layer_idx += 1
-                elif i > self.cache_fuse_metadata["check_layers"][0]:
-                    temp_status = 2 # after check
+                if self.cache_fuse_metadata["daf"]:
+                    # ===== DAF 排班（sel_layers=[1,2,3] 时）=====
+                    # 第 0 层:      status=0 普通完整 prefill
+                    # 第 1~3 层:    status=3 完整 prefill + 累积本层 V 偏差分数
+                    # 第 4 层:      status=1 根据累计分数选重要 token，进入压缩模式
+                    # 第 5 层及以后: status=2 压缩模式，每层跑 DAF 两路注意力
+                    sel_layers = self.cache_fuse_metadata["sel_layers"]
+                    # 选择层 = 最后一个打分层 + 1（打分层收完证据，下一层才选人）
+                    select_layer = max(sel_layers) + 1
+                    assert select_layer < len(self.layers), \
+                        "sel_layers 太大，选择层超出了模型层数"
+                    if i in sel_layers:
+                        temp_status = 3 # 打分层：只收集证据，不做选择
+                    elif i == select_layer:
+                        temp_status = 1 # 选择层：选人 + 开始 DAF 压缩
+                        # check_layer 字段保留原语义（目前无读者，仅作记录）
+                        self.cache_fuse_metadata["check_layer"] = select_layer
+                    elif i > select_layer:
+                        temp_status = 2 # 后续层：继续 DAF 压缩
+                    else:
+                        temp_status = 0 # 打分层之前的层：普通完整 prefill
+                else:
+                    # ===== 原版 CacheBlend 排班（保持不变）=====
+                    if i in self.cache_fuse_metadata["check_layers"]:
+                        temp_status = 1 # check this layer
+                        self.cache_fuse_metadata["check_layer"] = self.cache_fuse_metadata["check_layers"][check_layer_idx]
+                        check_layer_idx += 1
+                    elif i > self.cache_fuse_metadata["check_layers"][0]:
+                        temp_status = 2 # after check
             
             old_kv = self.old_kvs[i]
             

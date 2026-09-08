@@ -197,29 +197,85 @@ class XFormersImpl(AttentionImpl):
 
         # Jiayi modified start
         # TODO(Jiayi): The following `view`s can be saved
+        if status in [1, 2, 3]:
+            # DAF 的 status=3（打分层）只需要旧 V 来算偏差，不需要旧 K
+            #（旧 K 带 RoPE 位置旋转，对齐麻烦，所以第一版只比较 V）
+            value_old = old_kv[1].view(-1, self.num_kv_heads, self.head_size)
         if status in [1, 2]:
             key_old = old_kv[0].view(-1, self.num_kv_heads, self.head_size)
-            value_old = old_kv[1].view(-1, self.num_kv_heads, self.head_size)
         
-        if status in [1]:
-            last_len = cache_fuse_metadata['suffix_len']
-            total_len = value.shape[0]
-            last_indices = [total_len-last_len+l for l in range(last_len)]
+        # ===== DAF status=3：打分层，只收集证据，不改变任何计算 =====
+        # 每个打分层把"本层新鲜 V"和"旧缓存 V"的偏差累加到白板的 dev_scores 上
+        if status == 3:
+            suffix_len = cache_fuse_metadata['suffix_len']
+            doc_len = value.shape[0] - suffix_len
+            assert suffix_len > 0 and doc_len > 0, "suffix_len/doc_len 异常"
+            # temp_diff[i] = 第 i 个文档 token 的 ||V_new - V_old||²
+            #（对所有 KV 头、所有维度求和，得到一个 token 一个分数）
+            # 末尾 suffix_len 个是问题 token：问题没有旧缓存，无条件保留，不参与打分
+            temp_diff = torch.sum((value[:doc_len,:,:]-value_old[:doc_len,:,:])**2, dim=[1,2])
+            # 用 float32 累加，减少半精度（fp16）多次累加的舍入误差
+            temp_diff = temp_diff.float()
+            if cache_fuse_metadata["dev_scores"] is None:
+                cache_fuse_metadata["dev_scores"] = torch.zeros_like(temp_diff)
+            cache_fuse_metadata["dev_scores"] += temp_diff
+            # 注意：这里不做 topk、不裁剪序列、不改 positions——
+            # 之后本层照常走完整因果注意力（status=3 不在 [1,2] 分支里）
 
-            topk_num = int((total_len-last_len)*cache_fuse_metadata["recomp_ratio"])
-            temp_diff = torch.sum((value[:-last_len,:,:]-value_old[:-last_len,:,:])**2, dim=[1,2])
-            top_indices = torch.topk(temp_diff, k=topk_num).indices
-            
-            top_indices, _ = torch.sort(top_indices)
-            top_indices = torch.cat([top_indices,
-                                        torch.tensor(last_indices, device=top_indices.device)])
-            query = query[top_indices]
-            cache_fuse_metadata["imp_indices"] = top_indices
-            
-            #attn_bias = _make_partial_bias_gqa(cache_fuse_metadata, query.device, self.num_kv_heads, self.num_queries_per_kv)
-            attn_bias = LowerTriangularFromBottomRightMask()
-            cache_fuse_metadata["attn_bias"] = attn_bias
-            attn_metadata.prefill_metadata.attn_bias=None
+        if status in [1]:
+            if cache_fuse_metadata["daf"]:
+                # ===== DAF status=1：选择层，聚合多层分数并选人 =====
+                suffix_len = cache_fuse_metadata['suffix_len']
+                total_len = value.shape[0]
+                doc_len = total_len - suffix_len
+
+                # 多层分数取平均（层数固定时，求和与求平均对 topk 排名等价；
+                # 这里取平均只是让数值可读）——这是工程假设，论文未写死聚合公式
+                scores = cache_fuse_metadata["dev_scores"] / len(cache_fuse_metadata["sel_layers"])
+                assert scores.shape[0] == doc_len, "dev_scores 长度必须等于文档 token 数"
+
+                # 只从文档部分选 topk：recomp_ratio 即论文的重要 token 比例 r
+                #（论文实验用 r=0.3，它是可调配置而非固定常数）
+                topk_num = int(doc_len * cache_fuse_metadata["recomp_ratio"])
+                topk_num = max(1, min(doc_len, topk_num))  # 防止越界
+                doc_imp_indices = torch.topk(scores, k=topk_num).indices
+                # 按原位置排序，保证压缩后的序列仍按原文顺序排列
+                doc_imp_indices = torch.sort(doc_imp_indices).values
+                assert doc_imp_indices.ndim == 1 and doc_imp_indices.numel() == topk_num
+                assert torch.all(doc_imp_indices < doc_len), "重要 token 不能落在问题段"
+
+                # 问题段（末尾 suffix_len 个）无条件保留，其原始位置是 doc_len..total_len-1
+                suffix_indices = torch.arange(doc_len, total_len,
+                                              device=doc_imp_indices.device,
+                                              dtype=torch.long)
+
+                # 写回白板：深层和 llama.py 都靠这些字段
+                cache_fuse_metadata["doc_imp_indices"] = doc_imp_indices
+                cache_fuse_metadata["num_imp_tokens"] = doc_imp_indices.numel()
+                # imp_indices = [重要文档 token 的原位置 | 问题 token 的原位置]，
+                # 供 llama.py 裁剪 residual/positions 复用（顺序与输出拼接顺序一致）
+                cache_fuse_metadata["imp_indices"] = torch.cat([doc_imp_indices,
+                                                                suffix_indices], dim=0)
+            else:
+                # ===== 原版 CacheBlend 单层选人（保持不变）=====
+                last_len = cache_fuse_metadata['suffix_len']
+                total_len = value.shape[0]
+                last_indices = [total_len-last_len+l for l in range(last_len)]
+
+                topk_num = int((total_len-last_len)*cache_fuse_metadata["recomp_ratio"])
+                temp_diff = torch.sum((value[:-last_len,:,:]-value_old[:-last_len,:,:])**2, dim=[1,2])
+                top_indices = torch.topk(temp_diff, k=topk_num).indices
+
+                top_indices, _ = torch.sort(top_indices)
+                top_indices = torch.cat([top_indices,
+                                            torch.tensor(last_indices, device=top_indices.device)])
+                query = query[top_indices]
+                cache_fuse_metadata["imp_indices"] = top_indices
+
+                #attn_bias = _make_partial_bias_gqa(cache_fuse_metadata, query.device, self.num_kv_heads, self.num_queries_per_kv)
+                attn_bias = LowerTriangularFromBottomRightMask()
+                cache_fuse_metadata["attn_bias"] = attn_bias
+                attn_metadata.prefill_metadata.attn_bias=None
             
         #if status in [0] and cache_fuse_metadata["original_slot_mapping"]==None and cache_fuse_metadata['check']:
         #    cache_fuse_metadata["original_slot_mapping"] = attn_metadata.slot_mapping#.clone()
@@ -237,9 +293,48 @@ class XFormersImpl(AttentionImpl):
             #value = value_old
             
         
-        if status in [2]:
+        if status in [1, 2] and cache_fuse_metadata["daf"]:
+            # ===== DAF：组装"混合 KV"（hybrid KV）=====
+            # 混合 KV 的三段来源：
+            #   未被选中的文档 token -> 离线旧 KV（不用重算，省钱的关键）
+            #   被选中的文档 token   -> 本层 QKV 投影刚算出的新鲜 KV
+            #   问题 token           -> 本层的新鲜 KV（问题从不缓存）
+            #
+            # 注意：clone 出副本再改，不原地修改 old_kv——
+            # 否则旧缓存会被"当前问题"污染，下个问题复用时就错了
+            #（clone 有性能开销，正确性原型阶段可接受，优化阶段再换成按请求分配的缓冲区）
+            key_hybrid = key_old.clone()
+            value_hybrid = value_old.clone()
+            doc_imp = cache_fuse_metadata["doc_imp_indices"]
+            suffix_len = cache_fuse_metadata['suffix_len']
+            # key_old 的长度是原始完整序列（文档+问题），文档部分长度 = 总长 - 问题长
+            doc_len = key_old.shape[0] - suffix_len
+
+            if status == 1:
+                # 选择层：输入还是完整序列，新鲜值按原始位置取
+                key_hybrid[doc_imp] = key[doc_imp]
+                value_hybrid[doc_imp] = value[doc_imp]
+                key_hybrid[doc_len:] = key[doc_len:]
+                value_hybrid[doc_len:] = value[doc_len:]
+                # Q 砍成压缩序列 [重要文档 token | 问题 token]，
+                # 从此之后本层输出和后续所有层都只处理这条短序列
+                query = query[cache_fuse_metadata["imp_indices"]]
+            else:
+                # status == 2：输入已经是压缩序列 [重要文档 token | 问题 token]
+                num_imp = cache_fuse_metadata["num_imp_tokens"]
+                key_hybrid[doc_imp] = key[:num_imp]
+                value_hybrid[doc_imp] = value[:num_imp]
+                key_hybrid[doc_len:] = key[num_imp:]
+                value_hybrid[doc_len:] = value[num_imp:]
+
+            # key/value 换成混合版：后面写 GPU KV cache 的就是它，
+            # 这样 decode 阶段用到的也是融合后的笔记
+            key = key_hybrid
+            value = value_hybrid
+        elif status in [2]:
+            # ===== 原版 CacheBlend 的融合（保持不变）=====
             imp_indices = cache_fuse_metadata["imp_indices"]
-            key_old[imp_indices] = key 
+            key_old[imp_indices] = key
             value_old[imp_indices] = value
             key = key_old
             value = value_old
@@ -308,8 +403,13 @@ class XFormersImpl(AttentionImpl):
                 # block tables are empty if the prompt does not have a cached
                 # prefix.
                 
-                out = self._run_memory_efficient_xformers_forward(
-                    query, key, value, prefill_meta, status, cache_fuse_metadata)
+                if status in [1, 2] and cache_fuse_metadata["daf"]:
+                    # DAF 压缩层：走两路注意力（重要 token 互看 + 问题看全文）
+                    out = self._run_daf_attention(
+                        query, key, value, cache_fuse_metadata)
+                else:
+                    out = self._run_memory_efficient_xformers_forward(
+                        query, key, value, prefill_meta, status, cache_fuse_metadata)
                 
                 #assert out.shape == output[:num_prefill_tokens].shape
                 #output[:num_prefill_tokens] = out
@@ -352,6 +452,117 @@ class XFormersImpl(AttentionImpl):
 
         # Reshape the output tensor.
         return output.view(-1, self.num_heads * self.head_size)
+
+    def _dense_attention(
+        self,
+        query: torch.Tensor,
+        key: torch.Tensor,
+        value: torch.Tensor,
+        attn_bias,
+    ) -> torch.Tensor:
+        """DAF 用的稠密注意力（dense attention，即不算 KV cache 分页、
+        直接对连续内存里的 Q/K/V 做一次完整注意力）。
+
+        职责（复用 _run_memory_efficient_xformers_forward 里的同款写法）：
+        1. 处理 GQA（Grouped-Query Attention，分组查询注意力：Mistral-7B 的
+           Q 有 32 个头，K/V 只有 8 个头，要把 K/V 的头"复制"4 倍对齐 Q）；
+        2. 补上 batch 维（xformers 的算子要求输入带 batch 维，这里恒为 1）；
+        3. 调 xops.memory_efficient_attention_forward；
+        4. 把输出形状还原成 [token 数, Q 头数, 每头维度]。
+
+        attn_bias=None 表示不加任何掩码（双向互相可见）；
+        attn_bias=LowerTriangularFromBottomRightMask() 表示因果掩码
+        （causal mask：每个位置只能看到自己和之前的 token，不能偷看未来）。
+        """
+        if self.num_kv_heads != self.num_heads:
+            # GQA：把 query 拆出 [KV头数, 每组的Q头数] 两维，
+            # 并把 K/V 沿"每组的Q头数"维 expand（逻辑复制，不占额外显存）
+            query = query.view(query.shape[0], self.num_kv_heads,
+                               self.num_queries_per_kv, query.shape[-1])
+            key = key[:, :,
+                      None, :].expand(key.shape[0], self.num_kv_heads,
+                                      self.num_queries_per_kv, key.shape[-1])
+            value = value[:, :,
+                          None, :].expand(value.shape[0], self.num_kv_heads,
+                                          self.num_queries_per_kv,
+                                          value.shape[-1])
+        # 加 batch 维：[token数, ...] -> [1, token数, ...]
+        query = query.unsqueeze(0)
+        key = key.unsqueeze(0)
+        value = value.unsqueeze(0)
+        out = xops.memory_efficient_attention_forward(
+            query,
+            key,
+            value,
+            attn_bias=attn_bias,
+            p=0.0,
+            scale=self.scale,
+        )
+        # 去掉 batch 维
+        out = out.squeeze(0)
+        if self.num_kv_heads != self.num_heads:
+            # 把 [token数, KV头数, 每组Q头数, 每头维度] 合并回
+            # [token数, Q头数, 每头维度]
+            out = out.view(out.shape[0], self.num_heads, self.head_size)
+        return out
+
+    def _run_daf_attention(
+        self,
+        query: torch.Tensor,
+        key: torch.Tensor,
+        value: torch.Tensor,
+        cache_fuse_metadata: dict,
+    ) -> torch.Tensor:
+        """DAF 的核心：每个压缩层跑一次"两路注意力 + 状态融合"。
+
+        输入约定：
+          query: [num_imp + suffix_len, Q头数, 每头维度]，压缩后的 Q
+          key/value: [原始完整序列长, KV头数, 每头维度]，上一步组装好的混合 KV
+            （未选中的文档 token 用旧缓存，选中的文档 token 和问题 token 用新鲜值）
+
+        数据流（对应论文的三步）：
+          A. 重要文档 token 之间互相自注意力（无掩码，双向可见）
+             ——复杂度 O((r*Ld)^2)，这是 DAF 比 CacheBlend 省的关键
+          B. 问题 token 对"全文混合 KV"做因果注意力（不能偷看后面的问题 token）
+          C. State Fusion：把两路输出按 [重要文档 | 问题] 的顺序拼起来，
+             作为下一层的压缩 hidden states
+        """
+        num_imp = cache_fuse_metadata["num_imp_tokens"]
+        suffix_len = cache_fuse_metadata["suffix_len"]
+        doc_imp = cache_fuse_metadata["doc_imp_indices"]
+        doc_len = key.shape[0] - suffix_len
+
+        # 形状断言：宁可立刻报错，也不要静默算错
+        assert suffix_len > 0 and doc_len > 0
+        assert query.shape[0] == num_imp + suffix_len, \
+            "压缩 Q 的长度必须等于 重要token数 + 问题token数"
+        assert key.shape[0] == doc_len + suffix_len
+
+        # 切 Q：前 num_imp 个是重要文档 token，其余是问题 token
+        q_imp = query[:num_imp]
+        q_suf = query[num_imp:]
+
+        # A. 重要 token 自注意力。它们的 K/V 直接从混合 KV 里按原始位置取
+        #（上一步已把新鲜值写进这些位置），双向无掩码
+        k_imp = key[doc_imp]
+        v_imp = value[doc_imp]
+        out_imp = self._dense_attention(q_imp, k_imp, v_imp, attn_bias=None)
+
+        # B. 问题对全文（混合 KV：旧文档 + 新重要 + 新问题）做因果注意力。
+        # LowerTriangularFromBottomRightMask：Q 是尾部连续段时的因果掩码，
+        # 效果 = 每个问题 token 能看全部文档和自己之前的问题 token，
+        # 但不能偷看排在后面的问题 token
+        out_suf = self._dense_attention(q_suf, key, value,
+                                        attn_bias=LowerTriangularFromBottomRightMask())
+
+        # C. State Fusion：拼接两路输出，顺序与 imp_indices 保持一致
+        out = torch.cat([out_imp, out_suf], dim=0)
+
+        assert out_imp.shape[0] == num_imp and out_suf.shape[0] == suffix_len
+        assert out.shape[0] == num_imp + suffix_len
+        assert not torch.isnan(out).any() and not torch.isinf(out).any(), \
+            "DAF 注意力输出出现 NaN/Inf"
+        return out
 
     def _run_memory_efficient_xformers_forward(
         self,
