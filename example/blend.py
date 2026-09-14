@@ -13,6 +13,8 @@ from vllm import LLM, SamplingParams
 import torch
 # 读取 inputs/ 目录下的 JSON 测试样本
 import json
+# 读环境变量：用来切换 DAF 开关（DAF=0 跑原版 CacheBlend 对照，默认 1 跑 DAF）
+import os
 # HuggingFace 的分词器：负责"文字 <-> token 编号"的相互转换
 from transformers import AutoTokenizer
 
@@ -192,16 +194,21 @@ for sample_idx in range(1,11):
     cache_fuse_metadata['suffix_len'] = last_len
 
     # ===== DAF 开关 =====
-    # daf=True：启用 DAF 算法；改成 False 就退回原版 CacheBlend（用于对照实验）
-    cache_fuse_metadata["daf"] = True
-    # sel_layers：打分层，DAF 论文说聚合第 2~4 层的偏差信号，
-    # Python 从 0 数层，所以是 [1,2,3]。选择层自动定为 max(sel_layers)+1 = 第 4 层
-    cache_fuse_metadata["sel_layers"] = [1, 2, 3]
-    # 重要 token 比例 r：论文实验用 0.3；它不是固定常数，可按任务调
-    cache_fuse_metadata["recomp_ratio"] = 0.3
-    # 同步旧字段 check_layers，避免两套配置互相矛盾
-    #（daf 分支实际用 sel_layers 排班，这里只是防止旧代码读到不一致的值）
-    cache_fuse_metadata["check_layers"] = [max(cache_fuse_metadata["sel_layers"]) + 1]
+    # daf=True：启用 DAF 算法；False 就退回原版 CacheBlend（用于对照实验）
+    # 用环境变量切换：DAF=0 python example/blend.py 跑原版，不设或 DAF=1 跑 DAF
+    use_daf = os.environ.get("DAF", "1") == "1"
+    cache_fuse_metadata["daf"] = use_daf
+    if use_daf:
+        # sel_layers：打分层，DAF 论文说聚合第 2~4 层的偏差信号，
+        # Python 从 0 数层，所以是 [1,2,3]。选择层自动定为 max(sel_layers)+1 = 第 4 层
+        cache_fuse_metadata["sel_layers"] = [1, 2, 3]
+        # 重要 token 比例 r：论文实验用 0.3；它不是固定常数，可按任务调
+        cache_fuse_metadata["recomp_ratio"] = 0.3
+        # 同步旧字段 check_layers，避免两套配置互相矛盾
+        #（daf 分支实际用 sel_layers 排班，这里只是防止旧代码读到不一致的值）
+        cache_fuse_metadata["check_layers"] = [max(cache_fuse_metadata["sel_layers"]) + 1]
+    # 注意：daf=False 时保持白板默认（check_layers=[1], recomp_ratio=0.16），
+    # 这样对照实验跑的才是原版 CacheBlend 的真实配置
     # 用缓存跑推理
     output = llm.generate([input_prompt], sampling_params)
     # 打印缓存模式生成的答案
