@@ -82,7 +82,7 @@ python experiments/scripts/score_em_long_6k10k.py \
 2. **后端必须显式指定**：DAF/CB 改动已覆盖 xformers 和 flash 两个后端，但**默认后端是 XFORMERS**；用 flash 跑实验必须显式 `VLLM_ATTENTION_BACKEND=FLASH_ATTN` 并确认日志显示 `Using FlashAttention backend`。两后端对比只在 SM/EM 级别对齐（kernel 浮点差可致贪心解码尾部 token 翻转，属正常）。
 3. **评测先于跑批**：新实验先跑 1 个样本人工检查输出再放量。教训：`max_tokens=10` 曾把答案截成残句导致 EM 失效，整轮作废（作废数据归档在 `experiments/logs/archived_maxtok10截断作废/`，只归档不删除）。
 4. **完成度看日志不看退出码**：vllm 0.4.1 引擎销毁阶段 exit=1 是良性的；续跑脚本以日志中 `===== ` 出现次数（24/12）判断。
-5. 对比实验用同一 `recomp_ratio`（DAF 论文配置 0.3），贪心解码 `temperature=0`；测 vLLM 全量基线必须关 prefix caching；计时需 warmup、多轮取中位数；GPU 被其他程序（壁纸引擎/他人任务）占用时速度数据作废。
+5. 对比实验用同一 `recomp_ratio`：CB 默认 r 已对齐 DAF 论文配置 0.3（2026-09-20，`CB_RECOMP_RATIO=0.16` 可回退 CB 原论文配置）；⚠️ 历史 daf1.1~1.3 数据是 CB r=0.16 跑的，与新数据不可直接对比。贪心解码 `temperature=0`；测 vLLM 全量基线必须关 prefix caching；计时需 warmup、多轮取中位数；GPU 被其他程序（壁纸引擎/他人任务）占用时速度数据作废。
 6. 短上下文（≤10k）DAF 慢于 CacheBlend 是预期现象（论文中 6k/9k 档二者持平，优势在 30k+），不得据此判定实现错误；单次功能测试也不要求 "DAF TTFT ≤ CacheBlend"。
 7. 论文未写死的实现点（多层聚合公式、状态融合细节、选择层位置等）属**工程实现假设**，实验记录中必须注明，不得写成论文原方法。
 8. vllm_blend 内改动最小化：已有改动限于 `llama.py`、`qwen2.py`、`xformers.py`、`flash_attn.py`、`selector.py`、`example/blend.py`；新改动同样保持最小。开发顺序固定——修基线 → status=3 只加评分 → status=1 改 DAF → status=2 接同一 helper → 验证 → 最后才优化性能。一次只改一件事；调试期保留 shape/NaN/Inf 断言。

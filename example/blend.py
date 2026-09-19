@@ -258,8 +258,11 @@ for sample_file in SAMPLE_FILES:
         # 同步旧字段 check_layers，避免两套配置互相矛盾
         #（daf 分支实际用 sel_layers 排班，这里只是防止旧代码读到不一致的值）
         cache_fuse_metadata["check_layers"] = [max(cache_fuse_metadata["sel_layers"]) + 1]
-    # 注意：daf=False 时保持白板默认（check_layers=[1], recomp_ratio=0.16），
-    # 这样对照实验跑的才是原版 CacheBlend 的真实配置
+    else:
+        # 论文对比要求 CB 与 DAF 用同一 r（0.3），DAF 论文里 CacheBlend 基线也是 r=0.3；
+        # 想复现 CB 原论文配置（r≈0.16，也是 daf1.1~1.3 历史数据用的值）时设 CB_RECOMP_RATIO=0.16
+        cache_fuse_metadata["recomp_ratio"] = float(os.environ.get("CB_RECOMP_RATIO", "0.3"))
+    # 注意：daf=False 时 check_layers 保持白板默认 [1]（CB 原版单层选择）
     # 用缓存跑推理
     output = _run_prompt(input_ids, sampling_params)
     # 打印当前样本文件名（EM 评分脚本据此把结果对应回样本；长上下文样本名含来源与长度）
