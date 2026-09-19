@@ -85,5 +85,6 @@ python experiments/scripts/score_em_long_6k10k.py \
 - `docs/daf1.1.md` —— bf16 改造 + 2–4k 结果（与论文差别分析）
 - `docs/daf1.2.md` —— 6k–10k 档：样本管线、EM/SM/F1 指标定义、作废数据教训
 - `docs/daf1.3.md` —— 30k 档：DAF/CB 比值首次收窄、与论文 30k 档对比
+- `docs/daf1.4.md` —— 目标 B 三档（Qwen2.5 官方数据集 6k/9k/30k）总记录：DAF/CB 0.94 首次反超
 - `docs/daf1.0.md` / `docs/daf_experiment_10samples.md` —— DAF 算法实现与 AWQ 基线
 - `docs/服务器复现指南.md` —— 环境搭建权威指南

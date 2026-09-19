@@ -112,6 +112,6 @@ DAF/CB 比值随长度单调下降（Mistral 1.75→1.73→1.45；Qwen 1.14→1.
 
 - `docs/DAF改造计划_v2_校正版.md` —— 实现方案的权威文档（改动前先读）
 - `docs/DAF论文解读与复现指南.md` —— 论文要求（模型/数据集/指标/验收标准）
-- `docs/daf1.0.md` / `daf1.1.md` / `daf1.2.md` / `daf1.3.md` —— 各阶段实验记录与教训
+- `docs/daf1.0.md` / `daf1.1.md` / `daf1.2.md` / `daf1.3.md` / `daf1.4.md` —— 各阶段实验记录与教训（1.4 = 目标 B 三档总记录）
 - `docs/服务器复现指南.md` —— 环境搭建权威指南
 - `experiments/README.md` —— 实验工作区索引与命令链
