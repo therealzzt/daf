@@ -110,6 +110,7 @@ class Qwen2Attention(nn.Module):
         self.scaling = self.head_dim**-0.5
         self.rope_theta = rope_theta
         self.sliding_window = sliding_window if use_sliding_window else None
+        self.kv_scale = 1.0
 
         self.qkv_proj = QKVParallelLinear(
             hidden_size,
@@ -138,17 +139,37 @@ class Qwen2Attention(nn.Module):
                               num_kv_heads=self.num_kv_heads,
                               sliding_window=self.sliding_window)
 
+        self.hack_kv = []
+
     def forward(
         self,
         positions: torch.Tensor,
         hidden_states: torch.Tensor,
         kv_cache: torch.Tensor,
         attn_metadata: AttentionMetadata,
+
+        status,
+        cache_fuse_metadata,
+        old_kv,
     ) -> torch.Tensor:
         qkv, _ = self.qkv_proj(hidden_states)
         q, k, v = qkv.split([self.q_size, self.kv_size, self.kv_size], dim=-1)
+
+        # HACK(Jiayi): Rotate the old K
+        # Need to modify the kernel to only take K as input
+        if status in [1,2]:
+            if cache_fuse_metadata["fake_q"] is None:
+                cache_fuse_metadata['fake_q'] = torch.rand_like(q)
+            _, old_kv[0] = self.rotary_emb(cache_fuse_metadata['org_pos'],
+                                        cache_fuse_metadata['fake_q'],
+                                        old_kv[0])
+
+        if cache_fuse_metadata['collect']:
+            self.hack_kv = [k.clone(), v.clone()]
         q, k = self.rotary_emb(positions, q, k)
-        attn_output = self.attn(q, k, v, kv_cache, attn_metadata)
+        attn_output = self.attn(q, k, v, kv_cache, attn_metadata,
+                                status, cache_fuse_metadata, old_kv,
+                                self.kv_scale)
         output, _ = self.o_proj(attn_output)
         return output
 
@@ -194,6 +215,10 @@ class Qwen2DecoderLayer(nn.Module):
         kv_cache: torch.Tensor,
         attn_metadata: AttentionMetadata,
         residual: Optional[torch.Tensor],
+
+        status: int,
+        cache_fuse_metadata: dict,
+        old_kv,
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         # Self Attention
         if residual is None:
@@ -207,7 +232,16 @@ class Qwen2DecoderLayer(nn.Module):
             hidden_states=hidden_states,
             kv_cache=kv_cache,
             attn_metadata=attn_metadata,
+
+            # Jiayi: modified start
+            status=status,
+            cache_fuse_metadata=cache_fuse_metadata,
+            old_kv=old_kv,
+            # Jiayi: modified end
         )
+
+        if status == 1:
+            residual = residual[cache_fuse_metadata["imp_indices"]]
 
         # Fully Connected
         hidden_states, residual = self.post_attention_layernorm(
@@ -238,6 +272,28 @@ class Qwen2Model(nn.Module):
         ])
         self.norm = RMSNorm(config.hidden_size, eps=config.rms_norm_eps)
 
+        self.cache_fuse_metadata = {"check_layers":[1],
+                                    "check": False,
+                                    "recomp_ratios":[0.16],
+                                    "recomp_ratio":0.16,
+                                    "original_slot_mapping":None,
+                                    "our_slot_mapping":None,
+                                    "kv_cache_dtype": None,
+                                    "attn_bias": None,
+                                    "imp_indices": None,
+                                    "org_seq_len": None,
+                                    "collect": False,
+
+                                    # ===== 以下为 DAF 新增字段（daf=False 时全部不生效） =====
+                                    # 字段语义与 llama.py 完全一致
+                                    "daf": False,
+                                    "sel_layers": [1, 2, 3],
+                                    "dev_scores": None,
+                                    "doc_imp_indices": None,
+                                    "num_imp_tokens": 0}
+
+        self.old_kvs = [[None,None]] * len(self.layers)
+
     def forward(
         self,
         input_ids: torch.Tensor,
@@ -246,8 +302,63 @@ class Qwen2Model(nn.Module):
         attn_metadata: AttentionMetadata,
     ) -> torch.Tensor:
         hidden_states = self.embed_tokens(input_ids)
+
+        if attn_metadata.prefill_metadata:
+            temp_status = 0 # full prefill
+            if self.cache_fuse_metadata["check"]:
+                self.cache_fuse_metadata["org_seq_len"] = input_ids.shape[0]
+                check_layer_idx = 0
+                self.cache_fuse_metadata["fake_q"] = None
+                self.cache_fuse_metadata["attn_bias"] = None
+                self.cache_fuse_metadata["imp_indices"] = None
+                self.cache_fuse_metadata["original_slot_mapping"] = None
+                self.cache_fuse_metadata["our_slot_mapping"] = None
+                self.cache_fuse_metadata['org_pos'] = positions[:]
+                # DAF：清掉上一次 check 残留的打分和选人结果。
+                # 否则下一个样本会在旧分数上继续累加，选人就全错了
+                self.cache_fuse_metadata["dev_scores"] = None
+                self.cache_fuse_metadata["doc_imp_indices"] = None
+                self.cache_fuse_metadata["num_imp_tokens"] = 0
+        else:
+            temp_status = -1 # decode
         residual = None
+
+
         for i in range(len(self.layers)):
+
+            if self.cache_fuse_metadata["check"]:
+                if self.cache_fuse_metadata["daf"]:
+                    # ===== DAF 排班（sel_layers=[1,2,3] 时）=====
+                    # 第 0 层:      status=0 普通完整 prefill
+                    # 第 1~3 层:    status=3 完整 prefill + 累积本层 V 偏差分数
+                    # 第 4 层:      status=1 根据累计分数选重要 token，进入压缩模式
+                    # 第 5 层及以后: status=2 压缩模式，每层跑 DAF 两路注意力
+                    sel_layers = self.cache_fuse_metadata["sel_layers"]
+                    # 选择层 = 最后一个打分层 + 1（打分层收完证据，下一层才选人）
+                    select_layer = max(sel_layers) + 1
+                    assert select_layer < len(self.layers), \
+                        "sel_layers 太大，选择层超出了模型层数"
+                    if i in sel_layers:
+                        temp_status = 3 # 打分层：只收集证据，不做选择
+                    elif i == select_layer:
+                        temp_status = 1 # 选择层：选人 + 开始 DAF 压缩
+                        # check_layer 字段保留原语义（目前无读者，仅作记录）
+                        self.cache_fuse_metadata["check_layer"] = select_layer
+                    elif i > select_layer:
+                        temp_status = 2 # 后续层：继续 DAF 压缩
+                    else:
+                        temp_status = 0 # 打分层之前的层：普通完整 prefill
+                else:
+                    # ===== 原版 CacheBlend 排班（保持不变）=====
+                    if i in self.cache_fuse_metadata["check_layers"]:
+                        temp_status = 1 # check this layer
+                        self.cache_fuse_metadata["check_layer"] = self.cache_fuse_metadata["check_layers"][check_layer_idx]
+                        check_layer_idx += 1
+                    elif i > self.cache_fuse_metadata["check_layers"][0]:
+                        temp_status = 2 # after check
+
+            old_kv = self.old_kvs[i]
+
             layer = self.layers[i]
             hidden_states, residual = layer(
                 positions,
@@ -255,7 +366,14 @@ class Qwen2Model(nn.Module):
                 kv_caches[i],
                 attn_metadata,
                 residual,
+
+                status = temp_status,
+                cache_fuse_metadata = self.cache_fuse_metadata,
+                old_kv = old_kv
             )
+
+            if temp_status==1:
+                positions = positions[self.cache_fuse_metadata["imp_indices"]]
         hidden_states, _ = self.norm(hidden_states, residual)
         return hidden_states
 

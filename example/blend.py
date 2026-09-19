@@ -19,24 +19,58 @@ import os
 from transformers import AutoTokenizer
 
 # --- 加载推理引擎（把模型权重装进显卡）---
-llm = LLM(model="TheBloke/Mistral-7B-Instruct-v0.2-AWQ",  # 模型名：Mistral-7B 指令版的 AWQ 4bit 量化版（原版 bf16 要 ~15GB 显存，8GB 显卡装不下，量化后只要 ~4GB）
-          quantization="awq",                            # 量化算法：AWQ（Activation-aware Weight Quantization，按激活分布感知地压缩权重到 4bit）
-          gpu_memory_utilization=0.9,                    # 显存占用上限比例：vLLM 最多用显卡总显存的 90%（8GB × 0.9 ≈ 7.2GB，含权重+KV 缓存）
-          max_model_len=4096,                            # 最大上下文长度（token 数）：限制单次输入最长 4096，越小 KV 缓存越省显存
-          enforce_eager=True,                            # 关闭 CUDA Graph 优化：CUDA Graph 会把计算图录制下来加速，但要多占几百 MB 显存；显存紧张所以关掉
-          )
-# 单独加载分词器（与模型同名仓库）
-tokenizer = AutoTokenizer.from_pretrained("TheBloke/Mistral-7B-Instruct-v0.2-AWQ")
+# 模型预设：BLEND_MODEL_PRESET=bf16（默认，6k–10k 档用）或 awq（30k 档用）。
+# 30k 档必须用 AWQ：bf16 权重 15GB 在 24GB 卡上 KV 池只有 ~1.9 万 token，
+# 装不下 32k 的 max_model_len；AWQ 权重 ~4GB，池子 ~10 万 token，宽裕
+if os.environ.get("BLEND_MODEL_PRESET", "bf16") == "awq":
+    llm = LLM(model="TheBloke/Mistral-7B-Instruct-v0.2-AWQ",  # Mistral-7B 指令版 AWQ 4bit 量化版（~4GB）
+              quantization="awq",                            # 量化算法：AWQ（按激活分布感知地把权重压到 4bit）
+              # 显存上限只给 75%（18GB）：vllm 预算之外，blend.py 还私占一份 ~4GB 的
+              # old_kvs 离线缓存（30k token × 128KB，AWQ 只压权重、KV 仍是 bf16）。
+              # 若给 90%（21.6GB），峰值 ~26GB > 24GB，collect 阶段必 OOM
+              gpu_memory_utilization=0.75,
+              max_model_len=32768,                           # 开满 Mistral-7B-v0.2 原生上限，覆盖 30k 档样本
+              enforce_eager=True,                            # 关闭 CUDA Graph（省几百 MB 显存）
+              )
+    tokenizer = AutoTokenizer.from_pretrained("TheBloke/Mistral-7B-Instruct-v0.2-AWQ")
+elif os.environ.get("BLEND_MODEL_PRESET", "bf16") == "qwen":
+    # Qwen2.5-7B-Instruct（DAF 论文用的模型）：28 层、GQA 28 Q 头 / 4 KV 头、
+    # head_size 128。BF16 权重 ~15GB；开发期 max_model_len=8192 覆盖 2–4k 档
+    # 样本（Qwen2.5 不加 YaRN 时上限 32768，勿超过）
+    llm = LLM(model="Qwen/Qwen2.5-7B-Instruct",
+              gpu_memory_utilization=0.85,
+              max_model_len=8192,
+              enforce_eager=True,
+              )
+    tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")
+else:
+    llm = LLM(model="mistralai/Mistral-7B-Instruct-v0.2",  # 模型名：Mistral-7B 指令版官方 bf16 非量化版（~15GB 权重，与 CacheBlend 论文实验配置一致）
+              gpu_memory_utilization=0.85,                   # 显存占用上限比例：vLLM 最多用显卡总显存的 85%（24GB × 0.85 ≈ 20.4GB，含权重+KV 缓存）
+              max_model_len=16384,                           # 最大上下文长度（token 数）：本档样本最长约 9.6k，16384 留足余量即可。注意 vllm 0.4.1 要求 max_model_len ≤ KV 池容量；bf16 权重 15GB 在 24GB 卡上池子约 1.9 万 token，设 32768（模型原生上限）会启动报错。4096 只是当年 8GB 开发机的保守值
+              enforce_eager=True,                            # 关闭 CUDA Graph 优化：CUDA Graph 会把计算图录制下来加速，但要多占几百 MB 显存
+              )
+    # 单独加载分词器（与模型同名仓库）
+    tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2")
 # 强制让引擎使用我们手里这个分词器实例，保证脚本里 encode 的结果和引擎内部完全一致
 llm.set_tokenizer(tokenizer)
 
 #TODO (Jiayi): fix last len   # 原作者(Jiayi)留下的待办：last_len 的计算有 bug（已在第 52 行修复，见该行注释）
 
 
-# ============ 主循环：依次处理 inputs/1.json ~ inputs/10.json 共 10 个样本 ============
-for sample_idx in range(1,11):
-    # 打开第 sample_idx 个样本文件
-    f = open(f"inputs/{sample_idx}.json")
+# ============ 主循环：依次处理样本目录下的所有样本 ============
+# 样本目录可用环境变量 BLEND_INPUT_DIR 指定（默认 inputs/，行为与原版一致：
+# 只跑 1.json~10.json）；目录里没有纯数字命名的 json 时，跑目录下全部 .json
+# （用于 inputs_long_6k10k_official/ 这类带出处信息命名的长上下文样本）
+import re
+INPUT_DIR = os.environ.get("BLEND_INPUT_DIR", "inputs")
+_dir_jsons = [fn for fn in os.listdir(INPUT_DIR) if fn.endswith(".json")]
+_numeric = sorted((fn for fn in _dir_jsons if re.fullmatch(r"\d+\.json", fn)),
+                  key=lambda fn: int(fn[:-5]))
+SAMPLE_FILES = _numeric if _numeric else sorted(_dir_jsons)
+
+for sample_file in SAMPLE_FILES:
+    # 打开当前样本文件
+    f = open(f"{INPUT_DIR}/{sample_file}")
     # 解析 JSON，得到字典 ex（example 的缩写）
     ex = json.load(f)
     # 这个样本里有几篇文档块（chunk = 检索回来的一段文档）
@@ -45,11 +79,24 @@ for sample_idx in range(1,11):
     doc_prompts = [ex[f'{i}'] for i in range(chunk_num)]
     # 取出用户问题（query prompt）
     q_prompt = ex['query']
-    # 把每篇文档转成 token 编号列表；[1:] 是切掉 encode 自动加在开头
-    # 的 BOS 起始符（<s>，编号 1）——因为后面拼接时我们会自己加，不去掉就会重复
-    doc_chunk_ids = [tokenizer.encode(doc)[1:] for doc in doc_prompts]
-    # 同理，把问题转成 token 编号，同样切掉 BOS
-    q_ids = tokenizer.encode(q_prompt)[1:]
+    # 把每篇文档转成 token 编号列表；Mistral 的 encode 自动加 BOS 起始符
+    #（<s>，编号 1），[1:] 是切掉它——因为后面拼接时我们会自己加，不去掉就会重复。
+    # Qwen 的 tokenizer 不加 BOS，_bos_offset=0 不剥首 token
+    _bos_offset = 0 if os.environ.get("BLEND_MODEL_PRESET", "bf16") == "qwen" else 1
+    doc_chunk_ids = [tokenizer.encode(doc)[_bos_offset:] for doc in doc_prompts]
+    # 同理，把问题转成 token 编号
+    q_ids = tokenizer.encode(q_prompt)[_bos_offset:]
+    # Qwen 的 BPE 会在块边界跨块合并 token：decode→encode 往返不幂等
+    #（实测 inputs/1.json 拼接后 3601 个 token 中 3544 个位置错位），
+    # 所以 qwen 预设必须直接给引擎传 token id，绕过重新分词；
+    # Mistral（SentencePiece）无此问题，保持原来的字符串路径不变
+    _use_token_ids = (_bos_offset == 0)
+
+    def _run_prompt(ids, params):
+        if _use_token_ids:
+            return llm.generate(prompt_token_ids=[list(ids)],
+                                sampling_params=params)
+        return llm.generate([tokenizer.decode(ids)], params)
 
 
     # Create a sampling params object.
@@ -68,28 +115,30 @@ for sample_idx in range(1,11):
     cache_fuse_metadata['collect'] = False  # collect=True 时模型每层会把 KV 存到 hack_kv 里
     cache_fuse_metadata['check'] = False    # check=True 时启用 CacheBlend 的选择性重算
 
-    # --- 拼装 Mistral 指令模板对应的特殊 token ---
-    # s_start_full：完整指令前缀的 token 编号，相当于 "<s>[INST]"（s = start，
-    # full = 带 BOS 起始符的完整版）。Mistral 的 instruct 模板要求输入以它开头
-    s_start_full = [733, 4138, 28793]
-    # 前缀"长度"：实际 token 数 + 1。+1 是因为引擎内部 encode 时会自动再加一个 BOS，
-    # 所以存下来的 KV 比我们的 token 列表多出开头 1 个位置，长度要算上它
-    s_start_len = len(s_start_full) + 1
+    # --- 拼装指令模板对应的特殊 token ---
+    if os.environ.get("BLEND_MODEL_PRESET", "bf16") == "qwen":
+        # Qwen2.5 用 ChatML 模板：<|im_start|>system ... <|im_end|>
+        # <|im_start|>user\n{文档...问题}<|im_end|>\n<|im_start|>assistant\n
+        s_start_full = tokenizer.encode(
+            "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n"
+            "<|im_start|>user\n")
+        s_end = tokenizer.encode("<|im_end|>\n<|im_start|>assistant\n")
+    else:
+        # Mistral 指令模板：s_start_full 相当于 "<s>[INST]"（s = start，
+        # full = 带 BOS 起始符的完整版）。Mistral 的 instruct 模板要求输入以它开头
+        s_start_full = [733, 4138, 28793]
+        # s_end：指令结束标记的 token 编号，相当于 "[/INST]"
+        s_end = [733, 28748, 16289, 28793]
+    # 前缀"长度"：实际 token 数 + BOS 补偿。Mistral 引擎内部 encode 时会自动
+    # 再加一个 BOS，所以存下来的 KV 比 token 列表多出开头 1 个位置，要算上它；
+    # Qwen 引擎不加 BOS，_bos_offset=0 无补偿
+    s_start_len = len(s_start_full) + _bos_offset
 
     #s_start = [518, 25580, 29962]   # 注释掉的旧值：这是 LLaMA-2 的 "[INST]" token 编号，作者早期用 LLaMA 调试的遗留
     # s_start：每个文档块自己的前缀，这里是空列表（文档块前不加任何包装）
     s_start = []
-    # s_start_1_len：块前缀在 KV 里的占位长度 = 0 + 1（同样是引擎自动加的那个 BOS）。
-    # 命名里的 "_1" 是作者为了和上面的 s_start_len 区分
-    s_start_1_len = len(s_start) + 1
-
-    # 先赋值为 LLaMA-2 的 "[/INST]" token 编号（作者早期用 LLaMA 调试的遗留），
-    # 下一行立刻被 Mistral 的版本覆盖——这一行实际不起作用，但保留原样
-    s_end = [518, 29914, 25580, 29962]
-    # s_end：指令结束标记的 token 编号，相当于 "[/INST]"（s = sequence/end，序列结尾标记）
-    s_end = [733, 28748, 16289, 28793]
-    # s_end 的长度（后面其实没用到，属于冗余变量）
-    s_end_len = len(s_end)
+    # s_start_1_len：块前缀在 KV 里的占位长度 = 0 + BOS 补偿
+    s_start_1_len = len(s_start) + _bos_offset
     # 旧的（缓存的）KV，先初始化为空列表占位（old_kvs = old Key-Values）
     old_kvs = []
 
@@ -122,11 +171,10 @@ for sample_idx in range(1,11):
     # Concatenate old KVs
     # ============ 阶段一：逐块喂给模型，把每层的 KV"偷"出来拼起来 ============
     for i in range(len(doc_chunk_ids)):
-        # 把 token 编号转回文字（引擎的 generate 接口吃字符串）
-        prompts = [tokenizer.decode(doc_chunk_ids[i])]
         # 跑这一块。因为 max_tokens=1 且 collect=True，这次调用真正的目的是：
         # 让 prefill 发生，从而每层把这一块的 KV 存进 hack_kv
-        llm.generate(prompts, sampling_params)
+        #（qwen 预设走 token id 直传，避免 BPE 边界错位）
+        _run_prompt(doc_chunk_ids[i], sampling_params)
 
         # 掏出模型的 32 层（又是一长串内部访问）
         llm_layers = llm.llm_engine.model_executor.driver_worker.model_runner.model.model.layers
@@ -172,8 +220,10 @@ for sample_idx in range(1,11):
             temp_ids = doc_chunk_ids[i]
         else:
             # 其余块切掉第 1 个 token——因为序列开头的 BOS 只能出现一次，
-            # 各块 decode 时被引擎加过的 BOS 在这里要去掉，否则会重复
-            temp_ids = doc_chunk_ids[i][s_start_1_len-1:]
+            # 各块 decode 时被引擎加过的 BOS 在这里要去掉，否则会重复。
+            # 注意 chunk id 列表本身不含 BOS（encode 时已剥），所以实际取 [0:] 全量；
+            # Qwen 无 BOS 补偿（s_start_1_len=0），max(...) 防止 [-1:] 只取末位 token
+            temp_ids = doc_chunk_ids[i][max(s_start_1_len-1, 0):]
         # 逐块拼成一条完整的输入
         input_ids += temp_ids
 
@@ -182,8 +232,9 @@ for sample_idx in range(1,11):
 
 
     # ============ 阶段二：CacheBlend 缓存融合推理 ============
-    # 这次要真正生成答案了，max_tokens=10（最多生成 10 个 token）
-    sampling_params = SamplingParams(temperature=0, max_tokens=10)
+    # 这次要真正生成答案了，max_tokens=32（与 blend_musique.py 一致）。
+    # 注意：EM 评测要求答案生成完整，10 token 会把答案截断成残句导致 EM 恒为 0
+    sampling_params = SamplingParams(temperature=0, max_tokens=32)
     # check=True：打开 CacheBlend 的选择性重算——模型会复用 old_kvs 里的缓存，
     # 只挑出"新鲜值与缓存值偏差最大"的一小部分 token（默认 16%）重算，
     # 把跨文档注意力补回来
@@ -210,7 +261,9 @@ for sample_idx in range(1,11):
     # 注意：daf=False 时保持白板默认（check_layers=[1], recomp_ratio=0.16），
     # 这样对照实验跑的才是原版 CacheBlend 的真实配置
     # 用缓存跑推理
-    output = llm.generate([input_prompt], sampling_params)
+    output = _run_prompt(input_ids, sampling_params)
+    # 打印当前样本文件名（EM 评分脚本据此把结果对应回样本；长上下文样本名含来源与长度）
+    print(f"===== {sample_file} =====")
     # 打印缓存模式生成的答案
     print(f"Cached generation: {output[0].outputs[0].text}")
     # 打印缓存模式的 TTFT：第一个 token 生成时刻 - 请求开始调度时刻，
@@ -218,11 +271,11 @@ for sample_idx in range(1,11):
     print(f"TTFT with cache: {output[0].metrics.first_token_time-output[0].metrics.first_scheduled_time}")
 
     # ============ 阶段三：对照组——全量 prefill ============
-    sampling_params = SamplingParams(temperature=0, max_tokens=10)
+    sampling_params = SamplingParams(temperature=0, max_tokens=32)  # 与阶段二对齐，保证质量对比公平
     # 关掉所有缓存开关，模型老老实实地把整段输入从头算一遍
     cache_fuse_metadata["check"] = False
     cache_fuse_metadata['collect'] = False
-    output = llm.generate([input_prompt], sampling_params)
+    output = _run_prompt(input_ids, sampling_params)
 
 
     # 打印全量重算的答案

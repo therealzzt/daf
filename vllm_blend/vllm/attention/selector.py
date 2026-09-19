@@ -71,6 +71,13 @@ def _which_attn_to_use(dtype: torch.dtype) -> _Backend:
                     "torch.float16 or torch.bfloat16.")
         return _Backend.XFORMERS
 
+    backend_by_env_var = os.getenv(VLLM_ATTENTION_BACKEND)
+    if backend_by_env_var is not None:
+        # 兼容别名："FLASH_ATTENTION" 与 "FLASH_ATTN" 等价
+        if backend_by_env_var == "FLASH_ATTENTION":
+            backend_by_env_var = "FLASH_ATTN"
+        return _Backend[backend_by_env_var]
+
     try:
         import flash_attn  # noqa: F401
     except ImportError:
@@ -79,9 +86,8 @@ def _which_attn_to_use(dtype: torch.dtype) -> _Backend:
             "is not found. Please install it for better performance.")
         return _Backend.XFORMERS
 
-    backend_by_env_var = os.getenv(VLLM_ATTENTION_BACKEND)
-    if backend_by_env_var is not None:
-        return _Backend[backend_by_env_var]
-
     # Default case.
-    return _Backend.FLASH_ATTN
+    # 本仓库的 CacheBlend/DAF 实验以 XFORMERS 为对照基线：即使装了
+    # flash_attn 也不静默切换默认后端，避免已有实验命令的行为被改变。
+    # 需要 flash 后端时显式设 VLLM_ATTENTION_BACKEND=FLASH_ATTN。
+    return _Backend.XFORMERS
