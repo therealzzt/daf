@@ -98,12 +98,15 @@ python experiments/scripts/score_em_long_6k10k.py \
 | 30k（daf1.3） | `inputs_long_30k_buriedqa/`（12） | AWQ | 3.9× | 2.7× | **1.45×**（随长度收窄，符合论文趋势） |
 | 6k（目标B-1，2026-09-20） | `inputs_qwen_2wikimqa/`（24，LongBench 官方） | qwen | 2.66× | 2.32× | **1.14×**（6k 档 DAF≈CB 持平，复现论文趋势） |
 | 9k（目标B-2，2026-09-20） | `inputs_qwen_samsum/`（24，LongBench 官方） | qwen | 2.61× | 2.34× | **1.11×**（9k 档持平，复现论文趋势） |
+| 30k（目标B-3，2026-09-20） | `inputs_qwen_ruler30k/`（48，RULER 官方 qa_1/qa_2 各 24） | qwen | 2.46× | 2.63× | **0.94×**（DAF 首次反超 CB；但未到论文的 ≤0.77） |
 
 目标 B 第一档（Qwen2.5 + LongBench 2wikimqa ≈6k，EM 指标）已跑通：EM 中位 CB=DAF=0.208、全量 0.250；SM/F1 上 DAF（0.333/0.346）位于 CB 与全量之间，精度排序符合论文但"DAF 追平全量"未复现；DAF 相对全量 2.32× 超过论文 6k 档 1.8×。详见 `experiments/reports/em_report_qwen_2wikimqa.md`（含论文对照分析）与 flash 对照报告。
 
 目标 B 第二档（Qwen2.5 + LongBench samsum ≈9k，Rouge-L 指标）已跑通：Rouge-L 中位 CB 0.440 ≈ 全量 0.428 > DAF 0.391——**精度排序与论文相反**（论文预期 DAF 贴近全量），TTFT 侧 DAF/CB 1.11× 持平、DAF 相对全量 2.34× 均复现。详见 `experiments/reports/rouge_report_qwen_samsum.md`（含原因分析）与 flash 对照报告。blend.py 新增 `BLEND_MAX_MODEL_LEN`（qwen 预设，默认 8192）与 `BLEND_MAX_TOKENS`（默认 32）两个环境变量。
 
-DAF/CB 比值随长度单调下降（1.75→1.73→1.45），外推反超点在 60k–130k；DAF 相对全量加速（30k 档 2.71×）已与论文 2.8× 持平，未复现的是相对 CB 的反超和精度优势。与论文的差距（Qwen2.5-7B/A100/Flash-Attention vs 本项目 Mistral-7B/3090Ti/xformers）在 `docs/daf1.1.md` 有分析。
+目标 B 第三档（Qwen2.5 + RULER 官方 qa_1/qa_2 32768 档，SM 指标）已跑通：SM 均值 qa_1 CB 0.458/DAF 0.375/全量 0.625，qa_2 CB 0.250/DAF 0.250/全量 0.458；**DAF/CB 0.94×——DAF 首次反超 CB**（趋势链 1.75→1.73→1.45→1.14→1.11→0.94），但未到论文的 ≤0.77，qa_2 精度验收线（DAF ≥0.68/CB ≤0.65）未达标（三方法绝对精度均系统性偏低，分析与评分修正见 `experiments/reports/em_report_qwen_ruler30k.md` 第四节）。本档要点：① RULER 数据用 `experiments/ruler_src/`（官方 repo）生成，转换脚本 `make_inputs_qwen_ruler30k.py`；② 32768 档 BF16 需 `BLEND_GPU_MEM_UTIL`（CB 0.90 / DAF 0.89，util 只影响 KV 池大小），并配套 `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`、blend.py 在 check 前 `empty_cache()`、阶段三前释放 old_kvs（保持 `[[None,None]]×层数` 占位，qwen2.py/llama.py 的 `old_kvs[i]` 是无条件下标访问）；③ 评分脚本新增 `--raw_parse`——`utils.parse_generation` 会把 "No…" 开头的回答折叠成 "No"（hotpot yes/no 的 hack），RULER squad 答案大量以 Normandy 等 No 前缀词开头会被误判，RULER 数据集必须加此开关。
+
+DAF/CB 比值随长度单调下降（Mistral 1.75→1.73→1.45；Qwen 1.14→1.11→0.94），Qwen 30k 已实测反超；DAF 相对全量加速（30k 档 2.63~2.71×）已与论文 2.8× 持平，未复现的是反超幅度（论文 30k ≈0.77）和精度优势。与论文的差距（Qwen2.5-7B/A100/Flash-Attention vs 本项目 3090Ti/xformers）在 `docs/daf1.1.md` 有分析。
 
 ## 文档索引
 

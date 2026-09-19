@@ -4,3 +4,6 @@ outputs/
 wsl_setup/ubuntu2204.rootfs.tar.gz
 wsl_setup/logs/
 .vscode/
+# RULER 官方 repo clone（70MB，含自己的 .git 无法收录子文件）不入库；
+# 生成的数据归档在 experiments/ruler_data_gen/（从 ruler_src/data_gen 复制）
+experiments/ruler_src/

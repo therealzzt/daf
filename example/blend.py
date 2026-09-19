@@ -39,7 +39,9 @@ elif os.environ.get("BLEND_MODEL_PRESET", "bf16") == "qwen":
     # 长档（如 samsum 9k）用 BLEND_MAX_MODEL_LEN 覆盖（Qwen2.5 不加 YaRN 时
     # 上限 32768，勿超过；24GB 卡 BF16 KV 池约 9 万 token，16384 宽裕）
     llm = LLM(model="Qwen/Qwen2.5-7B-Instruct",
-              gpu_memory_utilization=0.85,
+              # 显存上限可用 BLEND_GPU_MEM_UTIL 覆盖：BF16 权重 14.25GB 在 24GB 卡上，
+              # 默认 0.85 时 KV 池只有 ~1.7 万 token；32768 档需 ~0.90（池 ~3.9 万）
+              gpu_memory_utilization=float(os.environ.get("BLEND_GPU_MEM_UTIL", "0.85")),
               max_model_len=int(os.environ.get("BLEND_MAX_MODEL_LEN", "8192")),
               enforce_eager=True,
               )
@@ -231,6 +233,11 @@ for sample_file in SAMPLE_FILES:
     # 转回文字形式，这就是最终要推理的完整 prompt：[前缀] 文档1 文档2 ... 文档N 问题 [结束]
     input_prompt = tokenizer.decode(input_ids)
 
+    # 收集阶段结束，清一次 CUDA 缓存碎片：DAF 的 check 阶段前 5 层是 32k 全量
+    # prefill（激活峰值 GB 级），与 old_kvs（~1.9GB，vllm 预算外）叠加后余量极小，
+    # 碎片曾导致 222MB 分配 OOM
+    torch.cuda.empty_cache()
+
 
     # ============ 阶段二：CacheBlend 缓存融合推理 ============
     # 这次要真正生成答案了，max_tokens 默认 32（与 blend_musique.py 一致），
@@ -277,6 +284,15 @@ for sample_file in SAMPLE_FILES:
     print(f"TTFT with cache: {output[0].metrics.first_token_time-output[0].metrics.first_scheduled_time}")
 
     # ============ 阶段三：对照组——全量 prefill ============
+    # 全量 prefill 不用缓存，先释放 old_kvs 离线 KV（30k token ≈ 1.9GB 显存，
+    # 在 vllm 预算之外），给全量 prefill 的激活峰值让出空间；
+    # 不影响结果：下一样本的阶段一会重新收集并覆盖。
+    # 注意必须保持每层一个占位（与 qwen2.py/llama.py 初始化的 [[None,None]]×层数
+    # 同构），forward 里 old_kvs[i] 是无条件按下标访问的
+    chunk_past_key_values = []
+    _model = llm.llm_engine.model_executor.driver_worker.model_runner.model.model
+    _model.old_kvs = [[None, None]] * len(_model.layers)
+    torch.cuda.empty_cache()
     sampling_params = SamplingParams(temperature=0, max_tokens=_max_tokens)  # 与阶段二对齐，保证质量对比公平
     # 关掉所有缓存开关，模型老老实实地把整段输入从头算一遍
     cache_fuse_metadata["check"] = False

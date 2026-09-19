@@ -25,6 +25,17 @@ from transformers import AutoTokenizer
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "example"))
 from utils import compute_f1, compute_rl, normalize_answer, parse_generation  # noqa: E402
 
+# --raw_parse 时改用裸首行：utils.parse_generation 会把 "No..."/"Yes..." 开头的
+# 整段回答折叠成 "No"/"Yes"（原作者为 hotpot yes/no 题写的 hack），RULER squad 答案
+# 大量以 Normandy/Norman/Norse 等 "No" 前缀词开头，会被误判，必须绕过
+_RAW_PARSE = False
+
+
+def _parse_gen(pred):
+    if _RAW_PARSE:
+        return pred.lstrip('\n').split('\n')[0]
+    return parse_generation(pred)
+
 TOKENIZER_NAME = "mistralai/Mistral-7B-Instruct-v0.2"
 SAMPLE_HEADER = re.compile(r"^===== (\S+\.json) =====$")
 CACHED_RE = re.compile(r"^Cached generation: (.*)$")
@@ -37,7 +48,7 @@ def exact_match(pred, golds):
     """归一化后与任一 gold 完全一致即 1（多答案取最大）。
     与 LongBench 官方口径一致：小写+去冠词+去标点+空白规整
     （example/utils.py 的 normalize_answer 即此实现）"""
-    pred_n = normalize_answer(parse_generation(pred))
+    pred_n = normalize_answer(_parse_gen(pred))
     return max(int(pred_n == normalize_answer(g)) for g in golds)
 
 
@@ -46,7 +57,7 @@ def substring_match(pred, golds):
     宽容 EM：给"Charles university in Prague"（gold: Charles University）、
     "Goring-on-Thames"（gold: Goring-on-Thames, Oxfordshire）这类正确但带补充的
     回答记分。多答案取最大。"""
-    pred_n = normalize_answer(parse_generation(pred))
+    pred_n = normalize_answer(_parse_gen(pred))
     if not pred_n:
         return 0
     for g in golds:
@@ -61,7 +72,7 @@ def rouge_l(pred, golds):
     先取首行（lstrip('\\n').split('\\n')[0]，即 parse_generation），再用
     rouge_score 包的 rougeL fmeasure（use_stemmer=True，example/utils.py
     的 compute_rl 即此实现）"""
-    pred_first = parse_generation(pred)
+    pred_first = _parse_gen(pred)
     return max(compute_rl(pred_first, g) for g in golds)
 
 
@@ -106,7 +117,13 @@ def main():
                          "Qwen/Qwen2.5-7B-Instruct）")
     ap.add_argument("--rouge", action="store_true",
                     help="摘要类任务（samsum 等）加评 Rouge-L 并在报告中给出 RL 列")
+    ap.add_argument("--raw_parse", action="store_true",
+                    help="回答解析不做 Yes/No 折叠（RULER 等答案可能以 No 前缀词"
+                         "（Normandy 等）开头的数据集必须加此开关，否则大量误判）")
     args = ap.parse_args()
+    if args.raw_parse:
+        global _RAW_PARSE
+        _RAW_PARSE = True
 
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer)
     # F1 分词的 BOS 处理：utils.compute_f1 写死 [1:] 剥首 token（Mistral 有 BOS）。
@@ -117,7 +134,7 @@ def main():
 
     def compute_f1_tok(pred, gold):
         import collections
-        a_pred = parse_generation(pred)
+        a_pred = _parse_gen(pred)
         gold_toks = tokenizer.encode(normalize_answer(gold))
         pred_toks = tokenizer.encode(normalize_answer(a_pred))
         if _strip_first:
