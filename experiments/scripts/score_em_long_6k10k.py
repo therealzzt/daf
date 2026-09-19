@@ -23,7 +23,7 @@ import sys
 from transformers import AutoTokenizer
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "example"))
-from utils import compute_f1, normalize_answer, parse_generation  # noqa: E402
+from utils import compute_f1, compute_rl, normalize_answer, parse_generation  # noqa: E402
 
 TOKENIZER_NAME = "mistralai/Mistral-7B-Instruct-v0.2"
 SAMPLE_HEADER = re.compile(r"^===== (\S+\.json) =====$")
@@ -54,6 +54,15 @@ def substring_match(pred, golds):
         if g_n and (pred_n in g_n or g_n in pred_n):
             return 1
     return 0
+
+
+def rouge_l(pred, golds):
+    """Rouge-L fmeasure（多答案取最大）。口径对齐 LongBench 官方 eval.py：
+    先取首行（lstrip('\\n').split('\\n')[0]，即 parse_generation），再用
+    rouge_score 包的 rougeL fmeasure（use_stemmer=True，example/utils.py
+    的 compute_rl 即此实现）"""
+    pred_first = parse_generation(pred)
+    return max(compute_rl(pred_first, g) for g in golds)
 
 
 def parse_log(path):
@@ -95,6 +104,8 @@ def main():
     ap.add_argument("--tokenizer", default=TOKENIZER_NAME,
                     help="F1 分词用的 tokenizer（默认 Mistral；qwen 实验传 "
                          "Qwen/Qwen2.5-7B-Instruct）")
+    ap.add_argument("--rouge", action="store_true",
+                    help="摘要类任务（samsum 等）加评 Rouge-L 并在报告中给出 RL 列")
     args = ap.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer)
@@ -131,17 +142,21 @@ def main():
     runs = {os.path.basename(p): parse_log(p) for p in args.logs}
 
     lines = [
-        "# 6k–10k 长上下文实验评分报告",
+        "# 长上下文实验评分报告",
         "",
         f"- 样本目录：`{args.dir}`（{len(golds)} 个样本）",
-        f"- 评分：EM（精确匹配，多答案取最大）+ token-F1（多答案取最大）",
+        f"- 评分：EM（精确匹配，多答案取最大）+ SM（子串匹配）+ token-F1（多答案取最大）"
+        + (" + Rouge-L（摘要任务主指标，LongBench 官方口径）" if args.rouge else ""),
         f"- 归一化：小写/去冠词/去标点/Yes-No 规整（`example/utils.py`）",
         f"- 输入日志：{', '.join('`'+os.path.basename(p)+'`' for p in args.logs)}",
         "",
         "## 一、逐样本明细（质量指标为多轮均值，TTFT 为多轮中位数）",
         "",
-        "| 样本 | 来源 | 长度 | 方法 | EM | SM | F1 | TTFT缓存(s) | TTFT全量(s) | 缓存答案 | 全量答案 |",
-        "|---|---|---|---|---|---|---|---|---|---|---|",
+        "| 样本 | 来源 | 长度 | 方法 | EM | SM | F1 | "
+        + ("RL | " if args.rouge else "")
+        + "TTFT缓存(s) | TTFT全量(s) | 缓存答案 | 全量答案 |",
+        "|---|---|---|---|---|---|---|---|"
+        + ("---|" if args.rouge else "") + "----|---|---|",
     ]
 
     # 方法识别：日志名含 daf → DAF，含 cb → CacheBlend
@@ -154,8 +169,9 @@ def main():
 
     for log_name, res in runs.items():
         meth = method_of(log_name)
-        agg.setdefault(meth, {"em": [], "sm": [], "f1": [], "ttft_c": [], "ttft_f": []})
-        ems, sms, f1s = [], [], []
+        agg.setdefault(meth, {"em": [], "sm": [], "f1": [], "rl": [],
+                              "ttft_c": [], "ttft_f": []})
+        ems, sms, f1s, rls = [], [], [], []
         for name in sorted(golds):
             r = res.get(name)
             if not r or "cached" not in r:
@@ -163,18 +179,25 @@ def main():
             em = exact_match(r["cached"], golds[name]["gold"])
             sm = substring_match(r["cached"], golds[name]["gold"])
             f1 = max(compute_f1_tok(r["cached"], g) for g in golds[name]["gold"])
+            rl = rouge_l(r["cached"], golds[name]["gold"]) if args.rouge else None
             ems.append(em)
             sms.append(sm)
             f1s.append(f1)
-            per_sample[name].setdefault(meth, {"em": [], "sm": [], "f1": [], "ttft_c": [], "ttft_f": []})
+            per_sample[name].setdefault(meth, {"em": [], "sm": [], "f1": [], "rl": [],
+                                               "ttft_c": [], "ttft_f": []})
             per_sample[name][meth]["em"].append(em)
             per_sample[name][meth]["sm"].append(sm)
             per_sample[name][meth]["f1"].append(f1)
             per_sample[name][meth]["ttft_c"].append(r.get("ttft_cache"))
             per_sample[name][meth]["ttft_f"].append(r.get("ttft_full"))
+            if rl is not None:
+                rls.append(rl)
+                per_sample[name][meth]["rl"].append(rl)
         agg[meth]["em"].append(sum(ems) / len(ems) if ems else float("nan"))
         agg[meth]["sm"].append(sum(sms) / len(sms) if sms else float("nan"))
         agg[meth]["f1"].append(sum(f1s) / len(f1s) if f1s else float("nan"))
+        if rls:
+            agg[meth]["rl"].append(sum(rls) / len(rls))
         round_ttc = [res[n]["ttft_cache"] for n in res if "ttft_cache" in res[n]]
         round_ttf = [res[n]["ttft_full"] for n in res if "ttft_full" in res[n]]
         agg[meth]["ttft_c"].append(sum(round_ttc) / len(round_ttc) if round_ttc else float("nan"))
@@ -189,6 +212,7 @@ def main():
             em = sum(d["em"]) / len(d["em"])
             sm = sum(d["sm"]) / len(d["sm"])
             f1 = sum(d["f1"]) / len(d["f1"])
+            rl = sum(d["rl"]) / len(d["rl"]) if d["rl"] else None
             ttc = median([x for x in d["ttft_c"] if x is not None])
             ttf = median([x for x in d["ttft_f"] if x is not None])
             # 取该方法第一轮日志里的答案文本展示
@@ -200,14 +224,16 @@ def main():
                     break
             lines.append(
                 f"| {name} | {golds[name]['source']} | {golds[name]['tokens']} | {meth} "
-                f"| {em:.2f} | {sm:.2f} | {f1:.2f} | {ttc:.3f} | {ttf:.3f} | {ans_c} | {ans_f} |"
+                f"| {em:.2f} | {sm:.2f} | {f1:.2f} | "
+                + (f"{rl:.2f} | " if rl is not None else "")
+                + f"{ttc:.3f} | {ttf:.3f} | {ans_c} | {ans_f} |"
             )
 
     # vLLM 全量基线：每份日志的 Normal generation 行就是一次全量 prefill 跑批，
     # 与缓存方法同模型同 prompt，是第三方法的精度/TTFT 来源
-    full_agg = {"em": [], "sm": [], "f1": [], "ttft": []}
+    full_agg = {"em": [], "sm": [], "f1": [], "rl": [], "ttft": []}
     for log_name, res in runs.items():
-        ems, sms, f1s, ttfs = [], [], [], []
+        ems, sms, f1s, rls, ttfs = [], [], [], [], []
         for name in sorted(golds):
             r = res.get(name)
             if not r or "normal" not in r:
@@ -215,17 +241,23 @@ def main():
             ems.append(exact_match(r["normal"], golds[name]["gold"]))
             sms.append(substring_match(r["normal"], golds[name]["gold"]))
             f1s.append(max(compute_f1_tok(r["normal"], g) for g in golds[name]["gold"]))
+            if args.rouge:
+                rls.append(rouge_l(r["normal"], golds[name]["gold"]))
             if "ttft_full" in r:
                 ttfs.append(r["ttft_full"])
         if ems:
             full_agg["em"].append(sum(ems) / len(ems))
             full_agg["sm"].append(sum(sms) / len(sms))
             full_agg["f1"].append(sum(f1s) / len(f1s))
+            if rls:
+                full_agg["rl"].append(sum(rls) / len(rls))
             full_agg["ttft"].append(sum(ttfs) / len(ttfs) if ttfs else float("nan"))
 
+    rl_col = args.rouge
     lines += ["", "## 二、按方法聚合（每轮一行，再给出跨轮中位数）", "",
-              "| 方法 | 轮次 | EM | SM | F1 | TTFT缓存均值(s) | TTFT全量均值(s) | 缓存加速比 |",
-              "|---|---|---|---|---|---|---|---|"]
+              "| 方法 | 轮次 | EM | SM | F1 | " + ("RL | " if rl_col else "")
+              + "TTFT缓存均值(s) | TTFT全量均值(s) | 缓存加速比 |",
+              "|---|---|---|---|---|---|" + ("---|" if rl_col else "") + "------|---|"]
     for meth in ("CacheBlend", "DAF"):
         a = agg.get(meth)
         if not a:
@@ -234,23 +266,28 @@ def main():
         for i in range(n_rounds):
             speed = a["ttft_f"][i] / a["ttft_c"][i] if a["ttft_c"][i] else float("nan")
             lines.append(
-                f"| {meth} | r{i+1} | {a['em'][i]:.3f} | {a['sm'][i]:.3f} | {a['f1'][i]:.3f} "
-                f"| {a['ttft_c'][i]:.3f} | {a['ttft_f'][i]:.3f} | {speed:.2f}× |")
+                f"| {meth} | r{i+1} | {a['em'][i]:.3f} | {a['sm'][i]:.3f} | {a['f1'][i]:.3f} | "
+                + (f"{a['rl'][i]:.3f} | " if rl_col and a["rl"] else "")
+                + f"{a['ttft_c'][i]:.3f} | {a['ttft_f'][i]:.3f} | {speed:.2f}× |")
         em_med, sm_med, f1_med = median(a["em"]), median(a["sm"]), median(a["f1"])
         tc_med, tf_med = median(a["ttft_c"]), median(a["ttft_f"])
         lines.append(
-            f"| **{meth}** | **中位** | **{em_med:.3f}** | **{sm_med:.3f}** | **{f1_med:.3f}** "
-            f"| **{tc_med:.3f}** | **{tf_med:.3f}** | **{tf_med/tc_med:.2f}×** |")
+            f"| **{meth}** | **中位** | **{em_med:.3f}** | **{sm_med:.3f}** | **{f1_med:.3f}** | "
+            + (f"**{median(a['rl']):.3f}** | " if rl_col and a["rl"] else "")
+            + f"**{tc_med:.3f}** | **{tf_med:.3f}** | **{tf_med/tc_med:.2f}×** |")
     # vLLM 全量基线行：无缓存，TTFT 就是全量 prefill 时间，加速比恒 1
     if full_agg["em"]:
         for i in range(len(full_agg["em"])):
             lines.append(
                 f"| vLLM全量 | r{i+1} | {full_agg['em'][i]:.3f} | {full_agg['sm'][i]:.3f} "
-                f"| {full_agg['f1'][i]:.3f} | - | {full_agg['ttft'][i]:.3f} | 1.00× |")
+                f"| {full_agg['f1'][i]:.3f} | "
+                + (f"{full_agg['rl'][i]:.3f} | " if rl_col and full_agg["rl"] else "")
+                + f"- | {full_agg['ttft'][i]:.3f} | 1.00× |")
         lines.append(
             f"| **vLLM全量** | **中位** | **{median(full_agg['em']):.3f}** "
-            f"| **{median(full_agg['sm']):.3f}** | **{median(full_agg['f1']):.3f}** "
-            f"| - | **{median(full_agg['ttft']):.3f}** | **1.00×** |")
+            f"| **{median(full_agg['sm']):.3f}** | **{median(full_agg['f1']):.3f}** | "
+            + (f"**{median(full_agg['rl']):.3f}** | " if rl_col and full_agg["rl"] else "")
+            + f"- | **{median(full_agg['ttft']):.3f}** | **1.00×** |")
 
     # 按数据集×方法聚合（per_sample 里已有多轮数据，取中位数）
     lines += ["", "## 三、按数据集×方法聚合（跨轮中位数；QA 数据集看 SM/F1，samsum 摘要看 F1）", "",
@@ -288,13 +325,15 @@ def main():
         if a:
             print(f"{meth}: EM中位={median(a['em']):.3f} SM中位={median(a['sm']):.3f} "
                   f"F1中位={median(a['f1']):.3f} "
-                  f"TTFT缓存中位={median(a['ttft_c']):.3f}s "
+                  + (f"RL中位={median(a['rl']):.3f} " if a["rl"] else "")
+                  + f"TTFT缓存中位={median(a['ttft_c']):.3f}s "
                   f"TTFT全量中位={median(a['ttft_f']):.3f}s "
                   f"加速比={median(a['ttft_f'])/median(a['ttft_c']):.2f}×")
     if full_agg["em"]:
         print(f"vLLM全量: EM中位={median(full_agg['em']):.3f} "
               f"SM中位={median(full_agg['sm']):.3f} F1中位={median(full_agg['f1']):.3f} "
-              f"TTFT中位={median(full_agg['ttft']):.3f}s")
+              + (f"RL中位={median(full_agg['rl']):.3f} " if full_agg["rl"] else "")
+              + f"TTFT中位={median(full_agg['ttft']):.3f}s")
 
 
 if __name__ == "__main__":

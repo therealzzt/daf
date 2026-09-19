@@ -35,11 +35,12 @@ if os.environ.get("BLEND_MODEL_PRESET", "bf16") == "awq":
     tokenizer = AutoTokenizer.from_pretrained("TheBloke/Mistral-7B-Instruct-v0.2-AWQ")
 elif os.environ.get("BLEND_MODEL_PRESET", "bf16") == "qwen":
     # Qwen2.5-7B-Instruct（DAF 论文用的模型）：28 层、GQA 28 Q 头 / 4 KV 头、
-    # head_size 128。BF16 权重 ~15GB；开发期 max_model_len=8192 覆盖 2–4k 档
-    # 样本（Qwen2.5 不加 YaRN 时上限 32768，勿超过）
+    # head_size 128。BF16 权重 ~15GB；max_model_len 默认 8192 覆盖 2–4k 档样本，
+    # 长档（如 samsum 9k）用 BLEND_MAX_MODEL_LEN 覆盖（Qwen2.5 不加 YaRN 时
+    # 上限 32768，勿超过；24GB 卡 BF16 KV 池约 9 万 token，16384 宽裕）
     llm = LLM(model="Qwen/Qwen2.5-7B-Instruct",
               gpu_memory_utilization=0.85,
-              max_model_len=8192,
+              max_model_len=int(os.environ.get("BLEND_MAX_MODEL_LEN", "8192")),
               enforce_eager=True,
               )
     tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")
@@ -232,9 +233,11 @@ for sample_file in SAMPLE_FILES:
 
 
     # ============ 阶段二：CacheBlend 缓存融合推理 ============
-    # 这次要真正生成答案了，max_tokens=32（与 blend_musique.py 一致）。
+    # 这次要真正生成答案了，max_tokens 默认 32（与 blend_musique.py 一致），
+    # 可用 BLEND_MAX_TOKENS 覆盖（摘要类任务用 64，对齐 LongBench 官方上限）。
     # 注意：EM 评测要求答案生成完整，10 token 会把答案截断成残句导致 EM 恒为 0
-    sampling_params = SamplingParams(temperature=0, max_tokens=32)
+    _max_tokens = int(os.environ.get("BLEND_MAX_TOKENS", "32"))
+    sampling_params = SamplingParams(temperature=0, max_tokens=_max_tokens)
     # check=True：打开 CacheBlend 的选择性重算——模型会复用 old_kvs 里的缓存，
     # 只挑出"新鲜值与缓存值偏差最大"的一小部分 token（默认 16%）重算，
     # 把跨文档注意力补回来
@@ -274,7 +277,7 @@ for sample_file in SAMPLE_FILES:
     print(f"TTFT with cache: {output[0].metrics.first_token_time-output[0].metrics.first_scheduled_time}")
 
     # ============ 阶段三：对照组——全量 prefill ============
-    sampling_params = SamplingParams(temperature=0, max_tokens=32)  # 与阶段二对齐，保证质量对比公平
+    sampling_params = SamplingParams(temperature=0, max_tokens=_max_tokens)  # 与阶段二对齐，保证质量对比公平
     # 关掉所有缓存开关，模型老老实实地把整段输入从头算一遍
     cache_fuse_metadata["check"] = False
     cache_fuse_metadata['collect'] = False
