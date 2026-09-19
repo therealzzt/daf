@@ -1,0 +1,490 @@
+/home/therealzzt/miniconda3/envs/cacheblend/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+INFO 09-20 02:54:37 llm_engine.py:98] Initializing an LLM engine (v0.4.1) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), seed=0)
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+INFO 09-20 02:54:38 utils.py:608] Found nccl from library /home/therealzzt/.config/vllm/nccl/cu12/libnccl.so.2.18.1
+INFO 09-20 02:54:38 selector.py:28] Using FlashAttention backend.
+INFO 09-20 02:54:40 weight_utils.py:193] Using model weights format ['*.safetensors']
+INFO 09-20 02:54:52 model_runner.py:190] Loading model weights took 14.2487 GB
+INFO 09-20 02:54:54 gpu_executor.py:119] # GPU blocks: 4350, # CPU blocks: 4681
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.34it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.26it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.32it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.26it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.68it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.31it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.38it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.37it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.12it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.61it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.34it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]
+===== 2wikimqa_008_len6111.json =====
+Cached generation: St Patrick's College, Dublin.
+TTFT with cache: 0.5521459579467773
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.33s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.33s/it]
+Normal generation: Abbey Theatre
+TTFT with full prefill: 1.0942966938018799
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.91it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.72it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.97it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.34it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.37it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.34it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]
+===== 2wikimqa_013_len5407.json =====
+Cached generation: 1846
+TTFT with cache: 0.4304358959197998
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it]
+Normal generation: 1872
+TTFT with full prefill: 0.984241247177124
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.34it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.77it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 12.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.54it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.50it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.07it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.27it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.27it/s]
+===== 2wikimqa_019_len5555.json =====
+Cached generation: Mysore, India
+TTFT with cache: 0.44854092597961426
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it]
+Normal generation: Mysore, India
+TTFT with full prefill: 1.0065367221832275
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.15it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.44it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.94it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.22it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.21it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.88it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.03it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.41it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.45it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s]
+===== 2wikimqa_034_len6441.json =====
+Cached generation: The Abduction Club
+TTFT with cache: 0.5196762084960938
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it]
+Normal generation: Wooden Crosses
+TTFT with full prefill: 1.1796398162841797
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.15it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.06it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.08it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.39it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.01it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.31it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.13it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.89it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.24it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.23it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.20it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+===== 2wikimqa_046_len6386.json =====
+Cached generation: He died in 1253.
+TTFT with cache: 0.5121481418609619
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it]
+Normal generation: Worms
+TTFT with full prefill: 1.179330825805664
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.38it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.34it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.34it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.03it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.44it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.93it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.05it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.47it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.73it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.02it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.15it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.27it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.27it/s]
+===== 2wikimqa_052_len5626.json =====
+Cached generation: In Saldaña.
+TTFT with cache: 0.4496002197265625
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.32s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.32s/it]
+Normal generation: Pamplona
+TTFT with full prefill: 1.026700735092163
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.07it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.32it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.83it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s]
+===== 2wikimqa_068_len6050.json =====
+Cached generation: La Belle Américaine
+TTFT with cache: 0.4900810718536377
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it]
+Normal generation: The Great Man's Lady
+TTFT with full prefill: 1.100245475769043
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.42it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.51it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.36it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.84it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.31it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.31it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.04it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.31it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s]
+===== 2wikimqa_069_len5077.json =====
+Cached generation: Oklahoma City, Oklahoma
+TTFT with cache: 0.41794514656066895
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.34s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.34s/it]
+Normal generation: Oklahoma City, Oklahoma
+TTFT with full prefill: 0.9180781841278076
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.80it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.89it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.06it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.53it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.93it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.83it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.75it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.15it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.73it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s]
+===== 2wikimqa_072_len6952.json =====
+Cached generation: Duke Christian Ludwig II
+TTFT with cache: 0.5566990375518799
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it]
+Normal generation: Prince Albert of Prussia
+TTFT with full prefill: 1.2989792823791504
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.86it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.29it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.37it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.77it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.02it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.96it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.04it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.98it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.06it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.06it/s]
+===== 2wikimqa_074_len5686.json =====
+Cached generation: Beaulieu-sur-Loire
+TTFT with cache: 0.4539051055908203
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.51s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.51s/it]
+Normal generation: Beaulieu-sur-Loire
+TTFT with full prefill: 1.031449317932129
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.16it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.04it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.36it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.86it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.74it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.42it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.42it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.07it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.03it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 12.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.03it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it]
+===== 2wikimqa_081_len6688.json =====
+Cached generation: Closely Watched Trains
+TTFT with cache: 0.546159029006958
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it]
+Normal generation: Closely Watched Trains
+TTFT with full prefill: 1.2296538352966309
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 12.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.32it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.30it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.52it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.72it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.79it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.05it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.08it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.53it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.53it/s]
+===== 2wikimqa_102_len6161.json =====
+Cached generation: Denmark
+TTFT with cache: 0.49759984016418457
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it]
+Normal generation: Denmark
+TTFT with full prefill: 1.1418299674987793
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.16it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.35it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.82it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.83it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.61it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.32it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.41it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.15it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.27it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s]
+===== 2wikimqa_103_len6864.json =====
+Cached generation: He died of illness.
+TTFT with cache: 0.5484390258789062
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.59s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.59s/it]
+Normal generation: Not specified in text.
+TTFT with full prefill: 1.251051425933838
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.82it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.17it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.15it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.37it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.91it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.99it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.06it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.06it/s]
+===== 2wikimqa_123_len6755.json =====
+Cached generation: The Comedians Of Comedy
+TTFT with cache: 0.5446658134460449
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.64s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it]
+Normal generation: The Comedians Of Comedy
+TTFT with full prefill: 1.232696294784546
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.89it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.73it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.26it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.22it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.35it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.19it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.74it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s]
+===== 2wikimqa_129_len5744.json =====
+Cached generation: Vytautas Straižys
+TTFT with cache: 0.4583098888397217
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.54s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.54s/it]
+Normal generation: Vytautas Straižys
+TTFT with full prefill: 1.0642309188842773
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.51it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.29it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.13it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.11it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.01it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.48it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.36it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]
+===== 2wikimqa_135_len6729.json =====
+Cached generation: Yes, they are both French.
+TTFT with cache: 0.5446856021881104
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.78s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.78s/it]
+Normal generation: No, they are from different countries.
+TTFT with full prefill: 1.2326574325561523
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.03it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.74it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.03it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.80it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.41it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.76it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.35it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.63it/s]
+===== 2wikimqa_139_len5487.json =====
+Cached generation: Wolf Warrior
+TTFT with cache: 0.45006227493286133
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+Normal generation: Wolf Warrior
+TTFT with full prefill: 1.0133156776428223
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.30it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.93it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.22it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.24it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.20it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.52it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.81it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.26it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.26it/s]
+===== 2wikimqa_140_len6288.json =====
+Cached generation: Trịnh Cương
+TTFT with cache: 0.5133061408996582
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it]
+Normal generation: Trịnh Cương
+TTFT with full prefill: 1.1742680072784424
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.98it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.15it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.09it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.77it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.19it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.47it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.19it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.15it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.90it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.70it/s]
+===== 2wikimqa_146_len5300.json =====
+Cached generation: West Germany
+TTFT with cache: 0.4279918670654297
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.46s/it]
+Normal generation: Werner Abrolat, Germany
+TTFT with full prefill: 0.9561672210693359
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.40it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.16it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 12.92it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.34it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.34it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.88it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.79it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s]
+===== 2wikimqa_152_len6599.json =====
+Cached generation: Ireland
+TTFT with cache: 0.5247628688812256
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.76s/it]
+Normal generation: Newport, Monmouthshire, Wales
+TTFT with full prefill: 1.2187721729278564
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.12it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.74it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.31it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 12.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.92it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.49it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.82it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.97it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s]
+===== 2wikimqa_158_len5914.json =====
+Cached generation: Wang Si, Queen of Zhou
+TTFT with cache: 0.48734259605407715
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it]
+Normal generation: Queen Yi Jiang
+TTFT with full prefill: 1.0867798328399658
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.07it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.30it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.26it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.00it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.49it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 12.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.35it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.73it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.84it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.08it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.07it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.09it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.07it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.57it/s]
+===== 2wikimqa_182_len5003.json =====
+Cached generation: Paris, France
+TTFT with cache: 0.41797375679016113
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.15s/it]
+Normal generation: Toronto, Ontario
+TTFT with full prefill: 0.9234917163848877
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.26it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.22it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.54it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 12.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.73it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.21it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.96it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.47it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.52it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.39it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.39it/s]
+===== 2wikimqa_183_len6222.json =====
+Cached generation: The Third Kiss
+TTFT with cache: 0.5035266876220703
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.39s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.39s/it]
+Normal generation: The Third Kiss
+TTFT with full prefill: 1.166144609451294
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.30it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.09it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 14.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.75it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.11it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  9.07it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 13.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.19it/s]
+===== 2wikimqa_198_len5112.json =====
+Cached generation: Rosario, Santa Fe Province
+TTFT with cache: 0.4233572483062744
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.22s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.22s/it]
+Normal generation: Milan, Italy
+TTFT with full prefill: 0.939833402633667
+------------

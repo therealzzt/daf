@@ -96,6 +96,9 @@ python experiments/scripts/score_em_long_6k10k.py \
 | 2–4k（daf1.1） | `inputs/1~10.json` | bf16 | 3.8× | 2.2× | 1.75× |
 | 6–10k（daf1.2） | `inputs_long_6k10k_official/`（24） | bf16 | 4.0× | 2.3× | 1.73× |
 | 30k（daf1.3） | `inputs_long_30k_buriedqa/`（12） | AWQ | 3.9× | 2.7× | **1.45×**（随长度收窄，符合论文趋势） |
+| 6k（目标B-1，2026-09-20） | `inputs_qwen_2wikimqa/`（24，LongBench 官方） | qwen | 2.66× | 2.32× | **1.14×**（6k 档 DAF≈CB 持平，复现论文趋势） |
+
+目标 B 第一档（Qwen2.5 + LongBench 2wikimqa ≈6k，EM 指标）已跑通：EM 中位 CB=DAF=0.208、全量 0.250；SM/F1 上 DAF（0.333/0.346）位于 CB 与全量之间，精度排序符合论文但"DAF 追平全量"未复现；DAF 相对全量 2.32× 超过论文 6k 档 1.8×。详见 `experiments/reports/em_report_qwen_2wikimqa.md`（含论文对照分析）与 flash 对照报告。
 
 DAF/CB 比值随长度单调下降（1.75→1.73→1.45），外推反超点在 60k–130k；DAF 相对全量加速（30k 档 2.71×）已与论文 2.8× 持平，未复现的是相对 CB 的反超和精度优势。与论文的差距（Qwen2.5-7B/A100/Flash-Attention vs 本项目 Mistral-7B/3090Ti/xformers）在 `docs/daf1.1.md` 有分析。
 
