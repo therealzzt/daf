@@ -122,10 +122,22 @@ for sample_file in SAMPLE_FILES:
     if os.environ.get("BLEND_MODEL_PRESET", "bf16") == "qwen":
         # Qwen2.5 用 ChatML 模板：<|im_start|>system ... <|im_end|>
         # <|im_start|>user\n{文档...问题}<|im_end|>\n<|im_start|>assistant\n
-        s_start_full = tokenizer.encode(
-            "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n"
-            "<|im_start|>user\n")
-        s_end = tokenizer.encode("<|im_end|>\n<|im_start|>assistant\n")
+        # BLEND_CHATML=1：用 Qwen2.5 chat template 的官方默认 system
+        #（"You are Qwen, created by Alibaba Cloud. ..."，即 RULER 官方评测
+        # 走 chat API + 模型默认模板时模型实际看到的形态）；
+        # 默认（0）保持历史行为 "You are a helpful assistant."
+        if os.environ.get("BLEND_CHATML", "0") == "1":
+            _envelope = tokenizer.apply_chat_template(
+                [{"role": "user", "content": "_PLACEHOLDER_"}],
+                tokenize=False, add_generation_prompt=True)
+            _pre, _post = _envelope.split("_PLACEHOLDER_")
+            s_start_full = tokenizer.encode(_pre)
+            s_end = tokenizer.encode(_post)
+        else:
+            s_start_full = tokenizer.encode(
+                "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n"
+                "<|im_start|>user\n")
+            s_end = tokenizer.encode("<|im_end|>\n<|im_start|>assistant\n")
     else:
         # Mistral 指令模板：s_start_full 相当于 "<s>[INST]"（s = start，
         # full = 带 BOS 起始符的完整版）。Mistral 的 instruct 模板要求输入以它开头

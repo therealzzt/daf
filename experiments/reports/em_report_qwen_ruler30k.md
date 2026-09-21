@@ -190,11 +190,10 @@ Qwen 上 6k→30k 外推的反超点落在 ~25k 附近，本档实测 0.94 证�
 1. **绝对精度系统性偏低**：三方法全部远低于论文对照值（论文 qa_2 DAF 0.72 /
    CB 0.625；本项目全量基线仅 0.458）。全量 prefill 是无近似的精确计算，它也低，
    说明差距来自实验设置而非算法：① 样本量 24 vs 论文/RULER 惯例 500，24 样本
-   噪声 ±0.1 量级；② 本项目按 CacheBlend 传统直接喂裸 prompt，未套 Qwen 的
-   ChatML 对话模板，而 RULER 官方评测对 instruct 模型走对话模板，指令遵循与
-   答案格式（"只给答案"）会变差——日志里大量"The documents provided do not
-   contain..."式的拒答/冗答即为模板不匹配的典型表现；③ xformers 后端 vs
-   论文 Flash-Attention。
+   噪声 ±0.1 量级；② ~~裸 prompt 未套 ChatML~~（**2026-09-21 更正**：qwen 预设
+   实际已套 ChatML 信封，仅 system 措辞与官方默认不同；消融证实影响 ≤1 题，
+   非主因，见 `experiments/reports/chatml_ablation_ruler30k.md`）；
+   ③ xformers 后端 vs 论文 Flash-Attention。
 2. **精度排序未复现**：论文 DAF > CB；本项目 qa_2 二者持平（0.250=0.250）、
    qa_1 DAF 略低于 CB（0.375 vs 0.458，24 样本下差 2 题）。qa_2_009 出现 DAF
    把 yes 答成 no 的个例。多层聚合公式、状态融合等工程实现假设（见 AGENTS.md

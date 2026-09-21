@@ -64,7 +64,7 @@ daf1.1~1.3 用 Mistral-7B + 自构造 buried-qa 样本，DAF/CB 比值收到 1.4
 - **9k samsum**：RL CB 0.440 ≈ 全量 0.428 > DAF 0.391——排序与论文相反（论文预期 DAF 贴近全量）；24 样本统计力有限（1 题 ≈ 0.04）
 - **30k RULER**：qa_2 上 DAF=CB=0.250 持平，qa_1 上 DAF 0.375 < CB 0.458（差 2/24 题）；论文的"DAF 精度反超 CB"未复现。**三方法绝对精度系统性低于论文对照值**（论文 qa_2 DAF 0.72 / CB 0.625；本轮连无近似的全量基线也只有 0.458），主因有三：
   1. **样本量 24 vs 论文/RULER 惯例 500**，±0.1 量级噪声；
-  2. **prompt 模板差异**：本轮沿用 CacheBlend 传统直接喂裸 prompt，未套 Qwen 的 ChatML 对话模板；RULER 官方评测对 instruct 模型走对话模板。日志里大量 "The documents provided do not contain..." 式拒答/冗答是模板不匹配的典型表现；
+  2. **prompt 模板差异**（~~未套 ChatML~~）：原判断"裸 prompt"不准确——qwen 预设实际已套 ChatML 信封，仅 system 措辞与官方默认不同；2026-09-21 消融（`experiments/reports/chatml_ablation_ruler30k.md`）证实该因子影响 ≤1 题，**不是主因**。此处保留原记录仅作存档；
   3. **xformers vs 论文 Flash-Attention 内核**（数值上不该影响全量基线精度，主要解释速度差距；列此以备查）。
 
 ## 三、与论文验收标准逐条对照
@@ -140,7 +140,7 @@ python experiments/scripts/score_em_long_6k10k.py --dir experiments/inputs_qwen_
 ## 六、下一步建议（按价值排序）
 
 1. **加样本量**：三档都只有 24 样本，1 题 ≈0.04 分，精度排序结论的统计力不足；RULER 应先跑到官方惯例的 500 样本/任务（qa.py `--num_samples 500`，预计单轮 4 卡 ~2.5 小时），再判精度验收线
-2. **ChatML 模板对照**：给 qwen 预设加对话模板开关（或预处理样本包进 ChatML），量化"裸 prompt vs 官方模板"对绝对精度的影响——这是当前与论文绝对值差距的最大嫌疑
+2. ~~ChatML 模板对照~~（已完成，2026-09-21）：消融证实上轮已套 ChatML 信封（仅 system 措辞不同），官方模板下精度变化 ≤1 题，**非主因**；见 `experiments/reports/chatml_ablation_ruler30k.md`。500 样本放量建议用 `BLEND_CHATML=1` 对齐官方形态
 3. **K+V deviation 消融**：当前 V-only 打分是工程假设（AGENTS.md 铁律 7），30k 上 DAF 精度未超 CB，K+V 打分是论文描述里最可能的差距来源之一
 4. **A100/H100 上 136k 档**：验证论文最大长度档的 DAF 领先（2×）与精度优势；同时可把 30k 档在 FA 内核+A100 上重跑，剥离硬件/内核因子确认 0.94 vs 0.77 的差距归属
 5. **反超点精确定位**：在 Qwen 序列上补 16k/20k 档，把 DAF/CB=1.0 的交叉点从"~25k 附近"收窄到具体档位

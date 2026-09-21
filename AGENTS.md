@@ -106,6 +106,8 @@ python experiments/scripts/score_em_long_6k10k.py \
 
 目标 B 第三档（Qwen2.5 + RULER 官方 qa_1/qa_2 32768 档，SM 指标）已跑通：SM 均值 qa_1 CB 0.458/DAF 0.375/全量 0.625，qa_2 CB 0.250/DAF 0.250/全量 0.458；**DAF/CB 0.94×——DAF 首次反超 CB**（趋势链 1.75→1.73→1.45→1.14→1.11→0.94），但未到论文的 ≤0.77，qa_2 精度验收线（DAF ≥0.68/CB ≤0.65）未达标（三方法绝对精度均系统性偏低，分析与评分修正见 `experiments/reports/em_report_qwen_ruler30k.md` 第四节）。本档要点：① RULER 数据用 `experiments/ruler_src/`（官方 repo）生成，转换脚本 `make_inputs_qwen_ruler30k.py`；② 32768 档 BF16 需 `BLEND_GPU_MEM_UTIL`（CB 0.90 / DAF 0.89，util 只影响 KV 池大小），并配套 `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`、blend.py 在 check 前 `empty_cache()`、阶段三前释放 old_kvs（保持 `[[None,None]]×层数` 占位，qwen2.py/llama.py 的 `old_kvs[i]` 是无条件下标访问）；③ 评分脚本新增 `--raw_parse`——`utils.parse_generation` 会把 "No…" 开头的回答折叠成 "No"（hotpot yes/no 的 hack），RULER squad 答案大量以 Normandy 等 No 前缀词开头会被误判，RULER 数据集必须加此开关。
 
+ChatML 消融（2026-09-21，`experiments/reports/chatml_ablation_ruler30k.md`）：qwen 预设的 prompt **本就套着 ChatML 信封**（system 为 "You are a helpful assistant."），与 RULER 官方评测的唯一差别是官方默认 system（"You are Qwen, created by Alibaba Cloud. ..."）。`BLEND_CHATML=1` 切官方 system；消融实测精度影响 ≤1 题/24，**非精度差距主因**；500 样本放量建议用 `BLEND_CHATML=1` 对齐官方形态。
+
 DAF/CB 比值随长度单调下降（Mistral 1.75→1.73→1.45；Qwen 1.14→1.11→0.94），Qwen 30k 已实测反超；DAF 相对全量加速（30k 档 2.63~2.71×）已与论文 2.8× 持平，未复现的是反超幅度（论文 30k ≈0.77）和精度优势。与论文的差距（Qwen2.5-7B/A100/Flash-Attention vs 本项目 3090Ti/xformers）在 `docs/daf1.1.md` 有分析。
 
 ## 文档索引
