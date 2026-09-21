@@ -159,10 +159,35 @@ class Qwen2Attention(nn.Module):
         # Need to modify the kernel to only take K as input
         if status in [1,2]:
             if cache_fuse_metadata["fake_q"] is None:
-                cache_fuse_metadata['fake_q'] = torch.rand_like(q)
+                # fake_q 只是给 rotary 算子占位的假 Q（输出丢弃），
+                # 用 old_kv[0]（K，[tokens, kv_size]）的形状而不是 q 的：
+                # q 是 28 头、k 只有 4 头（GQA），省 ~200MB 显存；
+                # rotary 算子对 Q/K 头数没有一致性要求（GQA 本来不同）
+                cache_fuse_metadata['fake_q'] = torch.rand_like(old_kv[0])
             _, old_kv[0] = self.rotary_emb(cache_fuse_metadata['org_pos'],
                                         cache_fuse_metadata['fake_q'],
                                         old_kv[0])
+
+        # ===== DAF K+V 打分（可选开关 kv_dev，默认关）=====
+        # status=3 打分层默认只对 V 算偏差（V 不带位置信息，新旧可直接比）。
+        # 开 kv_dev 后 K 也参与打分，但旧 K 是 collect 阶段存的 RoPE 旋转【前】
+        # 原始值（见下方 collect 分支），而本层新鲜 K 稍后会按 check 阶段的
+        # 新位置做 RoPE 旋转（RoPE = 旋转位置编码：给每个 token 的 Q/K 按其
+        # 绝对位置做旋转变换，位置不同则旋转角不同）——两个坐标系不一致，
+        # 直接相减会被位置旋转主导。所以这里用与上面 status∈[1,2] 相同的
+        # 对齐方式：把旧 K 按 org_pos（check 阶段全序列的绝对位置）补旋转。
+        # 注意：vllm 的 rotary_embedding 算子是【原地】改写输入的，
+        # 必须先 clone 再旋转，绝不能污染共享的 old_kv[0]（它还要给别的用途用）；
+        # 旋转结果放白板字段 key_old_rot，由本层的注意力后端（xformers/flash）
+        # 在 status=3 分支里读取。fake_q 是个形状占位的假 Q——算子要求 Q/K
+        # 成对输入，我们只需要 K 的输出，Q 输出丢弃
+        if status == 3 and cache_fuse_metadata.get("kv_dev", False):
+            if cache_fuse_metadata["fake_q"] is None:
+                cache_fuse_metadata['fake_q'] = torch.rand_like(old_kv[0])
+            _, key_old_rot = self.rotary_emb(cache_fuse_metadata['org_pos'],
+                                             cache_fuse_metadata['fake_q'],
+                                             old_kv[0].clone())
+            cache_fuse_metadata['key_old_rot'] = key_old_rot
 
         if cache_fuse_metadata['collect']:
             self.hack_kv = [k.clone(), v.clone()]
@@ -290,7 +315,12 @@ class Qwen2Model(nn.Module):
                                     "sel_layers": [1, 2, 3],
                                     "dev_scores": None,
                                     "doc_imp_indices": None,
-                                    "num_imp_tokens": 0}
+                                    "num_imp_tokens": 0,
+                                    # kv_dev：K+V 联合打分开关（默认 False = 只对 V 打分，
+                                    # 与历史实验可比）；key_old_rot：打分层里旋转到
+                                    # 新坐标系的旧 K（每层覆盖，用完即弃）
+                                    "kv_dev": False,
+                                    "key_old_rot": None}
 
         self.old_kvs = [[None,None]] * len(self.layers)
 
@@ -319,6 +349,9 @@ class Qwen2Model(nn.Module):
                 self.cache_fuse_metadata["dev_scores"] = None
                 self.cache_fuse_metadata["doc_imp_indices"] = None
                 self.cache_fuse_metadata["num_imp_tokens"] = 0
+                # key_old_rot 是上一层/上一样本打分层留下的旋转旧 K，
+                # 同样不能跨样本残留（每层打分会现算现覆盖，这里清空兜底）
+                self.cache_fuse_metadata["key_old_rot"] = None
         else:
             temp_status = -1 # decode
         residual = None

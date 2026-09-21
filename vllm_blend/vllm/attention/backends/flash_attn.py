@@ -199,7 +199,9 @@ class FlashAttentionImpl(AttentionImpl):
 
         # ===== 以下 cache_fuse/DAF 控制流与 xformers 后端逐行对应 =====
         if status in [1, 2, 3]:
-            # DAF 的 status=3（打分层）只需要旧 V 来算偏差，不需要旧 K
+            # DAF status=3（打分层）默认只加载旧 V（V-only 打分）；
+            # 开 kv_dev 后旧 K 也参与，但用的是 qwen2.py 里旋转到新坐标系后
+            # 放在白板上的 key_old_rot（原始旧 K 没做 RoPE，坐标系对不上）
             value_old = old_kv[1].view(-1, self.num_kv_heads, self.head_size)
         if status in [1, 2]:
             key_old = old_kv[0].view(-1, self.num_kv_heads, self.head_size)
@@ -215,6 +217,17 @@ class FlashAttentionImpl(AttentionImpl):
                 dim=[1, 2])
             # 用 float32 累加，减少半精度多次累加的舍入误差
             temp_diff = temp_diff.float()
+            # kv_dev 开：K 也参与打分，dev = dev_V + dev_K（等权——工程假设，
+            # 论文未写死）。key/key_old_rot 均已在同一 RoPE 坐标系，
+            # shape 均为 [doc_len, num_kv_heads, head_size]
+            if cache_fuse_metadata.get("kv_dev", False):
+                key_old_rot = cache_fuse_metadata["key_old_rot"].view(
+                    -1, self.num_kv_heads, self.head_size)
+                k_diff = torch.sum(
+                    (key[:doc_len, :, :] - key_old_rot[:doc_len, :, :])**2,
+                    dim=[1, 2]).float()
+                assert not torch.isnan(k_diff).any(), "K 偏差出现 NaN"
+                temp_diff = temp_diff + k_diff
             if cache_fuse_metadata["dev_scores"] is None:
                 cache_fuse_metadata["dev_scores"] = torch.zeros_like(temp_diff)
             cache_fuse_metadata["dev_scores"] += temp_diff

@@ -198,12 +198,14 @@ class XFormersImpl(AttentionImpl):
         # Jiayi modified start
         # TODO(Jiayi): The following `view`s can be saved
         if status in [1, 2, 3]:
-            # DAF 的 status=3（打分层）只需要旧 V 来算偏差，不需要旧 K
-            #（旧 K 带 RoPE 位置旋转，对齐麻烦，所以第一版只比较 V）
+            # DAF status=3（打分层）默认只加载旧 V（V-only 打分）；
+            # 开 kv_dev 后旧 K 也参与，但用的是 qwen2.py 里旋转到新坐标系后
+            # 放在白板上的 key_old_rot（不是这里的原始 old_kv[0]——
+            # 原始旧 K 没做 RoPE，坐标系对不上）
             value_old = old_kv[1].view(-1, self.num_kv_heads, self.head_size)
         if status in [1, 2]:
             key_old = old_kv[0].view(-1, self.num_kv_heads, self.head_size)
-        
+
         # ===== DAF status=3：打分层，只收集证据，不改变任何计算 =====
         # 每个打分层把"本层新鲜 V"和"旧缓存 V"的偏差累加到白板的 dev_scores 上
         if status == 3:
@@ -216,11 +218,49 @@ class XFormersImpl(AttentionImpl):
             temp_diff = torch.sum((value[:doc_len,:,:]-value_old[:doc_len,:,:])**2, dim=[1,2])
             # 用 float32 累加，减少半精度（fp16）多次累加的舍入误差
             temp_diff = temp_diff.float()
+            # kv_dev 开：K 也参与打分，dev = dev_V + dev_K（等权——工程假设，
+            # 论文未写死 K 是否参与及加权方式，加权系数留作后续消融）。
+            # key 是本层新鲜 K（已在 qwen2.py 里按新位置做完 RoPE），
+            # key_old_rot 是旧 K 旋转到同一坐标系后的副本，
+            # 两者 shape 都是 [doc_len, num_kv_heads, head_size]
+            if cache_fuse_metadata.get("kv_dev", False):
+                key_old_rot = cache_fuse_metadata["key_old_rot"].view(
+                    -1, self.num_kv_heads, self.head_size)
+                k_diff = torch.sum(
+                    (key[:doc_len,:,:]-key_old_rot[:doc_len,:,:])**2,
+                    dim=[1,2]).float()
+                assert not torch.isnan(k_diff).any(), "K 偏差出现 NaN"
+                temp_diff = temp_diff + k_diff
             if cache_fuse_metadata["dev_scores"] is None:
                 cache_fuse_metadata["dev_scores"] = torch.zeros_like(temp_diff)
             cache_fuse_metadata["dev_scores"] += temp_diff
             # 注意：这里不做 topk、不裁剪序列、不改 positions——
             # 之后本层照常走完整因果注意力（status=3 不在 [1,2] 分支里）
+
+            # 临时调试（blend.py 里 DAF_DEBUG_KVDEV=1 时白板带区间）：对照
+            # "第一个文档块"对齐前/后的 K 偏差。第一块在 collect 与 check 阶段
+            # 位置相同、左侧上下文也相同（因果掩码下它只看得见前缀和自己），
+            # 理论上 K 应几乎不变：对齐后偏差≈浮点噪声；未对齐（拿没做 RoPE 的
+            # 旧 K 直接减）会被位置旋转主导，应显著更大。验证用，后续可删
+            _dbg = cache_fuse_metadata.get("debug_chunk1_range")
+            if _dbg is not None and cache_fuse_metadata.get("kv_dev", False):
+                _s, _e = _dbg
+                _raw_old_k = old_kv[0].view(-1, self.num_kv_heads,
+                                            self.head_size)
+                _rot_old_k = cache_fuse_metadata["key_old_rot"].view(
+                    -1, self.num_kv_heads, self.head_size)
+                _d_unal = torch.sum(
+                    (key[_s:_e]-_raw_old_k[_s:_e])**2, dim=[1,2]).float().mean()
+                _d_alig = torch.sum(
+                    (key[_s:_e]-_rot_old_k[_s:_e])**2, dim=[1,2]).float().mean()
+                _d_rest = torch.sum(
+                    (key[_e:doc_len]-_rot_old_k[_e:doc_len])**2,
+                    dim=[1,2]).float().mean()
+                _d_v = torch.sum(
+                    (value[_s:_e]-value_old[_s:_e])**2, dim=[1,2]).float().mean()
+                print(f"[KVDEV-DBG] 块1 K未对齐={_d_unal.item():.4f} "
+                      f"K已对齐={_d_alig.item():.6f} V={_d_v.item():.6f} "
+                      f"| 后续块K已对齐={_d_rest.item():.4f}")
 
         if status in [1]:
             if cache_fuse_metadata["daf"]:

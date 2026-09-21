@@ -277,6 +277,17 @@ for sample_file in SAMPLE_FILES:
         cache_fuse_metadata["sel_layers"] = [1, 2, 3]
         # 重要 token 比例 r：论文实验用 0.3；它不是固定常数，可按任务调
         cache_fuse_metadata["recomp_ratio"] = 0.3
+        # kv_dev：K+V 联合打分开关（BLEND_KV_DEV=1 开启）。默认关 = V-only，
+        # 与历史实验（daf1.1~1.4）可比；开启后打分层把旧 K 旋转到新坐标系再算偏差
+        cache_fuse_metadata["kv_dev"] = os.environ.get("BLEND_KV_DEV", "0") == "1"
+        # 调试用（DAF_DEBUG_KVDEV=1）：把"第一个文档块"在新序列里的位置区间
+        # 存到白板，供注意力后端的打分层打印对齐前/后的 K 偏差对照。
+        # 区间 = [指令前缀长度, 前缀长度 + 第 1 个文档块长度)
+        #（doc_chunk_ids[0] 是指令前缀块，[1] 才是第一个真实文档块）
+        if os.environ.get("DAF_DEBUG_KVDEV", "0") == "1":
+            _c1s = len(s_start_full)
+            _c1e = _c1s + len(doc_chunk_ids[1])
+            cache_fuse_metadata["debug_chunk1_range"] = (_c1s, _c1e)
         # 同步旧字段 check_layers，避免两套配置互相矛盾
         #（daf 分支实际用 sel_layers 排班，这里只是防止旧代码读到不一致的值）
         cache_fuse_metadata["check_layers"] = [max(cache_fuse_metadata["sel_layers"]) + 1]

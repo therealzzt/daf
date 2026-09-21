@@ -45,12 +45,12 @@ python -c "import vllm; print(vllm.__version__)"   # 应输出 0.4.1
   - 调度：`select_layer = max(sel_layers)+1 = 4`；层 0 → status=0，层 1~3 → status=3（完整 prefill + 累积 deviation），层 4 → status=1（选择+执行），层 >4 → status=2（compact 续算），-1 = decode。
 - **`vllm_blend/vllm/model_executor/models/qwen2.py`**：2026-09-17 已把 llama.py 的整套 cache_fuse/DAF 机制原样移植（白板字段、重置、层调度、status==1 时 residual/positions 裁剪、fake_q 旋转旧 K、hack_kv collect、`kv_scale=1.0`），供 `BLEND_MODEL_PRESET=qwen` 使用。
 - **`vllm_blend/vllm/attention/backends/xformers.py`**：算法核心。
-  - status=3：V-only deviation `sum((value[:doc_len]-value_old[:doc_len])**2)`，float32 累加，不 topk 不裁剪（需要 `value_old`，加载条件已扩到 status∈[1,2,3]）。
+  - status=3：默认 V-only deviation `sum((value[:doc_len]-value_old[:doc_len])**2)`，float32 累加，不 topk 不裁剪（需要 `value_old`，加载条件已扩到 status∈[1,2,3]）；`BLEND_KV_DEV=1` 可切 K+V 联合打分（dev = dev_V + dev_K 等权，工程假设）——旧 K 由 qwen2.py 按 `org_pos` 绝对位置补 RoPE 旋转对齐后放白板 `key_old_rot`（clone 防原地算子污染共享旧 KV）。30k 消融（`experiments/reports/kvdev_ablation_ruler30k.md`）结论：K+V 无稳定收益（qa_1 略降 qa_2 略升，噪声内），维持 V-only 为默认。
   - status=1：多层分数聚合后 top-k（`recomp_ratio=0.3`，**只在文档段选**，问题 token 无条件保留），写 `doc_imp_indices`/`num_imp_tokens`/`imp_indices`。
   - `_run_daf_attention()`（status=1/2 共用）：① 重要 token 只互看（无掩码自注意力）；② 问题段对 hybrid KV 做因果注意力（`LowerTriangularFromBottomRightMask`）；③ `cat([out_imp, out_suf])` 融合，顺序不可换。hybrid KV 组装时 clone 旧缓存，禁止原地改共享离线 KV。
 - **`vllm_blend/vllm/attention/backends/flash_attn.py`**：2026-09-17 已把 xformers.py 的全部 cache_fuse/DAF 机制移植到此（status 0/1/2/3、deviation 累积、选择、hybrid KV、`_run_daf_attention` flash 版）。注意力调用换成 `flash_attn_varlen_func`：重要 token 互看 `causal=False`，问题段 `causal=True`（q_len<kv_len 时 flash 的 causal mask 右下对齐，已数值验证等价于 `LowerTriangularFromBottomRightMask`），GQA 由 flash 原生支持不手动 expand。
 - **后端切换**：`VLLM_ATTENTION_BACKEND=FLASH_ATTN`（别名 `FLASH_ATTENTION`）/ `XFORMERS`（`selector.py`）。**默认后端已改为 XFORMERS**（防装 flash_attn 后静默切换）；显式请求 flash 但包未装会大声报错。flash_attn 2.5.8（cu122torch2.2 cp310 wheel，装在 cacheblend 环境）。两个后端的 DAF/CB 输出已交叉验证一致（SM 级别 10/10）。
-- **`example/blend.py`**：主驱动。`DAF=0|1` 环境变量切换对照；DAF 模式下 `sel_layers=[1,2,3]`、`recomp_ratio=0.3`、`check_layers=[4]`。原作者 bug 已修：`last_len=len(q_ids+s_end)`（原恒为 1）、`num_layer` 动态获取。
+- **`example/blend.py`**：主驱动。`DAF=0|1` 环境变量切换对照；DAF 模式下 `sel_layers=[1,2,3]`、`recomp_ratio=0.3`、`check_layers=[4]`；`BLEND_KV_DEV=1` 开 K+V 打分（默认关）。原作者 bug 已修：`last_len=len(q_ids+s_end)`（原恒为 1）、`num_layer` 动态获取。
 
 ## 运行实验（所有脚本从仓库根 `~/daf` 运行）
 
@@ -86,6 +86,7 @@ python experiments/scripts/score_em_long_6k10k.py \
 6. 短上下文（≤10k）DAF 慢于 CacheBlend 是预期现象（论文中 6k/9k 档二者持平，优势在 30k+），不得据此判定实现错误；单次功能测试也不要求 "DAF TTFT ≤ CacheBlend"。
 7. 论文未写死的实现点（多层聚合公式、状态融合细节、选择层位置等）属**工程实现假设**，实验记录中必须注明，不得写成论文原方法。
 8. vllm_blend 内改动最小化：已有改动限于 `llama.py`、`qwen2.py`、`xformers.py`、`flash_attn.py`、`selector.py`、`example/blend.py`；新改动同样保持最小。开发顺序固定——修基线 → status=3 只加评分 → status=1 改 DAF → status=2 接同一 helper → 验证 → 最后才优化性能。一次只改一件事；调试期保留 shape/NaN/Inf 断言。
+9. **代码注释要详尽、小白友好**（用户明确要求，2026-09-21）：新写/修改的代码必须有注释，解释"这段在做什么、为什么这么做"，关键张量操作注明 shape 变化，专业术语（RoPE、GQA、deviation 等）首次出现时用一句话解释。目标读者是完全不了解本项目的初学者。沿用 blend.py/qwen2.py 现有的中文详细注释风格。
 
 ## 当前进度速查（详见 `experiments/README.md` 与 `docs/daf1.1~1.3.md`）
 
