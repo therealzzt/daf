@@ -66,6 +66,36 @@ python experiments/scripts/score_em_long_6k10k.py --dir experiments/inputs_qwen_
     --out experiments/reports/em_report_qwen_ruler30k.md
 ```
 
+## 500 样本放量（daf1.5 最终阶段，RULER qa_1/qa_2 各 500）命令链
+
+```bash
+conda activate cacheblend && cd ~/daf
+# 1. RULER 官方生成（模板必须以 " Answer:" 结尾，用 $'...' 传真实换行）
+cd experiments/ruler_src/scripts/data/synthetic && export HF_ENDPOINT=https://hf-mirror.com
+python qa.py --save_dir ~/daf/experiments/ruler_src/data_gen_500 --save_name qa_1 \
+    --tokenizer_path Qwen/Qwen2.5-7B-Instruct --tokenizer_type hf \
+    --max_seq_length 32768 --tokens_to_generate 32 --num_samples 500 \
+    --random_seed 42 --dataset squad --template $'...官方 qa 模板... Question: {query} Answer:'
+#    qa_2 同上改 --save_name qa_2 --dataset hotpotqa
+cd ~/daf
+# 2. 转 blend 样本（新目录，不覆盖 24 样本目录）
+python experiments/scripts/make_inputs_qwen_ruler30k.py \
+    --source-dir experiments/ruler_src/data_gen_500 \
+    --output-dir experiments/inputs_qwen_ruler30k_500 --num-samples 500
+# 3. 跑批：4 组合 × 4 卡，各 10 片 × 50 样本，幂等续跑（补跑/新跑都用 v2 脚本）
+for args in "0 qa_1 0" "1 qa_1 1" "2 qa_2 0" "3 qa_2 1"; do
+    nohup bash experiments/scripts/run_ruler500_resume2.sh $args \
+        > experiments/logs/qwen_ruler30k_500/resume2_gpu${args%% *}.out 2>&1 &
+done
+# 4. 评分（分任务各跑一次；报告第三节中位数显 0 是多 0 分样本所致，看第一节明细聚合）
+python experiments/scripts/score_em_long_6k10k.py --dir experiments/inputs_qwen_ruler30k_500 \
+    --tokenizer Qwen/Qwen2.5-7B-Instruct --raw_parse \
+    --logs experiments/logs/qwen_ruler30k_500/run_*_qa1_*.log --out /tmp/scored500_qa1.md
+python experiments/scripts/score_em_long_6k10k.py --dir experiments/inputs_qwen_ruler30k_500 \
+    --tokenizer Qwen/Qwen2.5-7B-Instruct --raw_parse \
+    --logs experiments/logs/qwen_ruler30k_500/run_*_qa2_*.log --out /tmp/scored500_qa2.md
+```
+
 ## 复现一条命令链（以 30k 档为例）
 
 ```bash

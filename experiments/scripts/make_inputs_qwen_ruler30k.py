@@ -26,6 +26,7 @@
 # source_dataset 末尾带 qa_1 / qa_2 以便评分脚本按任务聚合
 # =============================================================================
 
+import argparse
 import json
 import os
 import re
@@ -33,10 +34,24 @@ import re
 from transformers import AutoTokenizer
 
 # ---- 参数（命名即含义） ----
+# 命令行参数（均有默认值，不传参时行为与 daf1.4 的 24 样本轮完全一致）：
+#   --source-dir  RULER qa.py 生成的 jsonl 所在目录（其下 {qa_1,qa_2}/validation.jsonl）
+#   --output-dir  blend 样本输出目录
+#   --num-samples 仅写进报告头的说明文字（实际条数以 jsonl 行数为准）
+# 500 样本放量用法（daf1.5）：
+#   python experiments/scripts/make_inputs_qwen_ruler30k.py \
+#       --source-dir experiments/ruler_src/data_gen_500 \
+#       --output-dir experiments/inputs_qwen_ruler30k_500 --num-samples 500
+_parser = argparse.ArgumentParser()
+_parser.add_argument("--source-dir", default="experiments/ruler_src/data_gen")
+_parser.add_argument("--output-dir", default="experiments/inputs_qwen_ruler30k")
+_parser.add_argument("--num-samples", type=int, default=24)
+_args = _parser.parse_args()
+
 TOKENIZER_NAME = "Qwen/Qwen2.5-7B-Instruct"  # 与实验所用模型同款分词器
-SOURCE_DIR = "experiments/ruler_src/data_gen"
+SOURCE_DIR = _args.source_dir
 TASKS = ["qa_1", "qa_2"]                     # qa_1=squad, qa_2=hotpotqa
-OUTPUT_DIR = "experiments/inputs_qwen_ruler30k"
+OUTPUT_DIR = _args.output_dir
 
 # RULER 官方 qa 模板（constants.py TASKS['qa']），指令行在 context 前出现一次、
 # 在 Question 前再出现一次
@@ -80,7 +95,8 @@ def main():
         "",
         f"- 分词器：`{TOKENIZER_NAME}`",
         f"- 数据来源：`{SOURCE_DIR}/{{qa_1,qa_2}}/validation.jsonl`"
-        "（RULER 官方 qa.py 生成，--max_seq_length 32768，seed 42，各 24 条）",
+        f"（RULER 官方 qa.py 生成，--max_seq_length 32768，seed 42，"
+        f"各 {_args.num_samples} 条）",
         "- qa_1 = squad（单文档问答，干扰文档为随机 squad 段落）",
         "- qa_2 = hotpotqa（多跳问答，干扰文档为 hotpotqa distractor）",
         "- 结构：context 按 `Document N:` 切块；指令前缀拼在第 0 块开头；"

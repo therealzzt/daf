@@ -71,6 +71,15 @@ _numeric = sorted((fn for fn in _dir_jsons if re.fullmatch(r"\d+\.json", fn)),
                   key=lambda fn: int(fn[:-5]))
 SAMPLE_FILES = _numeric if _numeric else sorted(_dir_jsons)
 
+# 500 样本放量用的分片开关：BLEND_SAMPLE_RANGE="start:end"（Python 切片语义，
+# 左闭右开、0 起）。不设 = 跑全部样本（历史行为不变）。
+# 用途：500 样本单进程跑 4+ 小时，中途崩溃整轮重跑代价太大；
+# 切成 50 样本一片（run_ruler500_resume.sh 按片续跑），崩了只重跑一片
+_range = os.environ.get("BLEND_SAMPLE_RANGE", "")
+if _range:
+    _lo, _hi = _range.split(":")
+    SAMPLE_FILES = SAMPLE_FILES[int(_lo):int(_hi)]
+
 for sample_file in SAMPLE_FILES:
     # 打开当前样本文件
     f = open(f"{INPUT_DIR}/{sample_file}")
