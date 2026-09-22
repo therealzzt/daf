@@ -1,0 +1,21 @@
+[开跑] GPU1 qa_1 DAF=1 第 0 片（样本 0:50）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c00.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c00.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 1 片（样本 50:100）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c01.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c01.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 2 片（样本 100:150）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c02.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c02.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 3 片（样本 150:200）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c03.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c03.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 4 片（样本 200:250）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c04.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c04.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 5 片（样本 250:300）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c05.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c05.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 6 片（样本 300:350）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c06.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c06.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 7 片（样本 350:400）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c07.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c07.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 8 片（样本 400:450）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c08.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c08.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] GPU1 qa_1 DAF=1 第 9 片（样本 450:500）→ experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c09.log
+[完成] experiments/logs/qwen_ruler30k_500/run_daf_chatml_qwen_ruler500_qa1_c09.log exit=0（完成度以 '===== ' 计数为准）
+GPU1 qa_1 DAF=1 全部 10 片结束

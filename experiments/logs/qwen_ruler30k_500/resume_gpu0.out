@@ -1,0 +1,3 @@
+[开跑] GPU0 qa_1 DAF=0 第 0 片（样本 0:50）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c00.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c00.log exit=1（完成度以 '===== ' 计数为准）
+[开跑] GPU0 qa_1 DAF=0 第 1 片（样本 50:100）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c01.log

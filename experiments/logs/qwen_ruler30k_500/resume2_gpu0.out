@@ -1,0 +1,32 @@
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 0 片（样本 0:50）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c00.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c00.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 1 片（样本 50:100）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c01.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c01.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 2 片（样本 100:150）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c02.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c02.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 3 片（样本 150:200）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c03.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c03.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 4 片（样本 200:250）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c04.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c04.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 5 片（样本 250:300）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c05.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c05.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 6 片（样本 300:350）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c06.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c06.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 7 片（样本 350:400）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c07.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c07.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 8 片（样本 400:450）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c08.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c08.log exit=0（完成度以 '===== ' 计数为准）
+[开跑] 第1趟 GPU0 qa_1 DAF=0 第 9 片（样本 450:500）→ experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c09.log
+[完成] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c09.log exit=0（完成度以 '===== ' 计数为准）
+[第1趟结束] 仍有残缺片，进入下一趟补跑
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c00.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c01.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c02.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c03.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c04.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c05.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c06.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c07.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c08.log 已完整（50 样本）
+[跳过] experiments/logs/qwen_ruler30k_500/run_cb_chatml_qwen_ruler500_qa1_c09.log 已完整（50 样本）
+GPU0 qa_1 DAF=0 全部 10 片完整（第 2 趟确认）

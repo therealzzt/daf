@@ -44,6 +44,7 @@ experiments/
 | 6k（B-1） | inputs_qwen_2wikimqa（LongBench 官方） | qwen | 加速 2.66× | 加速 2.32× | 1.14× |
 | 9k（B-2） | inputs_qwen_samsum（LongBench 官方） | qwen | 加速 2.61× | 加速 2.34× | 1.11× |
 | 30k（B-3） | inputs_qwen_ruler30k（RULER 官方 qa_1/qa_2 各 24） | qwen | 加速 2.46× | 加速 2.63× | **0.94×（DAF 首次反超 CB）** |
+| 30k 放量（1.5） | inputs_qwen_ruler30k_500（RULER 官方 qa_1/qa_2 各 500） | qwen | 加速 2.47× | 加速 2.61× | **0.946×（SM：qa_1 DAF 0.350>CB 0.318；qa_2 DAF 0.148<CB 0.252，见 daf1.5）** |
 
 ## 目标 B 第三档（RULER qa_1/qa_2 ≈30k，Qwen2.5）命令链
 

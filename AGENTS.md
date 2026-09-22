@@ -111,10 +111,12 @@ ChatML 消融（2026-09-21，`experiments/reports/chatml_ablation_ruler30k.md`�
 
 DAF/CB 比值随长度单调下降（Mistral 1.75→1.73→1.45；Qwen 1.14→1.11→0.94），Qwen 30k 已实测反超；DAF 相对全量加速（30k 档 2.63~2.71×）已与论文 2.8× 持平，未复现的是反超幅度（论文 30k ≈0.77）和精度优势。与论文的差距（Qwen2.5-7B/A100/Flash-Attention vs 本项目 3090Ti/xformers）在 `docs/daf1.1.md` 有分析。
 
+**500 样本放量（daf1.5 最终阶段，2026-09-21~22）**：RULER qa_1/qa_2 各 500 样本（同 seed 下 24 样本轮的超集），1 轮 × 500（贪心解码质量逐轮确定，TTFT 用跨 500 样本中位）。SM 均值 ±95%CI：qa_1 CB 0.318±0.041 / **DAF 0.350±0.042** / 全量 0.716，qa_2 CB 0.252±0.038 / **DAF 0.148±0.031** / 全量 0.550；DAF/CB 时长比 0.947/0.946，DAF 相对全量 2.61×。论文验收线 4 条：CB≤0.65 ✅、DAF vs 全量 ≈2.8× ⚠️（2.61×）、DAF≥0.68 ❌、DAF/CB≤0.77 ❌。**24 样本轮的精度结论被推翻/修正**：qa_2 "DAF≈CB" 实为 DAF 显著更差（CI 不交叠），qa_1 修正为 DAF 略优；小样本不足以判精度排序。详见 `docs/daf1.5.md` 与 `experiments/reports/em_report_qwen_ruler30k_500.md`。工程要点：500 样本切 10 片 ×50 幂等续跑（blend.py 新增 `BLEND_SAMPLE_RANGE`，脚本 `run_ruler500_resume2.sh`；CB 臂 util 0.90→0.89 防长进程碎片化 OOM，只影响 KV 池大小）。
+
 ## 文档索引
 
 - `docs/DAF改造计划_v2_校正版.md` —— 实现方案的权威文档（改动前先读）
 - `docs/DAF论文解读与复现指南.md` —— 论文要求（模型/数据集/指标/验收标准）
-- `docs/daf1.0.md` / `daf1.1.md` / `daf1.2.md` / `daf1.3.md` / `daf1.4.md` —— 各阶段实验记录与教训（1.4 = 目标 B 三档总记录）
+- `docs/daf1.0.md` / `daf1.1.md` / `daf1.2.md` / `daf1.3.md` / `daf1.4.md` / `daf1.5.md` —— 各阶段实验记录与教训（1.4 = 目标 B 三档总记录；1.5 = ChatML/K+V 消融 + 500 样本放量最终结论）
 - `docs/服务器复现指南.md` —— 环境搭建权威指南
 - `experiments/README.md` —— 实验工作区索引与命令链
