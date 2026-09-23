@@ -101,6 +101,29 @@ flash 后端一致性：SM 24/24 全同。**维持 V-only 为默认**。
 
 见 `experiments/README.md` "500 样本放量" 一节（生成 → 转样本 → 4 卡续跑 → 评分）。
 
+## 三·补、flash 后端对照（daf1.6，2026-09-23）：kernel 红利测量
+
+**动机**：0.946 vs 论文 0.77 的差距里有多少是 kernel（xformers vs FlashAttention）
+贡献的？同样本同配置只换 kernel 重跑一遍。
+
+**配置**：与阶段 3 逐项相同，唯一差异 `VLLM_ATTENTION_BACKEND=FLASH_ATTN`；
+两臂 util 统一 0.89（对称；xformers 轮 CB 臂曾用 0.90 后改 0.89，util 只影响
+KV 池大小不影响数值）。脚本 `run_ruler500_flash_resume.sh`（commit `f683ce8`），
+日志 `experiments/logs/qwen_ruler30k_500_flash/`（40 片全 50/50 零 OOM，
+每片有 `Using FlashAttention backend` 确认行）。
+
+**结果**：DAF/CB 时长比 flash 轮 0.948（qa_1）/ 0.949（qa_2），xformers 轮
+0.947/0.946——**不动**；三方法 TTFT 全部变化 <0.5%；DAF vs 全量仍为 2.61×。
+精度一致性：CB/全量臂 SM/EM 逐分相同，DAF 臂 ΔSM +0.014/+0.004（CI 内，
+topk 边界的 kernel 浮点差所致）。
+
+**结论**：**kernel 红利在 sm86（3090Ti）上趋近于零**——xformers 的
+memory_efficient_attention 在 sm86 已是成熟 cutlass 后端，flash-attn 2.5.8
+无代差级优势；且 DAF 的瓶颈（打分层全量 prefill、hybrid KV 组装、逐层 Python
+调度）本就不在 kernel 里。0.946 vs 0.77 的差距主体归属**硬件代差**
+（A100 vs 3090Ti），而非 kernel 选择。详见
+`experiments/reports/em_report_qwen_ruler30k_500_flash.md`。
+
 ## 四、总结论与遗留问题
 
 **总结论**：在 Qwen2.5-7B / 3090Ti / vllm 0.4.1+xformers 的复现环境下，
@@ -113,7 +136,9 @@ qa_2 的反向结果可能源于此而非算法本身。
 **遗留问题（按价值排序）**：
 1. qa_2 退化根因：打分层位置/聚合公式消融（如单层打分、加权聚合、
    打分层换成中层），或 K+V 加权（0.1·dev_K）——阶段 2 已证等权无效。
-2. 换 FlashAttention 后端放量（一致性已在 24 样本验证，500 样本未跑 flash 臂）。
-3. 与论文环境对齐（A100 + flash + 官方评测 harness）复核绝对精度差距。
+2. ~~换 FlashAttention 后端放量~~（daf1.6 已做：kernel 红利在 sm86 趋近于零，
+   DAF/CB 0.948/0.949 与 xformers 轮相同，差距主体是硬件代差）。
+3. 与论文环境对齐（A100 + flash + 官方评测 harness）复核绝对精度差距——
+   flash 对照后这是唯一未排除的大项。
 4. v1 续跑脚本（run_ruler500_resume.sh）可在确认无实例使用后删除；
    `DAF_DEBUG_KVDEV` 调试钩子保留在 xformers.py:240-263，后续可删。

@@ -113,6 +113,8 @@ DAF/CB 比值随长度单调下降（Mistral 1.75→1.73→1.45；Qwen 1.14→1.
 
 **500 样本放量（daf1.5 最终阶段，2026-09-21~22）**：RULER qa_1/qa_2 各 500 样本（同 seed 下 24 样本轮的超集），1 轮 × 500（贪心解码质量逐轮确定，TTFT 用跨 500 样本中位）。SM 均值 ±95%CI：qa_1 CB 0.318±0.041 / **DAF 0.350±0.042** / 全量 0.716，qa_2 CB 0.252±0.038 / **DAF 0.148±0.031** / 全量 0.550；DAF/CB 时长比 0.947/0.946，DAF 相对全量 2.61×。论文验收线 4 条：CB≤0.65 ✅、DAF vs 全量 ≈2.8× ⚠️（2.61×）、DAF≥0.68 ❌、DAF/CB≤0.77 ❌。**24 样本轮的精度结论被推翻/修正**：qa_2 "DAF≈CB" 实为 DAF 显著更差（CI 不交叠），qa_1 修正为 DAF 略优；小样本不足以判精度排序。详见 `docs/daf1.5.md` 与 `experiments/reports/em_report_qwen_ruler30k_500.md`。工程要点：500 样本切 10 片 ×50 幂等续跑（blend.py 新增 `BLEND_SAMPLE_RANGE`，脚本 `run_ruler500_resume2.sh`；CB 臂 util 0.90→0.89 防长进程碎片化 OOM，只影响 KV 池大小）。
 
+**flash 后端对照（daf1.6，2026-09-23）**：同样本同配置只换 `VLLM_ATTENTION_BACKEND=FLASH_ATTN` 重跑 500×2（脚本 `run_ruler500_flash_resume.sh`，日志 `experiments/logs/qwen_ruler30k_500_flash/`）。DAF/CB 0.948/0.949 与 xformers 轮（0.947/0.946）不动，三方法 TTFT 变化 <0.5%——**kernel 红利在 sm86（3090Ti）上趋近于零，0.946 vs 论文 0.77 的差距主体是硬件代差（A100 vs 3090Ti）而非 kernel**。精度一致性：CB/全量臂 SM/EM 逐分相同，DAF 臂 ΔSM ≤0.014（CI 内）。详见 `experiments/reports/em_report_qwen_ruler30k_500_flash.md`。
+
 ## 文档索引
 
 - `docs/DAF改造计划_v2_校正版.md` —— 实现方案的权威文档（改动前先读）
