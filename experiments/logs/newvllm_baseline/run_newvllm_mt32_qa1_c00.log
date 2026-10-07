@@ -1,0 +1,851 @@
+INFO 09-23 23:07:07 [arg_utils.py:849] HF_HUB_OFFLINE is True, replace model_id [Qwen/Qwen2.5-7B-Instruct] to model_path [/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28]
+INFO 09-23 23:07:07 [api_utils.py:286] non-default args: {'max_model_len': 32768, 'gpu_memory_utilization': 0.9, 'disable_log_stats': True, 'enforce_eager': True, 'model': '/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28'}
+INFO 09-23 23:07:07 [model.py:692] Resolved architecture: Qwen2ForCausalLM
+INFO 09-23 23:07:07 [model.py:2030] Using max model len 32768
+INFO 09-23 23:07:07 [scheduler.py:288] Chunked prefill is enabled with max_num_batched_tokens=8192.
+WARNING 09-23 23:07:07 [vllm.py:1547] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 09-23 23:07:07 [vllm.py:1570] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 09-23 23:07:07 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+INFO 09-23 23:07:08 [vllm.py:1780] Cudagraph is disabled under eager mode
+INFO 09-23 23:07:08 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(EngineCore pid=529912) INFO 09-23 23:07:12 [core.py:123] Initializing a V1 LLM engine (v0.30.0) with config: model='/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28', speculative_config=None, tokenizer='/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(EngineCore pid=529912) INFO 09-23 23:07:13 [parallel_state.py:1827] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_aa3f6e4db0b3493b8f7d6cc73c08794c backend=nccl
+(EngineCore pid=529912) INFO 09-23 23:07:13 [parallel_state.py:2267] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=529912) INFO 09-23 23:07:13 [gpu_worker.py:441] Using V2 Model Runner
+(EngineCore pid=529912) INFO 09-23 23:07:15 [model_runner.py:396] Loading model from scratch...
+(EngineCore pid=529912) INFO 09-23 23:07:16 [cuda.py:538] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=529912) INFO 09-23 23:07:16 [flash_attn.py:1116] Using FlashAttention version 2
+(EngineCore pid=529912) INFO 09-23 23:07:16 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 14.19 GiB. Available RAM: 237.84 GiB.
+(EngineCore pid=529912) INFO 09-23 23:07:16 [weight_utils.py:918] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=529912) Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(EngineCore pid=529912) Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:01<00:05,  1.77s/it]
+(EngineCore pid=529912) Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:03<00:03,  1.79s/it]
+(EngineCore pid=529912) Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:05<00:01,  1.80s/it]
+(EngineCore pid=529912) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:07<00:00,  1.73s/it]
+(EngineCore pid=529912) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:07<00:00,  1.75s/it]
+(EngineCore pid=529912) 
+(EngineCore pid=529912) INFO 09-23 23:07:23 [default_loader.py:430] Loading weights took 7.04 seconds
+(EngineCore pid=529912) INFO 09-23 23:07:24 [model_runner.py:428] Model loading took 14.19 GiB memory and 9.897313 seconds
+(EngineCore pid=529912) INFO 09-23 23:07:24 [topk_topp_sampler.py:62] FlashInfer top-p/top-k sampling disabled via VLLM_USE_FLASHINFER_SAMPLER=0.
+(EngineCore pid=529912) INFO 09-23 23:07:24 [utils.py:320] Using LBNHC KV cache layout.
+(EngineCore pid=529912) INFO 09-23 23:07:29 [gpu_worker.py:640] Available KV cache memory: 5.63 GiB
+(EngineCore pid=529912) INFO 09-23 23:07:29 [kv_cache_utils.py:2395] GPU KV cache size: 105,408 tokens, Maximum concurrency for 32,768 tokens per request: 3.22x
+(EngineCore pid=529912) INFO 09-23 23:07:29 [kernel_warmup.py:172] JIT kernel warmup starting.
+(EngineCore pid=529912) INFO 09-23 23:07:29 [kernel_warmup.py:185] JIT kernel warmup finished in 0.00s.
+(EngineCore pid=529912) INFO 09-23 23:07:30 [gpu_worker.py:888] Free memory on device (23.28/23.55 GiB) on startup. Desired GPU memory utilization is (0.9, 21.19 GiB). Actual usage is 14.48 GiB for consumed memory (weights + non-torch), 1.09 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=5887565108` (5.48 GiB) to fit into requested memory, or `--kv-cache-memory=8123771392` (7.57 GiB) to fully utilize gpu memory. Current kv cache memory in use is 5.63 GiB.
+(EngineCore pid=529912) INFO 09-23 23:07:31 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(EngineCore pid=529912) INFO 09-23 23:07:31 [torch_utils.py:287] Reducing Torch threads from 16 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=529912) INFO 09-23 23:07:31 [core.py:379] init engine (profile, create kv cache, warmup model) took 7.07 s
+(EngineCore pid=529912) INFO 09-23 23:07:31 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+INFO 09-23 23:07:32 [hf.py:642] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 44.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3861.65 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3861.65 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3861.65 toks/s, output: 0.24 toks/s]
+===== qa_1_000_len32420.json =====
+Cached generation: France
+TTFT with cache: 8.42915803194046
+Normal generation: France
+TTFT with full prefill: 8.42915803194046
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 365.13it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.18s/it, est. speed input: 3460.80 toks/s, output: 3.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.18s/it, est. speed input: 3460.80 toks/s, output: 3.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.18s/it, est. speed input: 3460.80 toks/s, output: 3.49 toks/s]
+===== qa_1_001_len31728.json =====
+Cached generation: The Normans in Normandy began in the 10th century with the treaty of Saint-Clair-sur-Epte between King Charles III of West Franc
+TTFT with cache: 9.180782604031265
+Normal generation: The Normans in Normandy began in the 10th century with the treaty of Saint-Clair-sur-Epte between King Charles III of West Franc
+TTFT with full prefill: 9.180782604031265
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 312.26it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3772.13 toks/s, output: 0.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3772.13 toks/s, output: 0.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3772.13 toks/s, output: 0.92 toks/s]
+===== qa_1_002_len32716.json =====
+Cached generation: Denmark, Iceland, and Norway
+TTFT with cache: 8.685606135986745
+Normal generation: Denmark, Iceland, and Norway
+TTFT with full prefill: 8.685606135986745
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 411.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.63s/it, est. speed input: 3954.14 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.63s/it, est. speed input: 3954.14 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.63s/it, est. speed input: 3954.14 toks/s, output: 0.39 toks/s]
+===== qa_1_003_len30149.json =====
+Cached generation: Rollo
+TTFT with cache: 7.636015221476555
+Normal generation: Rollo
+TTFT with full prefill: 7.636015221476555
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 348.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.77s/it, est. speed input: 3927.66 toks/s, output: 0.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.77s/it, est. speed input: 3927.66 toks/s, output: 0.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.77s/it, est. speed input: 3927.66 toks/s, output: 0.64 toks/s]
+===== qa_1_004_len30471.json =====
+Cached generation: 10th century
+TTFT with cache: 7.770319188944995
+Normal generation: 10th century
+TTFT with full prefill: 7.770319188944995
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 385.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3821.99 toks/s, output: 0.71 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3821.99 toks/s, output: 0.71 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3821.99 toks/s, output: 0.71 toks/s]
+===== qa_1_005_len32253.json =====
+Cached generation: William II of Normandy
+TTFT with cache: 8.450531411916018
+Normal generation: William II of Normandy
+TTFT with full prefill: 8.450531411916018
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 393.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.36s/it, est. speed input: 3442.92 toks/s, output: 3.42 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.36s/it, est. speed input: 3442.92 toks/s, output: 3.42 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.36s/it, est. speed input: 3442.92 toks/s, output: 3.42 toks/s]
+===== qa_1_006_len32195.json =====
+Cached generation: Rollo ruled the Duchy of Normandy initially, and it was established as a fiefdom under a treaty between King Charles III of West Francia and
+TTFT with cache: 9.363797504454851
+Normal generation: Rollo ruled the Duchy of Normandy initially, and it was established as a fiefdom under a treaty between King Charles III of West Francia and
+TTFT with full prefill: 9.363797504454851
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 109.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3845.80 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3845.80 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3845.80 toks/s, output: 0.24 toks/s]
+===== qa_1_007_len32600.json =====
+Cached generation: Christian
+TTFT with cache: 8.49532544054091
+Normal generation: Christian
+TTFT with full prefill: 8.49532544054091
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 328.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3661.59 toks/s, output: 2.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3661.59 toks/s, output: 2.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3661.59 toks/s, output: 2.15 toks/s]
+===== qa_1_008_len30678.json =====
+Cached generation: Norman: Nourmands; French: Normands; Latin: Normanni
+TTFT with cache: 8.39095697645098
+Normal generation: Norman: Nourmands; French: Normands; Latin: Normanni
+TTFT with full prefill: 8.39095697645098
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 299.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.58s/it, est. speed input: 3810.13 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.58s/it, est. speed input: 3810.13 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.59s/it, est. speed input: 3810.13 toks/s, output: 0.47 toks/s]
+===== qa_1_009_len32681.json =====
+Cached generation: 9th century
+TTFT with cache: 8.59144530352205
+Normal generation: 9th century
+TTFT with full prefill: 8.59144530352205
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 388.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.49s/it, est. speed input: 3438.18 toks/s, output: 3.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.49s/it, est. speed input: 3438.18 toks/s, output: 3.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.49s/it, est. speed input: 3438.18 toks/s, output: 3.27 toks/s]
+===== qa_1_010_len32585.json =====
+Cached generation: The Duchy of Normandy was founded by treaty between King Charles III of West Francia and the Viking ruler Rollo in 911.
+TTFT with cache: 9.48993866238743
+Normal generation: The Duchy of Normandy was founded by treaty between King Charles III of West Francia and the Viking ruler Rollo in 911.
+TTFT with full prefill: 9.48993866238743
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 403.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.26s/it, est. speed input: 3825.67 toks/s, output: 0.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.26s/it, est. speed input: 3825.67 toks/s, output: 0.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.26s/it, est. speed input: 3825.67 toks/s, output: 0.97 toks/s]
+===== qa_1_011_len31585.json =====
+Cached generation: King Charles III of West Francia
+TTFT with cache: 8.268092630431056
+Normal generation: King Charles III of West Francia
+TTFT with full prefill: 8.268092630431056
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 413.11it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3841.28 toks/s, output: 0.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3841.28 toks/s, output: 0.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3841.28 toks/s, output: 0.61 toks/s]
+===== qa_1_012_len31552.json =====
+Cached generation: the river Epte
+TTFT with cache: 8.225431110709906
+Normal generation: the river Epte
+TTFT with full prefill: 8.225431110709906
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 386.22it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3792.94 toks/s, output: 0.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3792.94 toks/s, output: 0.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3792.94 toks/s, output: 0.70 toks/s]
+===== qa_1_013_len32635.json =====
+Cached generation: Dinwiddie
+TTFT with cache: 8.616049370728433
+Normal generation: Dinwiddie
+TTFT with full prefill: 8.616049370728433
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 375.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.96s/it, est. speed input: 3627.18 toks/s, output: 2.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.96s/it, est. speed input: 3627.18 toks/s, output: 2.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.96s/it, est. speed input: 3627.18 toks/s, output: 2.12 toks/s]
+===== qa_1_014_len32483.json =====
+Cached generation: The Normans replaced the Norse religion and Old Norse language with Catholicism (Christianity).
+TTFT with cache: 8.967657190747559
+Normal generation: The Normans replaced the Norse religion and Old Norse language with Catholicism (Christianity).
+TTFT with full prefill: 8.967657190747559
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 403.92it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.65s/it, est. speed input: 3977.75 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.65s/it, est. speed input: 3977.75 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.65s/it, est. speed input: 3977.75 toks/s, output: 0.39 toks/s]
+===== qa_1_015_len30396.json =====
+Cached generation: Normandy
+TTFT with cache: 7.652828820981085
+Normal generation: Normandy
+TTFT with full prefill: 7.652828820981085
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 344.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3875.72 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3875.72 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3875.72 toks/s, output: 0.48 toks/s]
+===== qa_1_016_len32051.json =====
+Cached generation: dairy products
+TTFT with cache: 8.28166975453496
+Normal generation: dairy products
+TTFT with full prefill: 8.28166975453496
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 411.21it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.84s/it, est. speed input: 3468.54 toks/s, output: 3.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.84s/it, est. speed input: 3468.54 toks/s, output: 3.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.84s/it, est. speed input: 3468.54 toks/s, output: 3.62 toks/s]
+===== qa_1_017_len30626.json =====
+Cached generation: The Normans' main enemies in Italy, the Byzantine Empire and Armenia were the Pechenegs, the Bulgars, and especially the Seljuk
+TTFT with cache: 8.841952144168317
+Normal generation: The Normans' main enemies in Italy, the Byzantine Empire and Armenia were the Pechenegs, the Bulgars, and especially the Seljuk
+TTFT with full prefill: 8.841952144168317
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 407.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.94s/it, est. speed input: 3796.08 toks/s, output: 1.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.94s/it, est. speed input: 3796.08 toks/s, output: 1.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.94s/it, est. speed input: 3796.08 toks/s, output: 1.64 toks/s]
+===== qa_1_018_len30128.json =====
+Cached generation: Hervé in the 1050s.
+TTFT with cache: 7.948236023075879
+Normal generation: Hervé in the 1050s.
+TTFT with full prefill: 7.948236023075879
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 376.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.28s/it, est. speed input: 3501.87 toks/s, output: 2.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.28s/it, est. speed input: 3501.87 toks/s, output: 2.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.28s/it, est. speed input: 3501.87 toks/s, output: 2.69 toks/s]
+===== qa_1_019_len32473.json =====
+Cached generation: In the 1060s, Robert Crispin led the Normans of Edessa against the Turks.
+TTFT with cache: 9.285621403716505
+Normal generation: In the 1060s, Robert Crispin led the Normans of Edessa against the Turks.
+TTFT with full prefill: 9.285621403716505
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 419.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3836.01 toks/s, output: 1.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3836.01 toks/s, output: 1.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3836.01 toks/s, output: 1.25 toks/s]
+===== qa_1_020_len30589.json =====
+Cached generation: the Byzantine general Alexius Komnenos
+TTFT with cache: 7.98561626765877
+Normal generation: the Byzantine general Alexius Komnenos
+TTFT with full prefill: 7.98561626765877
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 390.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3854.90 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3854.90 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3854.90 toks/s, output: 0.60 toks/s]
+===== qa_1_021_len32038.json =====
+Cached generation: Afranji
+TTFT with cache: 8.322723316960037
+Normal generation: Afranji
+TTFT with full prefill: 8.322723316960037
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 419.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3547.96 toks/s, output: 3.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3547.96 toks/s, output: 3.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3547.96 toks/s, output: 3.11 toks/s]
+===== qa_1_022_len30751.json =====
+Cached generation: A Norman named Oursel led a force of "Franks" into the upper Euphrates valley in northern Syria.
+TTFT with cache: 8.679357267916203
+Normal generation: A Norman named Oursel led a force of "Franks" into the upper Euphrates valley in northern Syria.
+TTFT with full prefill: 8.679357267916203
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 353.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.48s/it, est. speed input: 3417.72 toks/s, output: 3.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.48s/it, est. speed input: 3417.72 toks/s, output: 3.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.48s/it, est. speed input: 3417.72 toks/s, output: 3.37 toks/s]
+===== qa_1_023_len32382.json =====
+Cached generation: The Normans joined Turkish forces to aid in the destruction of the Armenians vassal-states of Sassoun and Taron in far eastern Anatolia.
+TTFT with cache: 9.48776315804571
+Normal generation: The Normans joined Turkish forces to aid in the destruction of the Armenians vassal-states of Sassoun and Taron in far eastern Anatolia.
+TTFT with full prefill: 9.48776315804571
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 408.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3648.87 toks/s, output: 2.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3648.87 toks/s, output: 2.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3648.87 toks/s, output: 2.21 toks/s]
+===== qa_1_024_len31374.json =====
+Cached generation: The Raoulii family was descended from an Italo-Norman named Raoul.
+TTFT with cache: 8.61017809715122
+Normal generation: The Raoulii family was descended from an Italo-Norman named Raoul.
+TTFT with full prefill: 8.61017809715122
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 403.07it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.74s/it, est. speed input: 3939.58 toks/s, output: 0.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.74s/it, est. speed input: 3939.58 toks/s, output: 0.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.74s/it, est. speed input: 3939.58 toks/s, output: 0.52 toks/s]
+===== qa_1_025_len30462.json =====
+Cached generation: Robert Guiscard
+TTFT with cache: 7.743650036863983
+Normal generation: Robert Guiscard
+TTFT with full prefill: 7.743650036863983
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 385.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.97s/it, est. speed input: 3609.23 toks/s, output: 2.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.97s/it, est. speed input: 3609.23 toks/s, output: 2.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.97s/it, est. speed input: 3609.23 toks/s, output: 2.01 toks/s]
+===== qa_1_026_len32340.json =====
+Cached generation: Dyrrachium fell to the Normans in 1081.
+TTFT with cache: 8.972601991146803
+Normal generation: Dyrrachium fell to the Normans in 1081.
+TTFT with full prefill: 8.972601991146803
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 396.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3874.74 toks/s, output: 0.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3874.74 toks/s, output: 0.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.99s/it, est. speed input: 3874.74 toks/s, output: 0.88 toks/s]
+===== qa_1_027_len30910.json =====
+Cached generation: 30,000
+TTFT with cache: 7.988834477029741
+Normal generation: 30,000
+TTFT with full prefill: 7.988834477029741
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 408.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3837.29 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3837.29 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3837.29 toks/s, output: 0.72 toks/s]
+===== qa_1_028_len32017.json =====
+Cached generation: Dyrrachium
+TTFT with cache: 8.355211257003248
+Normal generation: Dyrrachium
+TTFT with full prefill: 8.355211257003248
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 336.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3900.69 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3900.69 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3900.69 toks/s, output: 0.50 toks/s]
+===== qa_1_029_len31291.json =====
+Cached generation: Bohemond
+TTFT with cache: 8.034047476015985
+Normal generation: Bohemond
+TTFT with full prefill: 8.034047476015985
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 395.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.16s/it, est. speed input: 3840.60 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.16s/it, est. speed input: 3840.60 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.16s/it, est. speed input: 3840.60 toks/s, output: 0.74 toks/s]
+===== qa_1_030_len31310.json =====
+Cached generation: the low Seine valley
+TTFT with cache: 8.163973177783191
+Normal generation: the low Seine valley
+TTFT with full prefill: 8.163973177783191
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 391.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.16s/it, est. speed input: 3551.50 toks/s, output: 2.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.16s/it, est. speed input: 3551.50 toks/s, output: 2.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.16s/it, est. speed input: 3551.50 toks/s, output: 2.40 toks/s]
+===== qa_1_031_len32496.json =====
+Cached generation: The Normans attacked Dyrrachium in 1081 and 1185.
+TTFT with cache: 9.16216523386538
+Normal generation: The Normans attacked Dyrrachium in 1081 and 1185.
+TTFT with full prefill: 9.16216523386538
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 320.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.43s/it, est. speed input: 3827.17 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.43s/it, est. speed input: 3827.17 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.43s/it, est. speed input: 3827.17 toks/s, output: 0.59 toks/s]
+===== qa_1_032_len32245.json =====
+Cached generation: Afranji
+TTFT with cache: 8.438080263324082
+Normal generation: Afranji
+TTFT with full prefill: 8.438080263324082
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 407.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.09s/it, est. speed input: 3778.99 toks/s, output: 1.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.09s/it, est. speed input: 3778.99 toks/s, output: 1.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.09s/it, est. speed input: 3778.99 toks/s, output: 1.61 toks/s]
+===== qa_1_033_len30549.json =====
+Cached generation: Dyrrachium was located in modern-day Albania.
+TTFT with cache: 8.09560333378613
+Normal generation: Dyrrachium was located in modern-day Albania.
+TTFT with full prefill: 8.09560333378613
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 398.21it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3803.84 toks/s, output: 0.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3803.84 toks/s, output: 0.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3803.84 toks/s, output: 0.95 toks/s]
+===== qa_1_034_len31855.json =====
+Cached generation: Duke Richard II of Normandy
+TTFT with cache: 8.386065309867263
+Normal generation: Duke Richard II of Normandy
+TTFT with full prefill: 8.386065309867263
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 386.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.71s/it, est. speed input: 3759.76 toks/s, output: 0.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.71s/it, est. speed input: 3759.76 toks/s, output: 0.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.71s/it, est. speed input: 3759.76 toks/s, output: 0.92 toks/s]
+===== qa_1_035_len32730.json =====
+Cached generation: Duke Richard II of Normandy
+TTFT with cache: 8.717225346714258
+Normal generation: Duke Richard II of Normandy
+TTFT with full prefill: 8.717225346714258
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 391.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3933.66 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3933.66 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3933.66 toks/s, output: 0.51 toks/s]
+===== qa_1_036_len30672.json =====
+Cached generation: to Normandy
+TTFT with cache: 7.808949079364538
+Normal generation: to Normandy
+TTFT with full prefill: 7.808949079364538
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 394.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3819.48 toks/s, output: 0.83 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3819.48 toks/s, output: 0.83 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3819.48 toks/s, output: 0.83 toks/s]
+===== qa_1_037_len32088.json =====
+Cached generation: Sweyn Forkbeard
+TTFT with cache: 8.412740641273558
+Normal generation: Sweyn Forkbeard
+TTFT with full prefill: 8.412740641273558
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3882.28 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3882.28 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3882.28 toks/s, output: 0.62 toks/s]
+===== qa_1_038_len31185.json =====
+Cached generation: Harthacnut
+TTFT with cache: 8.044163478538394
+Normal generation: Harthacnut
+TTFT with full prefill: 8.044163478538394
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 420.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3889.94 toks/s, output: 0.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3889.94 toks/s, output: 0.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3889.94 toks/s, output: 0.63 toks/s]
+===== qa_1_039_len30640.json =====
+Cached generation: 1041
+TTFT with cache: 7.888080437667668
+Normal generation: 1041
+TTFT with full prefill: 7.888080437667668
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 366.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.29s/it, est. speed input: 3838.94 toks/s, output: 0.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.29s/it, est. speed input: 3838.94 toks/s, output: 0.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.29s/it, est. speed input: 3838.94 toks/s, output: 0.84 toks/s]
+===== qa_1_040_len31793.json =====
+Cached generation: Robert of Jumièges
+TTFT with cache: 8.293653444387019
+Normal generation: Robert of Jumièges
+TTFT with full prefill: 8.293653444387019
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 393.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3758.94 toks/s, output: 1.29 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3758.94 toks/s, output: 1.29 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3758.94 toks/s, output: 1.29 toks/s]
+===== qa_1_041_len32112.json =====
+Cached generation: Harold II died at the Battle of Hastings.
+TTFT with cache: 8.554584966041148
+Normal generation: Harold II died at the Battle of Hastings.
+TTFT with full prefill: 8.554584966041148
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 430.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.44s/it, est. speed input: 3868.01 toks/s, output: 1.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.44s/it, est. speed input: 3868.01 toks/s, output: 1.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.45s/it, est. speed input: 3868.01 toks/s, output: 1.61 toks/s]
+===== qa_1_042_len28768.json =====
+Cached generation: Duke William II of Normandy killed Harold II.
+TTFT with cache: 7.448777697980404
+Normal generation: Duke William II of Normandy killed Harold II.
+TTFT with full prefill: 7.448777697980404
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 394.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.56s/it, est. speed input: 3940.78 toks/s, output: 0.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.56s/it, est. speed input: 3940.78 toks/s, output: 0.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.56s/it, est. speed input: 3940.78 toks/s, output: 0.66 toks/s]
+===== qa_1_043_len29775.json =====
+Cached generation: 1066
+TTFT with cache: 7.567120883613825
+Normal generation: 1066
+TTFT with full prefill: 7.567120883613825
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 387.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3839.06 toks/s, output: 0.35 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3839.06 toks/s, output: 0.35 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3839.06 toks/s, output: 0.35 toks/s]
+===== qa_1_044_len32613.json =====
+Cached generation: Frankish
+TTFT with cache: 8.506758977659047
+Normal generation: Frankish
+TTFT with full prefill: 8.506758977659047
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 365.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.49s/it, est. speed input: 3436.46 toks/s, output: 3.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.49s/it, est. speed input: 3436.46 toks/s, output: 3.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.49s/it, est. speed input: 3436.46 toks/s, output: 3.37 toks/s]
+===== qa_1_045_len32597.json =====
+Cached generation: The Anglo-Norman language was eventually absorbed into the Anglo-Saxon language of their subjects (see Old English) and influenced it, helping (along with the Norse
+TTFT with cache: 9.499083558097482
+Normal generation: The Anglo-Norman language was eventually absorbed into the Anglo-Saxon language of their subjects (see Old English) and influenced it, helping (along with the Norse
+TTFT with full prefill: 9.499083558097482
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 405.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3889.38 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3889.38 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3889.38 toks/s, output: 0.62 toks/s]
+===== qa_1_046_len31139.json =====
+Cached generation: 1169
+TTFT with cache: 8.017685524187982
+Normal generation: 1169
+TTFT with full prefill: 8.017685524187982
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 396.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3836.85 toks/s, output: 0.35 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3836.85 toks/s, output: 0.35 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3836.85 toks/s, output: 0.35 toks/s]
+===== qa_1_047_len32728.json =====
+Cached generation: Ireland
+TTFT with cache: 8.54150877520442
+Normal generation: Ireland
+TTFT with full prefill: 8.54150877520442
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 375.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.80s/it, est. speed input: 3653.09 toks/s, output: 1.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.80s/it, est. speed input: 3653.09 toks/s, output: 1.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.80s/it, est. speed input: 3653.09 toks/s, output: 1.93 toks/s]
+===== qa_1_048_len32119.json =====
+Cached generation: Catholicism and the Gallo-Romance language of the local people.
+TTFT with cache: 8.804414559155703
+Normal generation: Catholicism and the Gallo-Romance language of the local people.
+TTFT with full prefill: 8.804414559155703
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 402.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.02s/it, est. speed input: 3887.53 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.02s/it, est. speed input: 3887.53 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3887.53 toks/s, output: 0.62 toks/s]
+===== qa_1_049_len31169.json =====
+Cached generation: Edgar Atheling
+TTFT with cache: 8.02917352039367
+Normal generation: Edgar Atheling
+TTFT with full prefill: 8.02917352039367
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 317.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3829.85 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3829.85 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3829.85 toks/s, output: 0.60 toks/s]
+===== qa_1_050_len32145.json =====
+Cached generation: Edgar Atheling
+TTFT with cache: 8.405744401738048
+Normal generation: Edgar Atheling
+TTFT with full prefill: 8.405744401738048
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 403.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3829.18 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3829.18 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3829.18 toks/s, output: 0.60 toks/s]
+===== qa_1_051_len32137.json =====
+Cached generation: 1066
+TTFT with cache: 8.404231209307909
+Normal generation: 1066
+TTFT with full prefill: 8.404231209307909
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 458.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.54s/it, est. speed input: 3944.50 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.54s/it, est. speed input: 3944.50 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.54s/it, est. speed input: 3944.50 toks/s, output: 0.40 toks/s]
+===== qa_1_052_len29728.json =====
+Cached generation: Duncan
+TTFT with cache: 7.547937351278961
+Normal generation: Duncan
+TTFT with full prefill: 7.547937351278961
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 415.20it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.79s/it, est. speed input: 3891.08 toks/s, output: 0.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.79s/it, est. speed input: 3891.08 toks/s, output: 0.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.79s/it, est. speed input: 3891.08 toks/s, output: 0.90 toks/s]
+===== qa_1_053_len30282.json =====
+Cached generation: Sybilla of Normandy
+TTFT with cache: 7.793872480280697
+Normal generation: Sybilla of Normandy
+TTFT with full prefill: 7.793872480280697
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 382.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.12s/it, est. speed input: 3703.59 toks/s, output: 2.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.12s/it, est. speed input: 3703.59 toks/s, output: 2.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.12s/it, est. speed input: 3703.59 toks/s, output: 2.09 toks/s]
+===== qa_1_054_len30042.json =====
+Cached generation: Norman culture's arrival in Scotland is known as the "Davidian Revolution".
+TTFT with cache: 8.12358027882874
+Normal generation: Norman culture's arrival in Scotland is known as the "Davidian Revolution".
+TTFT with full prefill: 8.12358027882874
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 388.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3794.18 toks/s, output: 1.10 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3794.18 toks/s, output: 1.10 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3794.18 toks/s, output: 1.10 toks/s]
+===== qa_1_055_len30991.json =====
+Cached generation: Ralph earl of Hereford.
+TTFT with cache: 8.180142999626696
+Normal generation: Ralph earl of Hereford.
+TTFT with full prefill: 8.180142999626696
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 386.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3726.68 toks/s, output: 1.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3726.68 toks/s, output: 1.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3726.68 toks/s, output: 1.66 toks/s]
+===== qa_1_056_len31411.json =====
+Cached generation: Ralph was in charge of being at war with the Welsh.
+TTFT with cache: 8.44091060012579
+Normal generation: Ralph was in charge of being at war with the Welsh.
+TTFT with full prefill: 8.44091060012579
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 402.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3789.34 toks/s, output: 1.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3789.34 toks/s, output: 1.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3789.34 toks/s, output: 1.66 toks/s]
+===== qa_1_057_len29615.json =====
+Cached generation: King Ethelred II of England made Ralph earl.
+TTFT with cache: 7.827046480029821
+Normal generation: King Ethelred II of England made Ralph earl.
+TTFT with full prefill: 7.827046480029821
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 394.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3866.73 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3866.73 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3866.73 toks/s, output: 0.36 toks/s]
+===== qa_1_058_len32630.json =====
+Cached generation: Wales
+TTFT with cache: 8.450207331217825
+Normal generation: Wales
+TTFT with full prefill: 8.450207331217825
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 383.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3835.79 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3835.79 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.45s/it, est. speed input: 3835.79 toks/s, output: 0.59 toks/s]
+===== qa_1_059_len32398.json =====
+Cached generation: 1018
+TTFT with cache: 8.458039012737572
+Normal generation: 1018
+TTFT with full prefill: 8.458039012737572
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 391.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3817.48 toks/s, output: 0.71 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3817.48 toks/s, output: 0.71 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3817.48 toks/s, output: 0.71 toks/s]
+===== qa_1_060_len32336.json =====
+Cached generation: William of Montreuil
+TTFT with cache: 8.482484925538301
+Normal generation: William of Montreuil
+TTFT with full prefill: 8.482484925538301
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 407.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3900.98 toks/s, output: 0.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3900.98 toks/s, output: 0.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3900.98 toks/s, output: 0.63 toks/s]
+===== qa_1_061_len30969.json =====
+Cached generation: 1097
+TTFT with cache: 7.950230486690998
+Normal generation: 1097
+TTFT with full prefill: 7.950230486690998
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 448.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.51s/it, est. speed input: 3966.87 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.51s/it, est. speed input: 3966.87 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.51s/it, est. speed input: 3966.87 toks/s, output: 0.40 toks/s]
+===== qa_1_062_len29765.json =====
+Cached generation: Tancred
+TTFT with cache: 7.514737589284778
+Normal generation: Tancred
+TTFT with full prefill: 7.514737589284778
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 387.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.21s/it, est. speed input: 3454.78 toks/s, output: 3.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.21s/it, est. speed input: 3454.78 toks/s, output: 3.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.21s/it, est. speed input: 3454.78 toks/s, output: 3.26 toks/s]
+===== qa_1_063_len31774.json =====
+Cached generation: Tancred played a role in the conquest of Jerusalem and the expansion of the Crusader kingdom in Transjordan and the region of Galilee.
+TTFT with cache: 9.209570568054914
+Normal generation: Tancred played a role in the conquest of Jerusalem and the expansion of the Crusader kingdom in Transjordan and the region of Galilee.
+TTFT with full prefill: 9.209570568054914
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 381.34it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.43s/it, est. speed input: 3462.67 toks/s, output: 3.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.43s/it, est. speed input: 3462.67 toks/s, output: 3.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.43s/it, est. speed input: 3462.67 toks/s, output: 3.39 toks/s]
+===== qa_1_064_len32621.json =====
+Cached generation: The Normans under the command of Bohemond, Robert's son, landed in Valona and besieged Dyrrachium using the most sophisticated military equipment
+TTFT with cache: 9.433372190222144
+Normal generation: The Normans under the command of Bohemond, Robert's son, landed in Valona and besieged Dyrrachium using the most sophisticated military equipment
+TTFT with full prefill: 9.433372190222144
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.82s/it, est. speed input: 3627.32 toks/s, output: 2.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.82s/it, est. speed input: 3627.32 toks/s, output: 2.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.82s/it, est. speed input: 3627.32 toks/s, output: 2.15 toks/s]
+===== qa_1_065_len31954.json =====
+Cached generation: A storm dispersed the fleet, making it difficult for Richard to reach Acre as planned.
+TTFT with cache: 8.821151208132505
+Normal generation: A storm dispersed the fleet, making it difficult for Richard to reach Acre as planned.
+TTFT with full prefill: 8.821151208132505
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 374.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.58s/it, est. speed input: 3814.25 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.58s/it, est. speed input: 3814.25 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.58s/it, est. speed input: 3814.25 toks/s, output: 0.47 toks/s]
+===== qa_1_066_len32699.json =====
+Cached generation: Berengaria
+TTFT with cache: 8.584608044475317
+Normal generation: Berengaria
+TTFT with full prefill: 8.584608044475317
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 381.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3823.85 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3823.85 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3823.85 toks/s, output: 0.59 toks/s]
+===== qa_1_067_len32231.json =====
+Cached generation: 1191
+TTFT with cache: 8.440698274411261
+Normal generation: 1191
+TTFT with full prefill: 8.440698274411261
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 377.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3840.82 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3840.82 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3840.82 toks/s, output: 0.74 toks/s]
+===== qa_1_068_len31186.json =====
+Cached generation: Isaac Komnenos
+TTFT with cache: 8.131403157487512
+Normal generation: Isaac Komnenos
+TTFT with full prefill: 8.131403157487512
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 396.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3801.36 toks/s, output: 0.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3801.36 toks/s, output: 0.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3801.36 toks/s, output: 0.84 toks/s]
+===== qa_1_069_len31696.json =====
+Cached generation: Conrad of Montferrat
+TTFT with cache: 8.349779224023223
+Normal generation: Conrad of Montferrat
+TTFT with full prefill: 8.349779224023223
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 412.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.07s/it, est. speed input: 3907.22 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.07s/it, est. speed input: 3907.22 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.07s/it, est. speed input: 3907.22 toks/s, output: 0.25 toks/s]
+===== qa_1_070_len31505.json =====
+Cached generation: silver
+TTFT with cache: 8.074815783649683
+Normal generation: silver
+TTFT with full prefill: 8.074815783649683
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 406.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3776.58 toks/s, output: 1.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3776.58 toks/s, output: 1.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3776.58 toks/s, output: 1.21 toks/s]
+===== qa_1_071_len31228.json =====
+Cached generation: Richard de Camville and Robert de Thornham
+TTFT with cache: 8.280605185776949
+Normal generation: Richard de Camville and Robert de Thornham
+TTFT with full prefill: 8.280605185776949
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 382.13it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3890.71 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3890.71 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3890.71 toks/s, output: 0.24 toks/s]
+===== qa_1_072_len32173.json =====
+Cached generation: Africa
+TTFT with cache: 8.28089158050716
+Normal generation: Africa
+TTFT with full prefill: 8.28089158050716
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 388.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3867.39 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3867.39 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3867.39 toks/s, output: 0.48 toks/s]
+===== qa_1_073_len31989.json =====
+Cached generation: Bethencourt
+TTFT with cache: 8.283164616674185
+Normal generation: Bethencourt
+TTFT with full prefill: 8.283164616674185
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 392.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.60s/it, est. speed input: 3508.46 toks/s, output: 3.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.60s/it, est. speed input: 3508.46 toks/s, output: 3.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.60s/it, est. speed input: 3508.46 toks/s, output: 3.72 toks/s]
+===== qa_1_074_len30148.json =====
+Cached generation: Jean's nephew Maciot de Bethencourt bought the rights to the islands from Enrique Pérez de Guzmán, 2nd Count de Niebla.
+TTFT with cache: 8.605451083742082
+Normal generation: Jean's nephew Maciot de Bethencourt bought the rights to the islands from Enrique Pérez de Guzmán, 2nd Count de Niebla.
+TTFT with full prefill: 8.605451083742082
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 391.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.30s/it, est. speed input: 3459.01 toks/s, output: 3.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.30s/it, est. speed input: 3459.01 toks/s, output: 3.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.30s/it, est. speed input: 3459.01 toks/s, output: 3.22 toks/s]
+===== qa_1_075_len32155.json =====
+Cached generation: Maciot de Bethencourt sold the rights to the islands to Enrique Pérez de Guzmán, 2nd Count de Niebla.
+TTFT with cache: 9.308516803197563
+Normal generation: Maciot de Bethencourt sold the rights to the islands to Enrique Pérez de Guzmán, 2nd Count de Niebla.
+TTFT with full prefill: 9.308516803197563
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 393.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3740.86 toks/s, output: 1.55 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3740.86 toks/s, output: 1.55 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3740.86 toks/s, output: 1.55 toks/s]
+===== qa_1_076_len31246.json =====
+Cached generation: Jersey and Guernsey are in the Channel Islands.
+TTFT with cache: 8.364499507471919
+Normal generation: Jersey and Guernsey are in the Channel Islands.
+TTFT with full prefill: 8.364499507471919
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 368.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3872.35 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3872.35 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3872.35 toks/s, output: 0.24 toks/s]
+===== qa_1_077_len32170.json =====
+Cached generation: 2
+TTFT with cache: 8.319493165239692
+Normal generation: 2
+TTFT with full prefill: 8.319493165239692
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 411.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.78s/it, est. speed input: 3573.20 toks/s, output: 2.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.78s/it, est. speed input: 3573.20 toks/s, output: 2.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.78s/it, est. speed input: 3573.20 toks/s, output: 2.74 toks/s]
+===== qa_1_078_len31327.json =====
+Cached generation: The Norman architecture idiom is characterized by rounded arches, particularly over windows and doorways, and massive proportions.
+TTFT with cache: 8.779332186095417
+Normal generation: The Norman architecture idiom is characterized by rounded arches, particularly over windows and doorways, and massive proportions.
+TTFT with full prefill: 8.779332186095417
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 382.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3729.75 toks/s, output: 1.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3729.75 toks/s, output: 1.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3729.75 toks/s, output: 1.95 toks/s]
+===== qa_1_079_len30646.json =====
+Cached generation: Norman architecture has rounded arches, particularly over windows and doorways.
+TTFT with cache: 8.228612955659628
+Normal generation: Norman architecture has rounded arches, particularly over windows and doorways.
+TTFT with full prefill: 8.228612955659628
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 411.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3912.14 toks/s, output: 0.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3912.14 toks/s, output: 0.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3912.14 toks/s, output: 0.64 toks/s]
+===== qa_1_080_len30668.json =====
+Cached generation: Anglo-Saxon
+TTFT with cache: 7.850671556778252
+Normal generation: Anglo-Saxon
+TTFT with full prefill: 7.850671556778252
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 398.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3808.37 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3808.37 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3808.37 toks/s, output: 0.59 toks/s]
+===== qa_1_081_len32397.json =====
+Cached generation: Anglo-Saxon
+TTFT with cache: 8.518472079187632
+Normal generation: Anglo-Saxon
+TTFT with full prefill: 8.518472079187632
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 423.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  8.00s/it, est. speed input: 3725.27 toks/s, output: 2.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  8.00s/it, est. speed input: 3725.27 toks/s, output: 2.13 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  8.00s/it, est. speed input: 3725.27 toks/s, output: 2.13 toks/s]
+===== qa_1_082_len29758.json =====
+Cached generation: The Duchy of Normandy and southern Italy had the Norman Arab architectural style.
+TTFT with cache: 8.000177334062755
+Normal generation: The Duchy of Normandy and southern Italy had the Norman Arab architectural style.
+TTFT with full prefill: 8.000177334062755
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 387.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3756.42 toks/s, output: 1.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3756.42 toks/s, output: 1.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3756.42 toks/s, output: 1.70 toks/s]
+===== qa_1_083_len30969.json =====
+Cached generation: The church reform began in the early 11th century.
+TTFT with cache: 8.25612113904208
+Normal generation: The church reform began in the early 11th century.
+TTFT with full prefill: 8.25612113904208
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 393.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.02s/it, est. speed input: 3814.46 toks/s, output: 1.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.02s/it, est. speed input: 3814.46 toks/s, output: 1.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.02s/it, est. speed input: 3814.46 toks/s, output: 1.37 toks/s]
+===== qa_1_084_len30551.json =====
+Cached generation: The Normans used the church to unify themselves.
+TTFT with cache: 8.020998424850404
+Normal generation: The Normans used the church to unify themselves.
+TTFT with full prefill: 8.020998424850404
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 389.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.71s/it, est. speed input: 3678.88 toks/s, output: 1.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.71s/it, est. speed input: 3678.88 toks/s, output: 1.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.71s/it, est. speed input: 3678.88 toks/s, output: 1.72 toks/s]
+===== qa_1_085_len32000.json =====
+Cached generation: The French Wars of Religion occurred in the 16th century.
+TTFT with cache: 8.710328626446426
+Normal generation: The French Wars of Religion occurred in the 16th century.
+TTFT with full prefill: 8.710328626446426
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3917.87 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3917.87 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3917.87 toks/s, output: 0.50 toks/s]
+===== qa_1_086_len31039.json =====
+Cached generation: embroidery
+TTFT with cache: 7.933863231912255
+Normal generation: embroidery
+TTFT with full prefill: 7.933863231912255
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 428.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.55s/it, est. speed input: 3757.41 toks/s, output: 2.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.55s/it, est. speed input: 3757.41 toks/s, output: 2.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.55s/it, est. speed input: 3757.41 toks/s, output: 2.25 toks/s]
+===== qa_1_087_len28340.json =====
+Cached generation: The most well-known piece of Norman art is the Bayeux Tapestry.
+TTFT with cache: 7.554048823192716
+Normal generation: The most well-known piece of Norman art is the Bayeux Tapestry.
+TTFT with full prefill: 7.554048823192716
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 398.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.53s/it, est. speed input: 3648.50 toks/s, output: 2.46 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.53s/it, est. speed input: 3648.50 toks/s, output: 2.46 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.53s/it, est. speed input: 3648.50 toks/s, output: 2.46 toks/s]
+===== qa_1_088_len31102.json =====
+Cached generation: Odo, the Bishop of Bayeux and first Earl of Kent, commissioned the Tapestry.
+TTFT with cache: 8.536642039194703
+Normal generation: Odo, the Bishop of Bayeux and first Earl of Kent, commissioned the Tapestry.
+TTFT with full prefill: 8.536642039194703
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 377.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.03s/it, est. speed input: 3488.49 toks/s, output: 3.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.03s/it, est. speed input: 3488.49 toks/s, output: 3.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.03s/it, est. speed input: 3488.49 toks/s, output: 3.54 toks/s]
+===== qa_1_089_len31470.json =====
+Cached generation: Norman artwork survives plentifully in forms strongly influenced by its Greek, Lombard, and Arab forebears, particularly in the form of mosaics.
+TTFT with cache: 9.033632420003414
+Normal generation: Norman artwork survives plentifully in forms strongly influenced by its Greek, Lombard, and Arab forebears, particularly in the form of mosaics.
+TTFT with full prefill: 9.033632420003414
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 392.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3926.17 toks/s, output: 0.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3926.17 toks/s, output: 0.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3926.17 toks/s, output: 0.65 toks/s]
+===== qa_1_090_len30235.json =====
+Cached generation: 11th century
+TTFT with cache: 7.712379705160856
+Normal generation: 11th century
+TTFT with full prefill: 7.712379705160856
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 385.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3801.50 toks/s, output: 1.34 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3801.50 toks/s, output: 1.34 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3801.50 toks/s, output: 1.34 toks/s]
+===== qa_1_091_len31074.json =====
+Cached generation: William of Volpiano and John of Ravenna
+TTFT with cache: 8.185990729369223
+Normal generation: William of Volpiano and John of Ravenna
+TTFT with full prefill: 8.185990729369223
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 389.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3803.73 toks/s, output: 0.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3803.73 toks/s, output: 0.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3803.73 toks/s, output: 0.97 toks/s]
+===== qa_1_092_len31265.json =====
+Cached generation: The monks fled to southern Italy.
+TTFT with cache: 8.231367983855307
+Normal generation: The monks fled to southern Italy.
+TTFT with full prefill: 8.231367983855307
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 393.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3793.80 toks/s, output: 0.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3793.80 toks/s, output: 0.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3793.80 toks/s, output: 0.70 toks/s]
+===== qa_1_093_len32404.json =====
+Cached generation: Sant'Eufemia
+TTFT with cache: 8.553096420131624
+Normal generation: Sant'Eufemia
+TTFT with full prefill: 8.553096420131624
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 378.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it, est. speed input: 3814.14 toks/s, output: 1.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it, est. speed input: 3814.14 toks/s, output: 1.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it, est. speed input: 3814.14 toks/s, output: 1.37 toks/s]
+===== qa_1_094_len30691.json =====
+Cached generation: Robert Guiscard patronized the monks in Italy.
+TTFT with cache: 8.058497003279626
+Normal generation: Robert Guiscard patronized the monks in Italy.
+TTFT with full prefill: 8.058497003279626
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 391.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3571.26 toks/s, output: 2.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3571.26 toks/s, output: 2.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3571.26 toks/s, output: 2.88 toks/s]
+===== qa_1_095_len30985.json =====
+Cached generation: The Saint-Evroul monks were known for developing a system of denoting notes by letters and for musical composition.
+TTFT with cache: 8.688443309627473
+Normal generation: The Saint-Evroul monks were known for developing a system of denoting notes by letters and for musical composition.
+TTFT with full prefill: 8.688443309627473
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 396.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3834.45 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3834.45 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3834.45 toks/s, output: 0.60 toks/s]
+===== qa_1_096_len31883.json =====
+Cached generation: Computational complexity theory
+TTFT with cache: 8.326532191596925
+Normal generation: Computational complexity theory
+TTFT with full prefill: 8.326532191596925
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 392.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.99s/it, est. speed input: 3908.35 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.99s/it, est. speed input: 3908.35 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.99s/it, est. speed input: 3908.35 toks/s, output: 0.25 toks/s]
+===== qa_1_097_len31198.json =====
+Cached generation: difficulty
+TTFT with cache: 7.993906241841614
+Normal generation: difficulty
+TTFT with full prefill: 7.993906241841614
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 387.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3820.68 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3820.68 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3820.68 toks/s, output: 0.47 toks/s]
+===== qa_1_098_len32639.json =====
+Cached generation: computational problem
+TTFT with cache: 8.55446076206863
+Normal generation: computational problem
+TTFT with full prefill: 8.55446076206863
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 370.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3600.55 toks/s, output: 2.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3600.55 toks/s, output: 2.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3600.55 toks/s, output: 2.69 toks/s]
+===== qa_1_099_len30722.json =====
+Cached generation: The measure of a computational problem that broadly defines the inherent difficulty of the solution is the time or space complexity.
+TTFT with cache: 8.544912713579834
+Normal generation: The measure of a computational problem that broadly defines the inherent difficulty of the solution is the time or space complexity.
+TTFT with full prefill: 8.544912713579834
+------------
+[全部完成] 100 条
+INFO 09-23 23:21:42 [core_client.py:744] [shutdown] MPClient: start timeout=60s
+INFO 09-23 23:21:42 [core_client.py:746] [shutdown] MPClient: stopping engine manager
+INFO 09-23 23:21:42 [utils.py:632] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=529912) INFO 09-23 23:21:42 [core.py:1342] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=529912) INFO 09-23 23:21:42 [core.py:1493] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=529912) INFO 09-23 23:21:42 [core.py:1524] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=529912) INFO 09-23 23:21:42 [core.py:1355] [shutdown] EngineCore: exiting busy loop
+INFO 09-23 23:21:43 [core_client.py:748] [shutdown] MPClient: engine manager stopped
+INFO 09-23 23:21:43 [core_client.py:749] [shutdown] MPClient: cleaning up background resources
+INFO 09-23 23:21:43 [core_client.py:751] [shutdown] MPClient: complete

@@ -1,0 +1,851 @@
+INFO 09-23 23:22:00 [arg_utils.py:849] HF_HUB_OFFLINE is True, replace model_id [Qwen/Qwen2.5-7B-Instruct] to model_path [/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28]
+INFO 09-23 23:22:00 [api_utils.py:286] non-default args: {'max_model_len': 32768, 'gpu_memory_utilization': 0.9, 'disable_log_stats': True, 'enforce_eager': True, 'model': '/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28'}
+INFO 09-23 23:22:00 [model.py:692] Resolved architecture: Qwen2ForCausalLM
+INFO 09-23 23:22:00 [model.py:2030] Using max model len 32768
+INFO 09-23 23:22:00 [scheduler.py:288] Chunked prefill is enabled with max_num_batched_tokens=8192.
+WARNING 09-23 23:22:00 [vllm.py:1547] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 09-23 23:22:00 [vllm.py:1570] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 09-23 23:22:00 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+INFO 09-23 23:22:00 [vllm.py:1780] Cudagraph is disabled under eager mode
+INFO 09-23 23:22:00 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(EngineCore pid=536397) INFO 09-23 23:22:05 [core.py:123] Initializing a V1 LLM engine (v0.30.0) with config: model='/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28', speculative_config=None, tokenizer='/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(EngineCore pid=536397) INFO 09-23 23:22:07 [parallel_state.py:1827] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_bf131e184bc24dad8fa2e94ba1055435 backend=nccl
+(EngineCore pid=536397) INFO 09-23 23:22:07 [parallel_state.py:2267] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=536397) INFO 09-23 23:22:07 [gpu_worker.py:441] Using V2 Model Runner
+(EngineCore pid=536397) INFO 09-23 23:22:08 [model_runner.py:396] Loading model from scratch...
+(EngineCore pid=536397) INFO 09-23 23:22:09 [cuda.py:538] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=536397) INFO 09-23 23:22:09 [flash_attn.py:1116] Using FlashAttention version 2
+(EngineCore pid=536397) INFO 09-23 23:22:10 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 14.19 GiB. Available RAM: 238.00 GiB.
+(EngineCore pid=536397) INFO 09-23 23:22:10 [weight_utils.py:918] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=536397) Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(EngineCore pid=536397) Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:02<00:08,  2.91s/it]
+(EngineCore pid=536397) Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:05<00:05,  2.53s/it]
+(EngineCore pid=536397) Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:07<00:02,  2.47s/it]
+(EngineCore pid=536397) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:09<00:00,  2.45s/it]
+(EngineCore pid=536397) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:09<00:00,  2.49s/it]
+(EngineCore pid=536397) 
+(EngineCore pid=536397) INFO 09-23 23:22:20 [default_loader.py:430] Loading weights took 10.01 seconds
+(EngineCore pid=536397) INFO 09-23 23:22:21 [model_runner.py:428] Model loading took 14.19 GiB memory and 13.143478 seconds
+(EngineCore pid=536397) INFO 09-23 23:22:21 [topk_topp_sampler.py:62] FlashInfer top-p/top-k sampling disabled via VLLM_USE_FLASHINFER_SAMPLER=0.
+(EngineCore pid=536397) INFO 09-23 23:22:21 [utils.py:320] Using LBNHC KV cache layout.
+(EngineCore pid=536397) INFO 09-23 23:22:25 [gpu_worker.py:640] Available KV cache memory: 5.63 GiB
+(EngineCore pid=536397) INFO 09-23 23:22:25 [kv_cache_utils.py:2395] GPU KV cache size: 105,408 tokens, Maximum concurrency for 32,768 tokens per request: 3.22x
+(EngineCore pid=536397) INFO 09-23 23:22:26 [kernel_warmup.py:172] JIT kernel warmup starting.
+(EngineCore pid=536397) INFO 09-23 23:22:26 [kernel_warmup.py:185] JIT kernel warmup finished in 0.00s.
+(EngineCore pid=536397) INFO 09-23 23:22:27 [gpu_worker.py:888] Free memory on device (23.28/23.55 GiB) on startup. Desired GPU memory utilization is (0.9, 21.19 GiB). Actual usage is 14.48 GiB for consumed memory (weights + non-torch), 1.09 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=5887565108` (5.48 GiB) to fit into requested memory, or `--kv-cache-memory=8123771392` (7.57 GiB) to fully utilize gpu memory. Current kv cache memory in use is 5.63 GiB.
+(EngineCore pid=536397) INFO 09-23 23:22:27 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(EngineCore pid=536397) INFO 09-23 23:22:28 [torch_utils.py:287] Reducing Torch threads from 16 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=536397) INFO 09-23 23:22:28 [core.py:379] init engine (profile, create kv cache, warmup model) took 7.04 s
+(EngineCore pid=536397) INFO 09-23 23:22:28 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+INFO 09-23 23:22:29 [hf.py:642] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 45.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.72s/it, est. speed input: 3542.25 toks/s, output: 2.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.72s/it, est. speed input: 3542.25 toks/s, output: 2.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.72s/it, est. speed input: 3542.25 toks/s, output: 2.98 toks/s]
+===== qa_1_100_len30867.json =====
+Cached generation: The amount of resources required to solve a computational problem can be intuitively assessed or quantified using time and space complexity measures.
+TTFT with cache: 8.747682171873748
+Normal generation: The amount of resources required to solve a computational problem can be intuitively assessed or quantified using time and space complexity measures.
+TTFT with full prefill: 8.747682171873748
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 385.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3819.72 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3819.72 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3819.72 toks/s, output: 0.47 toks/s]
+===== qa_1_101_len32721.json =====
+Cached generation: time and space
+TTFT with cache: 8.578320155851543
+Normal generation: time and space
+TTFT with full prefill: 8.578320155851543
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.52s/it, est. speed input: 3387.93 toks/s, output: 3.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.52s/it, est. speed input: 3387.93 toks/s, output: 3.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.52s/it, est. speed input: 3387.93 toks/s, output: 3.78 toks/s]
+===== qa_1_102_len32234.json =====
+Cached generation: The unit measured to determine circuit complexity is not explicitly stated in the given documents, but it can be inferred to be related to the number of components or gates in the circuit.
+TTFT with cache: 9.52733660209924
+Normal generation: The unit measured to determine circuit complexity is not explicitly stated in the given documents, but it can be inferred to be related to the number of components or gates in the circuit.
+TTFT with full prefill: 9.52733660209924
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 462.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.14s/it, est. speed input: 3420.17 toks/s, output: 3.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.14s/it, est. speed input: 3420.17 toks/s, output: 3.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.14s/it, est. speed input: 3420.17 toks/s, output: 3.94 toks/s]
+===== qa_1_103_len31221.json =====
+Cached generation: Defining the complexity of problems helps in understanding which problems can be solved efficiently and which ones are intractable, guiding the development of algorithms and the choice of computational models.
+TTFT with cache: 9.141012945212424
+Normal generation: Defining the complexity of problems helps in understanding which problems can be solved efficiently and which ones are intractable, guiding the development of algorithms and the choice of computational models.
+TTFT with full prefill: 9.141012945212424
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 449.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3846.57 toks/s, output: 1.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3846.57 toks/s, output: 1.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3846.57 toks/s, output: 1.03 toks/s]
+===== qa_1_104_len29976.json =====
+Cached generation: analysis of algorithms and computability theory
+TTFT with cache: 7.804614294320345
+Normal generation: analysis of algorithms and computability theory
+TTFT with full prefill: 7.804614294320345
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 418.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3824.69 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3824.69 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3824.69 toks/s, output: 0.47 toks/s]
+===== qa_1_105_len32495.json =====
+Cached generation: Analysis of algorithms
+TTFT with cache: 8.507925583980978
+Normal generation: Analysis of algorithms
+TTFT with full prefill: 8.507925583980978
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 438.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3861.63 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3861.63 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3861.63 toks/s, output: 0.62 toks/s]
+===== qa_1_106_len31241.json =====
+Cached generation: computational complexity theory
+TTFT with cache: 8.101872622966766
+Normal generation: computational complexity theory
+TTFT with full prefill: 8.101872622966766
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 448.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.83s/it, est. speed input: 3886.60 toks/s, output: 0.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.83s/it, est. speed input: 3886.60 toks/s, output: 0.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.83s/it, est. speed input: 3886.60 toks/s, output: 0.64 toks/s]
+===== qa_1_107_len30414.json =====
+Cached generation: computational complexity theory
+TTFT with cache: 7.836797461844981
+Normal generation: computational complexity theory
+TTFT with full prefill: 7.836797461844981
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 143.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.51s/it, est. speed input: 3944.52 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.51s/it, est. speed input: 3944.52 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.51s/it, est. speed input: 3944.52 toks/s, output: 0.40 toks/s]
+===== qa_1_108_len29609.json =====
+Cached generation: problem instance
+TTFT with cache: 7.5225140349939466
+Normal generation: problem instance
+TTFT with full prefill: 7.5225140349939466
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 419.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3928.33 toks/s, output: 0.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3928.33 toks/s, output: 0.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3928.33 toks/s, output: 0.26 toks/s]
+===== qa_1_109_len30615.json =====
+Cached generation: problem
+TTFT with cache: 7.804974391125143
+Normal generation: problem
+TTFT with full prefill: 7.804974391125143
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 271.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.37s/it, est. speed input: 3855.69 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.37s/it, est. speed input: 3855.69 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3855.69 toks/s, output: 0.36 toks/s]
+===== qa_1_110_len32263.json =====
+Cached generation: concrete
+TTFT with cache: 8.38093104492873
+Normal generation: concrete
+TTFT with full prefill: 8.38093104492873
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 283.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.42s/it, est. speed input: 3851.56 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.42s/it, est. speed input: 3851.56 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.42s/it, est. speed input: 3851.56 toks/s, output: 0.24 toks/s]
+===== qa_1_111_len32402.json =====
+Cached generation: resource
+TTFT with cache: 8.426034421660006
+Normal generation: resource
+TTFT with full prefill: 8.426034421660006
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.68s/it, est. speed input: 3943.47 toks/s, output: 0.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.68s/it, est. speed input: 3943.47 toks/s, output: 0.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.68s/it, est. speed input: 3943.47 toks/s, output: 0.26 toks/s]
+===== qa_1_112_len30238.json =====
+Cached generation: solution
+TTFT with cache: 7.679700925946236
+Normal generation: solution
+TTFT with full prefill: 7.679700925946236
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 432.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3733.69 toks/s, output: 1.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3733.69 toks/s, output: 1.04 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.68s/it, est. speed input: 3733.69 toks/s, output: 1.04 toks/s]
+===== qa_1_113_len32383.json =====
+Cached generation: at most 2000 kilometers
+TTFT with cache: 8.68500560708344
+Normal generation: at most 2000 kilometers
+TTFT with full prefill: 8.68500560708344
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 464.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.06s/it, est. speed input: 3506.06 toks/s, output: 2.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.06s/it, est. speed input: 3506.06 toks/s, output: 2.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.06s/it, est. speed input: 3506.06 toks/s, output: 2.87 toks/s]
+===== qa_1_114_len31725.json =====
+Cached generation: Is there a route of at most 2000 kilometres passing through all of Germany's 15 largest cities?
+TTFT with cache: 9.060847759246826
+Normal generation: Is there a route of at most 2000 kilometres passing through all of Germany's 15 largest cities?
+TTFT with full prefill: 9.060847759246826
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 423.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.86s/it, est. speed input: 3514.58 toks/s, output: 3.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.86s/it, est. speed input: 3514.58 toks/s, output: 3.05 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.86s/it, est. speed input: 3514.58 toks/s, output: 3.05 toks/s]
+===== qa_1_115_len31106.json =====
+Cached generation: Computational complexity theory most specifically seeks to answer the question of the inherent difficulty of computational problems and the resources required to solve them.
+TTFT with cache: 8.86304451432079
+Normal generation: Computational complexity theory most specifically seeks to answer the question of the inherent difficulty of computational problems and the resources required to solve them.
+TTFT with full prefill: 8.86304451432079
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 429.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.65s/it, est. speed input: 3642.46 toks/s, output: 2.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.65s/it, est. speed input: 3642.46 toks/s, output: 2.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.65s/it, est. speed input: 3642.46 toks/s, output: 2.08 toks/s]
+===== qa_1_116_len31489.json =====
+Cached generation: In a computational problem, an instance can be described as a string over an alphabet.
+TTFT with cache: 8.656946750357747
+Normal generation: In a computational problem, an instance can be described as a string over an alphabet.
+TTFT with full prefill: 8.656946750357747
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 453.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3833.05 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3833.05 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3833.05 toks/s, output: 0.36 toks/s]
+===== qa_1_117_len32334.json =====
+Cached generation: binary alphabet
+TTFT with cache: 8.447040712460876
+Normal generation: binary alphabet
+TTFT with full prefill: 8.447040712460876
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 462.34it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.84s/it, est. speed input: 3914.47 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.84s/it, est. speed input: 3914.47 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.84s/it, est. speed input: 3914.47 toks/s, output: 0.38 toks/s]
+===== qa_1_118_len30653.json =====
+Cached generation: input string
+TTFT with cache: 7.842059069313109
+Normal generation: input string
+TTFT with full prefill: 7.842059069313109
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 427.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3748.00 toks/s, output: 1.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3748.00 toks/s, output: 1.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.52s/it, est. speed input: 3748.00 toks/s, output: 1.17 toks/s]
+===== qa_1_119_len31885.json =====
+Cached generation: integers are commonly expressed in binary notation.
+TTFT with cache: 8.51901068072766
+Normal generation: integers are commonly expressed in binary notation.
+TTFT with full prefill: 8.51901068072766
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 470.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3797.65 toks/s, output: 1.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3797.65 toks/s, output: 1.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3797.65 toks/s, output: 1.24 toks/s]
+===== qa_1_120_len30497.json =====
+Cached generation: graphs can be encoded directly via their adjacency matrices
+TTFT with cache: 8.042085714638233
+Normal generation: graphs can be encoded directly via their adjacency matrices
+TTFT with full prefill: 8.042085714638233
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 463.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.77s/it, est. speed input: 3920.33 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.77s/it, est. speed input: 3920.33 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.77s/it, est. speed input: 3920.33 toks/s, output: 0.39 toks/s]
+===== qa_1_121_len30432.json =====
+Cached generation: Decision problems
+TTFT with cache: 7.773946861736476
+Normal generation: Decision problems
+TTFT with full prefill: 7.773946861736476
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 460.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.47s/it, est. speed input: 3932.34 toks/s, output: 0.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.47s/it, est. speed input: 3932.34 toks/s, output: 0.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.47s/it, est. speed input: 3932.34 toks/s, output: 0.54 toks/s]
+===== qa_1_122_len29351.json =====
+Cached generation: yes or no
+TTFT with cache: 7.4754120679572225
+Normal generation: yes or no
+TTFT with full prefill: 7.4754120679572225
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 436.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3865.63 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3865.63 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3865.63 toks/s, output: 0.49 toks/s]
+===== qa_1_123_len31399.json =====
+Cached generation: yes or no
+TTFT with cache: 8.13422017171979
+Normal generation: yes or no
+TTFT with full prefill: 8.13422017171979
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 355.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3876.27 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3876.27 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3876.27 toks/s, output: 0.50 toks/s]
+===== qa_1_124_len31034.json =====
+Cached generation: yes or no
+TTFT with cache: 8.01865703240037
+Normal generation: yes or no
+TTFT with full prefill: 8.01865703240037
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 424.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.56s/it, est. speed input: 3803.43 toks/s, output: 0.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.56s/it, est. speed input: 3803.43 toks/s, output: 0.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.56s/it, est. speed input: 3803.43 toks/s, output: 0.58 toks/s]
+===== qa_1_125_len32527.json =====
+Cached generation: the algorithm returns yes
+TTFT with cache: 8.563819196075201
+Normal generation: the algorithm returns yes
+TTFT with full prefill: 8.563819196075201
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 407.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.07s/it, est. speed input: 3886.52 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.07s/it, est. speed input: 3886.52 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.07s/it, est. speed input: 3886.52 toks/s, output: 0.37 toks/s]
+===== qa_1_126_len31350.json =====
+Cached generation: connected graphs
+TTFT with cache: 8.078106569126248
+Normal generation: connected graphs
+TTFT with full prefill: 8.078106569126248
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 433.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3796.12 toks/s, output: 0.83 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3796.12 toks/s, output: 0.83 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3796.12 toks/s, output: 0.83 toks/s]
+===== qa_1_127_len31881.json =====
+Cached generation: The set of all connected graphs
+TTFT with cache: 8.410146037116647
+Normal generation: The set of all connected graphs
+TTFT with full prefill: 8.410146037116647
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 443.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3791.09 toks/s, output: 1.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3791.09 toks/s, output: 1.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3791.09 toks/s, output: 1.08 toks/s]
+===== qa_1_128_len31494.json =====
+Cached generation: the encoding of different objects into bitstrings
+TTFT with cache: 8.319176360964775
+Normal generation: the encoding of different objects into bitstrings
+TTFT with full prefill: 8.319176360964775
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 457.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.25s/it, est. speed input: 3431.42 toks/s, output: 3.57 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.25s/it, est. speed input: 3431.42 toks/s, output: 3.57 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.25s/it, est. speed input: 3431.42 toks/s, output: 3.57 toks/s]
+===== qa_1_129_len31707.json =====
+Cached generation: a computational problem where a single output (of a total function) is expected for every input, but the output is more complex than that of a decision problem.
+TTFT with cache: 9.252748060040176
+Normal generation: a computational problem where a single output (of a total function) is expected for every input, but the output is more complex than that of a decision problem.
+TTFT with full prefill: 9.252748060040176
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3825.78 toks/s, output: 1.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3825.78 toks/s, output: 1.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3825.78 toks/s, output: 1.00 toks/s]
+===== qa_1_130_len30722.json =====
+Cached generation: more complex than just yes or no
+TTFT with cache: 8.041878653690219
+Normal generation: more complex than just yes or no
+TTFT with full prefill: 8.041878653690219
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 461.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3889.71 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3889.71 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3889.71 toks/s, output: 0.38 toks/s]
+===== qa_1_131_len30888.json =====
+Cached generation: function problem
+TTFT with cache: 7.952434603124857
+Normal generation: function problem
+TTFT with full prefill: 7.952434603124857
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 432.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3807.38 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3807.38 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3807.38 toks/s, output: 0.72 toks/s]
+===== qa_1_132_len31804.json =====
+Cached generation: The integer factorization problem
+TTFT with cache: 8.364941994659603
+Normal generation: The integer factorization problem
+TTFT with full prefill: 8.364941994659603
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 423.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3908.67 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3908.67 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3908.67 toks/s, output: 0.25 toks/s]
+===== qa_1_133_len30956.json =====
+Cached generation: complex
+TTFT with cache: 7.931475359946489
+Normal generation: complex
+TTFT with full prefill: 7.931475359946489
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 452.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3784.13 toks/s, output: 1.53 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3784.13 toks/s, output: 1.53 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3784.13 toks/s, output: 1.53 toks/s]
+===== qa_1_134_len29660.json =====
+Cached generation: Function problems can typically be restated as decision problems.
+TTFT with cache: 7.849700152873993
+Normal generation: Function problems can typically be restated as decision problems.
+TTFT with full prefill: 7.849700152873993
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 455.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3834.92 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3834.92 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3834.92 toks/s, output: 0.48 toks/s]
+===== qa_1_135_len31906.json =====
+Cached generation: set of integers
+TTFT with cache: 8.331370162777603
+Normal generation: set of integers
+TTFT with full prefill: 8.331370162777603
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 464.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3931.42 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3931.42 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3931.42 toks/s, output: 0.39 toks/s]
+===== qa_1_136_len30284.json =====
+Cached generation: time complexity
+TTFT with cache: 7.714439123868942
+Normal generation: time complexity
+TTFT with full prefill: 7.714439123868942
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 475.22it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3899.12 toks/s, output: 0.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3899.12 toks/s, output: 0.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3899.12 toks/s, output: 0.78 toks/s]
+===== qa_1_137_len30021.json =====
+Cached generation: the size of the instance
+TTFT with cache: 7.7107888627797365
+Normal generation: the size of the instance
+TTFT with full prefill: 7.7107888627797365
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 446.92it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.69s/it, est. speed input: 3202.13 toks/s, output: 5.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.69s/it, est. speed input: 3202.13 toks/s, output: 5.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.69s/it, est. speed input: 3202.13 toks/s, output: 5.26 toks/s]
+===== qa_1_138_len31003.json =====
+Cached generation: The time needed to obtain the solution to a problem is calculated as a function of the size of the instance. Specifically, for a computational problem, the running time is often measured in terms of how it scales with the size of the input in bits.
+TTFT with cache: 9.694992134347558
+Normal generation: The time needed to obtain the solution to a problem is calculated as a function of the size of the instance. Specifically, for a computational problem, the running time is often measured in terms of how it scales with the size of the input in bits.
+TTFT with full prefill: 9.694992134347558
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 481.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3838.87 toks/s, output: 1.45 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3838.87 toks/s, output: 1.45 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3838.87 toks/s, output: 1.45 toks/s]
+===== qa_1_139_len29185.json =====
+Cached generation: The size of the input is measured in bits.
+TTFT with cache: 7.614040253683925
+Normal generation: The size of the input is measured in bits.
+TTFT with full prefill: 7.614040253683925
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 402.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.59s/it, est. speed input: 3814.74 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.59s/it, est. speed input: 3814.74 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.59s/it, est. speed input: 3814.74 toks/s, output: 0.47 toks/s]
+===== qa_1_140_len32724.json =====
+Cached generation: time and space
+TTFT with cache: 8.59023050405085
+Normal generation: time and space
+TTFT with full prefill: 8.59023050405085
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 407.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3847.59 toks/s, output: 0.75 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3847.59 toks/s, output: 0.75 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3847.59 toks/s, output: 0.75 toks/s]
+===== qa_1_141_len30850.json =====
+Cached generation: Cobham's thesis
+TTFT with cache: 8.030163870193064
+Normal generation: Cobham's thesis
+TTFT with full prefill: 8.030163870193064
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 460.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.19s/it, est. speed input: 3367.92 toks/s, output: 4.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.19s/it, est. speed input: 3367.92 toks/s, output: 4.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.19s/it, est. speed input: 3367.92 toks/s, output: 4.24 toks/s]
+===== qa_1_142_len30924.json =====
+Cached generation: Since the time taken on different inputs of the same size can be different, the worst-case time complexity T(n) is defined to be the maximum time taken over all inputs of size n.
+TTFT with cache: 9.194428686983883
+Normal generation: Since the time taken on different inputs of the same size can be different, the worst-case time complexity T(n) is defined to be the maximum time taken over all inputs of size n.
+TTFT with full prefill: 9.194428686983883
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 454.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.87s/it, est. speed input: 3870.15 toks/s, output: 0.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.87s/it, est. speed input: 3870.15 toks/s, output: 0.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.87s/it, est. speed input: 3870.15 toks/s, output: 0.76 toks/s]
+===== qa_1_143_len30440.json =====
+Cached generation: worst-case time complexity
+TTFT with cache: 7.87682028580457
+Normal generation: worst-case time complexity
+TTFT with full prefill: 7.87682028580457
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3836.86 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3836.86 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3836.86 toks/s, output: 0.48 toks/s]
+===== qa_1_144_len31849.json =====
+Cached generation: T(n)
+TTFT with cache: 8.312394814565778
+Normal generation: T(n)
+TTFT with full prefill: 8.312394814565778
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 445.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.29s/it, est. speed input: 3836.33 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.29s/it, est. speed input: 3836.33 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.29s/it, est. speed input: 3836.33 toks/s, output: 0.60 toks/s]
+===== qa_1_145_len31762.json =====
+Cached generation: polynomial time algorithm
+TTFT with cache: 8.290831863880157
+Normal generation: polynomial time algorithm
+TTFT with full prefill: 8.290831863880157
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 424.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.06s/it, est. speed input: 3868.68 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.06s/it, est. speed input: 3868.68 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.06s/it, est. speed input: 3868.68 toks/s, output: 0.50 toks/s]
+===== qa_1_146_len31153.json =====
+Cached generation: Turing machine
+TTFT with cache: 8.06426222808659
+Normal generation: Turing machine
+TTFT with full prefill: 8.06426222808659
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 418.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it, est. speed input: 3828.96 toks/s, output: 1.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it, est. speed input: 3828.96 toks/s, output: 1.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it, est. speed input: 3828.96 toks/s, output: 1.12 toks/s]
+===== qa_1_147_len30808.json =====
+Cached generation: anything that can be computed by an algorithm
+TTFT with cache: 8.057889535091817
+Normal generation: anything that can be computed by an algorithm
+TTFT with full prefill: 8.057889535091817
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 426.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3876.51 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3876.51 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3876.51 toks/s, output: 0.50 toks/s]
+===== qa_1_148_len30919.json =====
+Cached generation: Turing machine
+TTFT with cache: 7.987318183295429
+Normal generation: Turing machine
+TTFT with full prefill: 7.987318183295429
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 463.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3766.56 toks/s, output: 1.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3766.56 toks/s, output: 1.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3766.56 toks/s, output: 1.78 toks/s]
+===== qa_1_149_len29541.json =====
+Cached generation: A Turing machine manipulates symbols contained on a strip of tape.
+TTFT with cache: 7.854574684984982
+Normal generation: A Turing machine manipulates symbols contained on a strip of tape.
+TTFT with full prefill: 7.854574684984982
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 435.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3693.06 toks/s, output: 1.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3693.06 toks/s, output: 1.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3693.06 toks/s, output: 1.76 toks/s]
+===== qa_1_150_len31416.json =====
+Cached generation: The most basic iteration of a Turing machine is the deterministic Turing machine.
+TTFT with cache: 8.518717823550105
+Normal generation: The most basic iteration of a Turing machine is the deterministic Turing machine.
+TTFT with full prefill: 8.518717823550105
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.91s/it, est. speed input: 3864.62 toks/s, output: 0.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.91s/it, est. speed input: 3864.62 toks/s, output: 0.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.92s/it, est. speed input: 3864.62 toks/s, output: 0.76 toks/s]
+===== qa_1_151_len30560.json =====
+Cached generation: a fixed set of rules
+TTFT with cache: 7.919234963133931
+Normal generation: a fixed set of rules
+TTFT with full prefill: 7.919234963133931
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 430.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3809.88 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3809.88 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3809.88 toks/s, output: 0.72 toks/s]
+===== qa_1_152_len31940.json =====
+Cached generation: Probabilistic Turing machine
+TTFT with cache: 8.39521150290966
+Normal generation: Probabilistic Turing machine
+TTFT with full prefill: 8.39521150290966
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 438.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3818.77 toks/s, output: 0.85 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3818.77 toks/s, output: 0.85 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3818.77 toks/s, output: 0.85 toks/s]
+===== qa_1_153_len31478.json =====
+Cached generation: Non-deterministic Turing machine
+TTFT with cache: 8.254608078859746
+Normal generation: Non-deterministic Turing machine
+TTFT with full prefill: 8.254608078859746
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 431.20it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3840.58 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3840.58 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3840.58 toks/s, output: 0.48 toks/s]
+===== qa_1_154_len31973.json =====
+Cached generation: Randomized algorithms
+TTFT with cache: 8.336711117997766
+Normal generation: Randomized algorithms
+TTFT with full prefill: 8.336711117997766
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 433.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.75s/it, est. speed input: 3694.62 toks/s, output: 1.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.75s/it, est. speed input: 3694.62 toks/s, output: 1.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.75s/it, est. speed input: 3694.62 toks/s, output: 1.37 toks/s]
+===== qa_1_155_len32311.json =====
+Cached generation: Turing machines are commonly employed to define complexity classes.
+TTFT with cache: 8.75736755784601
+Normal generation: Turing machines are commonly employed to define complexity classes.
+TTFT with full prefill: 8.75736755784601
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 455.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.85s/it, est. speed input: 3494.80 toks/s, output: 3.28 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.85s/it, est. speed input: 3494.80 toks/s, output: 3.28 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.85s/it, est. speed input: 3494.80 toks/s, output: 3.28 toks/s]
+===== qa_1_156_len30908.json =====
+Cached generation: The ability to make probabilistic decisions and the ability to have non-determinism are two factors that can make a Turing machine more powerful.
+TTFT with cache: 8.856432281434536
+Normal generation: The ability to make probabilistic decisions and the ability to have non-determinism are two factors that can make a Turing machine more powerful.
+TTFT with full prefill: 8.856432281434536
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 448.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3762.58 toks/s, output: 1.34 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3762.58 toks/s, output: 1.34 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3762.58 toks/s, output: 1.34 toks/s]
+===== qa_1_157_len30931.json =====
+Cached generation: deterministic Turing machine and probabilistic Turing machine
+TTFT with cache: 8.232306947931647
+Normal generation: deterministic Turing machine and probabilistic Turing machine
+TTFT with full prefill: 8.232306947931647
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 445.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3567.18 toks/s, output: 2.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3567.18 toks/s, output: 2.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3567.18 toks/s, output: 2.92 toks/s]
+===== qa_1_158_len30549.json =====
+Cached generation: An example of a machine model that deviates from a generally accepted multi-tape Turing machine is the random access machine.
+TTFT with cache: 8.57594304624945
+Normal generation: An example of a machine model that deviates from a generally accepted multi-tape Turing machine is the random access machine.
+TTFT with full prefill: 8.57594304624945
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 445.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3845.94 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3845.94 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3845.94 toks/s, output: 0.49 toks/s]
+===== qa_1_159_len31675.json =====
+Cached generation: computational power
+TTFT with cache: 8.247528881765902
+Normal generation: computational power
+TTFT with full prefill: 8.247528881765902
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 451.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.91s/it, est. speed input: 3877.82 toks/s, output: 0.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.91s/it, est. speed input: 3877.82 toks/s, output: 0.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.91s/it, est. speed input: 3877.82 toks/s, output: 0.63 toks/s]
+===== qa_1_160_len30636.json =====
+Cached generation: time and memory consumption
+TTFT with cache: 7.912054390646517
+Normal generation: time and memory consumption
+TTFT with full prefill: 7.912054390646517
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 399.23it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3695.92 toks/s, output: 1.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3695.92 toks/s, output: 1.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3695.92 toks/s, output: 1.76 toks/s]
+===== qa_1_161_len31439.json =====
+Cached generation: They all can be converted to another without providing any extra computational power.
+TTFT with cache: 8.518728041090071
+Normal generation: They all can be converted to another without providing any extra computational power.
+TTFT with full prefill: 8.518728041090071
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 425.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.37s/it, est. speed input: 3795.64 toks/s, output: 0.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.37s/it, est. speed input: 3795.64 toks/s, output: 0.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.37s/it, est. speed input: 3795.64 toks/s, output: 0.84 toks/s]
+===== qa_1_162_len31743.json =====
+Cached generation: Non-deterministic Turing machine
+TTFT with cache: 8.375151357613504
+Normal generation: Non-deterministic Turing machine
+TTFT with full prefill: 8.375151357613504
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3697.20 toks/s, output: 1.79 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3697.20 toks/s, output: 1.79 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3697.20 toks/s, output: 1.79 toks/s]
+===== qa_1_163_len30939.json =====
+Cached generation: more unusual resources often affect or facilitate ease of analysis in computational problems.
+TTFT with cache: 8.380151324905455
+Normal generation: more unusual resources often affect or facilitate ease of analysis in computational problems.
+TTFT with full prefill: 8.380151324905455
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 443.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3803.77 toks/s, output: 0.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3803.77 toks/s, output: 0.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3803.77 toks/s, output: 0.97 toks/s]
+===== qa_1_164_len31356.json =====
+Cached generation: a non-deterministic time facet
+TTFT with cache: 8.255163198336959
+Normal generation: a non-deterministic time facet
+TTFT with full prefill: 8.255163198336959
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 461.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.20s/it, est. speed input: 3955.96 toks/s, output: 0.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.20s/it, est. speed input: 3955.96 toks/s, output: 0.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.20s/it, est. speed input: 3955.96 toks/s, output: 0.69 toks/s]
+===== qa_1_165_len28460.json =====
+Cached generation: non-determinism
+TTFT with cache: 7.205571641214192
+Normal generation: non-determinism
+TTFT with full prefill: 7.205571641214192
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 418.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.34s/it, est. speed input: 3768.08 toks/s, output: 1.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.34s/it, est. speed input: 3768.08 toks/s, output: 1.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.34s/it, est. speed input: 3768.08 toks/s, output: 1.20 toks/s]
+===== qa_1_166_len31388.json =====
+Cached generation: the total number of state transitions, or steps
+TTFT with cache: 8.341791165992618
+Normal generation: the total number of state transitions, or steps
+TTFT with full prefill: 8.341791165992618
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 433.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3886.60 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3886.60 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3886.60 toks/s, output: 0.38 toks/s]
+===== qa_1_167_len30875.json =====
+Cached generation: resource consumption
+TTFT with cache: 7.955651415511966
+Normal generation: resource consumption
+TTFT with full prefill: 7.955651415511966
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.08s/it, est. speed input: 3839.60 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.08s/it, est. speed input: 3839.60 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.08s/it, est. speed input: 3839.60 toks/s, output: 0.74 toks/s]
+===== qa_1_168_len30998.json =====
+Cached generation: DTIME(f(n))
+TTFT with cache: 8.084986388683319
+Normal generation: DTIME(f(n))
+TTFT with full prefill: 8.084986388683319
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 460.71it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3879.93 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3879.93 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3879.93 toks/s, output: 0.25 toks/s]
+===== qa_1_169_len31532.json =====
+Cached generation: time
+TTFT with cache: 8.138539623469114
+Normal generation: time
+TTFT with full prefill: 8.138539623469114
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.79s/it, est. speed input: 3903.35 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.79s/it, est. speed input: 3903.35 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.79s/it, est. speed input: 3903.35 toks/s, output: 0.51 toks/s]
+===== qa_1_170_len30390.json =====
+Cached generation: complexity resources
+TTFT with cache: 7.7972932094708085
+Normal generation: complexity resources
+TTFT with full prefill: 7.7972932094708085
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 442.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3729.50 toks/s, output: 1.56 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3729.50 toks/s, output: 1.56 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3729.50 toks/s, output: 1.56 toks/s]
+===== qa_1_171_len31008.json =====
+Cached generation: A complexity resource can also be described as a computational resource.
+TTFT with cache: 8.3260761462152
+Normal generation: A complexity resource can also be described as a computational resource.
+TTFT with full prefill: 8.3260761462152
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 445.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.09s/it, est. speed input: 3817.85 toks/s, output: 0.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.09s/it, est. speed input: 3817.85 toks/s, output: 0.99 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.09s/it, est. speed input: 3817.85 toks/s, output: 0.99 toks/s]
+===== qa_1_172_len30865.json =====
+Cached generation: The Blum complexity axioms.
+TTFT with cache: 8.095971874892712
+Normal generation: The Blum complexity axioms.
+TTFT with full prefill: 8.095971874892712
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 428.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.30s/it, est. speed input: 3844.74 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.30s/it, est. speed input: 3844.74 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.30s/it, est. speed input: 3844.74 toks/s, output: 0.48 toks/s]
+===== qa_1_173_len31870.json =====
+Cached generation: a complexity measure
+TTFT with cache: 8.300913932733238
+Normal generation: a complexity measure
+TTFT with full prefill: 8.300913932733238
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 446.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  8.00s/it, est. speed input: 3905.02 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.00s/it, est. speed input: 3905.02 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.00s/it, est. speed input: 3905.02 toks/s, output: 0.25 toks/s]
+===== qa_1_174_len31211.json =====
+Cached generation: function
+TTFT with cache: 8.004045369103551
+Normal generation: function
+TTFT with full prefill: 8.004045369103551
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 435.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3631.42 toks/s, output: 2.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3631.42 toks/s, output: 2.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3631.42 toks/s, output: 2.50 toks/s]
+===== qa_1_175_len30506.json =====
+Cached generation: The three primary expressions used to represent case complexity are best case, worst case, and average case.
+TTFT with cache: 8.412647109478712
+Normal generation: The three primary expressions used to represent case complexity are best case, worst case, and average case.
+TTFT with full prefill: 8.412647109478712
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3870.38 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3870.38 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3870.38 toks/s, output: 0.49 toks/s]
+===== qa_1_176_len31439.json =====
+Cached generation: time and space
+TTFT with cache: 8.13461544830352
+Normal generation: time and space
+TTFT with full prefill: 8.13461544830352
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 419.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3912.37 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3912.37 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3912.37 toks/s, output: 0.25 toks/s]
+===== qa_1_177_len31057.json =====
+Cached generation: time
+TTFT with cache: 7.949975298717618
+Normal generation: time
+TTFT with full prefill: 7.949975298717618
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 410.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3845.98 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3845.98 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3845.98 toks/s, output: 0.24 toks/s]
+===== qa_1_178_len32448.json =====
+Cached generation: time
+TTFT with cache: 8.4488864550367
+Normal generation: time
+TTFT with full prefill: 8.4488864550367
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 471.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.42s/it, est. speed input: 3950.85 toks/s, output: 0.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.42s/it, est. speed input: 3950.85 toks/s, output: 0.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.42s/it, est. speed input: 3950.85 toks/s, output: 0.54 toks/s]
+===== qa_1_179_len29277.json =====
+Cached generation: quicksort
+TTFT with cache: 7.421714249998331
+Normal generation: quicksort
+TTFT with full prefill: 7.421714249998331
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 449.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3915.72 toks/s, output: 0.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3915.72 toks/s, output: 0.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.71s/it, est. speed input: 3915.72 toks/s, output: 0.52 toks/s]
+===== qa_1_180_len30144.json =====
+Cached generation: worst-case
+TTFT with cache: 7.7096495218575
+Normal generation: worst-case
+TTFT with full prefill: 7.7096495218575
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.27s/it, est. speed input: 3779.03 toks/s, output: 1.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.27s/it, est. speed input: 3779.03 toks/s, output: 1.21 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.27s/it, est. speed input: 3779.03 toks/s, output: 1.21 toks/s]
+===== qa_1_181_len31234.json =====
+Cached generation: T(n) = O(n^2)
+TTFT with cache: 8.276866083964705
+Normal generation: T(n) = O(n^2)
+TTFT with full prefill: 8.276866083964705
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 436.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.00s/it, est. speed input: 3816.90 toks/s, output: 1.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.00s/it, est. speed input: 3816.90 toks/s, output: 1.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.00s/it, est. speed input: 3816.90 toks/s, output: 1.12 toks/s]
+===== qa_1_182_len30516.json =====
+Cached generation: the most efficient algorithm solving a given problem
+TTFT with cache: 8.006928216665983
+Normal generation: the most efficient algorithm solving a given problem
+TTFT with full prefill: 8.006928216665983
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 438.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3861.10 toks/s, output: 0.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3861.10 toks/s, output: 0.90 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3861.10 toks/s, output: 0.90 toks/s]
+===== qa_1_183_len30110.json =====
+Cached generation: the field of analysis of algorithms
+TTFT with cache: 7.809903216548264
+Normal generation: the field of analysis of algorithms
+TTFT with full prefill: 7.809903216548264
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 447.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3879.74 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3879.74 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3879.74 toks/s, output: 0.37 toks/s]
+===== qa_1_184_len31384.json =====
+Cached generation: lower bounds
+TTFT with cache: 8.100674896501005
+Normal generation: lower bounds
+TTFT with full prefill: 8.100674896501005
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 443.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3851.30 toks/s, output: 0.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3851.30 toks/s, output: 0.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3851.30 toks/s, output: 0.61 toks/s]
+===== qa_1_185_len31464.json =====
+Cached generation: a specific time complexity
+TTFT with cache: 8.181374157778919
+Normal generation: a specific time complexity
+TTFT with full prefill: 8.181374157778919
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 424.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3824.81 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3824.81 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3824.81 toks/s, output: 0.59 toks/s]
+===== qa_1_186_len32249.json =====
+Cached generation: polynomial time algorithm
+TTFT with cache: 8.44327948614955
+Normal generation: polynomial time algorithm
+TTFT with full prefill: 8.44327948614955
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 445.11it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3924.49 toks/s, output: 0.53 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3924.49 toks/s, output: 0.53 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3924.49 toks/s, output: 0.53 toks/s]
+===== qa_1_187_len29855.json =====
+Cached generation: big O notation
+TTFT with cache: 7.618872472085059
+Normal generation: big O notation
+TTFT with full prefill: 7.618872472085059
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 442.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3739.31 toks/s, output: 1.30 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3739.31 toks/s, output: 1.30 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3739.31 toks/s, output: 1.30 toks/s]
+===== qa_1_188_len31697.json =====
+Cached generation: big O notation hides constant factors and smaller terms.
+TTFT with cache: 8.488560291007161
+Normal generation: big O notation hides constant factors and smaller terms.
+TTFT with full prefill: 8.488560291007161
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 422.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3811.73 toks/s, output: 1.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3811.73 toks/s, output: 1.12 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3811.73 toks/s, output: 1.12 toks/s]
+===== qa_1_189_len30490.json =====
+Cached generation: T(n) = O(n²)
+TTFT with cache: 8.010801677592099
+Normal generation: T(n) = O(n²)
+TTFT with full prefill: 8.010801677592099
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 438.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.21s/it, est. speed input: 3853.95 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.21s/it, est. speed input: 3853.95 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3853.95 toks/s, output: 0.49 toks/s]
+===== qa_1_190_len31632.json =====
+Cached generation: computational model
+TTFT with cache: 8.21924866270274
+Normal generation: computational model
+TTFT with full prefill: 8.21924866270274
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 457.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.99s/it, est. speed input: 3873.82 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.99s/it, est. speed input: 3873.82 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.99s/it, est. speed input: 3873.82 toks/s, output: 0.50 toks/s]
+===== qa_1_191_len30933.json =====
+Cached generation: Some complexity classes
+TTFT with cache: 7.996713785454631
+Normal generation: Some complexity classes
+TTFT with full prefill: 7.996713785454631
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 428.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.59s/it, est. speed input: 3719.22 toks/s, output: 1.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.59s/it, est. speed input: 3719.22 toks/s, output: 1.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.59s/it, est. speed input: 3719.22 toks/s, output: 1.40 toks/s]
+===== qa_1_192_len31924.json =====
+Cached generation: Complexity classes are generally classified into time and space.
+TTFT with cache: 8.595427483320236
+Normal generation: Complexity classes are generally classified into time and space.
+TTFT with full prefill: 8.595427483320236
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 431.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3930.23 toks/s, output: 0.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3930.23 toks/s, output: 0.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3930.23 toks/s, output: 0.26 toks/s]
+===== qa_1_193_len30679.json =====
+Cached generation: resources
+TTFT with cache: 7.817463677376509
+Normal generation: resources
+TTFT with full prefill: 7.817463677376509
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 452.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.87s/it, est. speed input: 3881.44 toks/s, output: 0.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.87s/it, est. speed input: 3881.44 toks/s, output: 0.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.87s/it, est. speed input: 3881.44 toks/s, output: 0.64 toks/s]
+===== qa_1_194_len30507.json =====
+Cached generation: concrete machine model
+TTFT with cache: 7.87118701916188
+Normal generation: concrete machine model
+TTFT with full prefill: 7.87118701916188
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 438.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3816.08 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3816.08 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3816.08 toks/s, output: 0.47 toks/s]
+===== qa_1_195_len32452.json =====
+Cached generation: a time complexity
+TTFT with cache: 8.51576319243759
+Normal generation: a time complexity
+TTFT with full prefill: 8.51576319243759
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 428.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3807.98 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3807.98 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.39s/it, est. speed input: 3807.98 toks/s, output: 0.72 toks/s]
+===== qa_1_196_len31923.json =====
+Cached generation: deterministic Turing machine
+TTFT with cache: 8.395089375786483
+Normal generation: deterministic Turing machine
+TTFT with full prefill: 8.395089375786483
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 436.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3839.07 toks/s, output: 0.73 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3839.07 toks/s, output: 0.73 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3839.07 toks/s, output: 0.73 toks/s]
+===== qa_1_197_len31358.json =====
+Cached generation: Cobham's thesis
+TTFT with cache: 8.179827561601996
+Normal generation: Cobham's thesis
+TTFT with full prefill: 8.179827561601996
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 434.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3912.44 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3912.44 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3912.44 toks/s, output: 0.25 toks/s]
+===== qa_1_198_len30981.json =====
+Cached generation: P
+TTFT with cache: 7.930155850946903
+Normal generation: P
+TTFT with full prefill: 7.930155850946903
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 453.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.15s/it, est. speed input: 3870.55 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.15s/it, est. speed input: 3870.55 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.15s/it, est. speed input: 3870.55 toks/s, output: 0.49 toks/s]
+===== qa_1_199_len31501.json =====
+Cached generation: time and space
+TTFT with cache: 8.150208914652467
+Normal generation: time and space
+TTFT with full prefill: 8.150208914652467
+------------
+[全部完成] 100 条
+INFO 09-23 23:36:23 [core_client.py:744] [shutdown] MPClient: start timeout=60s
+INFO 09-23 23:36:23 [core_client.py:746] [shutdown] MPClient: stopping engine manager
+INFO 09-23 23:36:23 [utils.py:632] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=536397) INFO 09-23 23:36:23 [core.py:1342] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=536397) INFO 09-23 23:36:23 [core.py:1493] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=536397) INFO 09-23 23:36:23 [core.py:1524] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=536397) INFO 09-23 23:36:23 [core.py:1355] [shutdown] EngineCore: exiting busy loop
+INFO 09-23 23:36:24 [core_client.py:748] [shutdown] MPClient: engine manager stopped
+INFO 09-23 23:36:24 [core_client.py:749] [shutdown] MPClient: cleaning up background resources
+INFO 09-23 23:36:24 [core_client.py:751] [shutdown] MPClient: complete

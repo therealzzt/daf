@@ -1,0 +1,851 @@
+INFO 09-24 00:20:12 [arg_utils.py:849] HF_HUB_OFFLINE is True, replace model_id [Qwen/Qwen2.5-7B-Instruct] to model_path [/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28]
+INFO 09-24 00:20:12 [api_utils.py:286] non-default args: {'max_model_len': 32768, 'gpu_memory_utilization': 0.9, 'disable_log_stats': True, 'enforce_eager': True, 'model': '/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28'}
+INFO 09-24 00:20:12 [model.py:692] Resolved architecture: Qwen2ForCausalLM
+INFO 09-24 00:20:12 [model.py:2030] Using max model len 32768
+INFO 09-24 00:20:12 [scheduler.py:288] Chunked prefill is enabled with max_num_batched_tokens=8192.
+WARNING 09-24 00:20:12 [vllm.py:1547] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 09-24 00:20:12 [vllm.py:1570] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 09-24 00:20:12 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+INFO 09-24 00:20:12 [vllm.py:1780] Cudagraph is disabled under eager mode
+INFO 09-24 00:20:12 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(EngineCore pid=545815) INFO 09-24 00:20:16 [core.py:123] Initializing a V1 LLM engine (v0.30.0) with config: model='/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28', speculative_config=None, tokenizer='/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/media/yunlin/6t/zzt_cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(EngineCore pid=545815) INFO 09-24 00:20:18 [parallel_state.py:1827] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_2951f478344d4b3d8b9b4668bc7cc376 backend=nccl
+(EngineCore pid=545815) INFO 09-24 00:20:18 [parallel_state.py:2267] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=545815) INFO 09-24 00:20:18 [gpu_worker.py:441] Using V2 Model Runner
+(EngineCore pid=545815) INFO 09-24 00:20:19 [model_runner.py:396] Loading model from scratch...
+(EngineCore pid=545815) INFO 09-24 00:20:20 [cuda.py:538] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=545815) INFO 09-24 00:20:20 [flash_attn.py:1116] Using FlashAttention version 2
+(EngineCore pid=545815) INFO 09-24 00:20:21 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 14.19 GiB. Available RAM: 238.92 GiB.
+(EngineCore pid=545815) INFO 09-24 00:20:21 [weight_utils.py:918] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=545815) Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(EngineCore pid=545815) Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:01<00:04,  1.62s/it]
+(EngineCore pid=545815) Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:03<00:03,  1.63s/it]
+(EngineCore pid=545815) Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:04<00:01,  1.64s/it]
+(EngineCore pid=545815) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:06<00:00,  1.60s/it]
+(EngineCore pid=545815) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:06<00:00,  1.61s/it]
+(EngineCore pid=545815) 
+(EngineCore pid=545815) INFO 09-24 00:20:27 [default_loader.py:430] Loading weights took 6.46 seconds
+(EngineCore pid=545815) INFO 09-24 00:20:28 [model_runner.py:428] Model loading took 14.19 GiB memory and 9.450085 seconds
+(EngineCore pid=545815) INFO 09-24 00:20:28 [topk_topp_sampler.py:62] FlashInfer top-p/top-k sampling disabled via VLLM_USE_FLASHINFER_SAMPLER=0.
+(EngineCore pid=545815) INFO 09-24 00:20:28 [utils.py:320] Using LBNHC KV cache layout.
+(EngineCore pid=545815) INFO 09-24 00:20:32 [gpu_worker.py:640] Available KV cache memory: 5.63 GiB
+(EngineCore pid=545815) INFO 09-24 00:20:32 [kv_cache_utils.py:2395] GPU KV cache size: 105,408 tokens, Maximum concurrency for 32,768 tokens per request: 3.22x
+(EngineCore pid=545815) INFO 09-24 00:20:33 [kernel_warmup.py:172] JIT kernel warmup starting.
+(EngineCore pid=545815) INFO 09-24 00:20:33 [kernel_warmup.py:185] JIT kernel warmup finished in 0.00s.
+(EngineCore pid=545815) INFO 09-24 00:20:34 [gpu_worker.py:888] Free memory on device (23.28/23.55 GiB) on startup. Desired GPU memory utilization is (0.9, 21.19 GiB). Actual usage is 14.48 GiB for consumed memory (weights + non-torch), 1.09 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=5887565108` (5.48 GiB) to fit into requested memory, or `--kv-cache-memory=8123771392` (7.57 GiB) to fully utilize gpu memory. Current kv cache memory in use is 5.63 GiB.
+(EngineCore pid=545815) INFO 09-24 00:20:34 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(EngineCore pid=545815) INFO 09-24 00:20:35 [torch_utils.py:287] Reducing Torch threads from 16 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=545815) INFO 09-24 00:20:35 [core.py:379] init engine (profile, create kv cache, warmup model) took 6.86 s
+(EngineCore pid=545815) INFO 09-24 00:20:35 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+INFO 09-24 00:20:36 [hf.py:642] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 43.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3893.38 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3893.38 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3893.38 toks/s, output: 0.25 toks/s]
+===== qa_2_000_len31234.json =====
+Cached generation: No
+TTFT with cache: 8.056578413583338
+Normal generation: No
+TTFT with full prefill: 8.056578413583338
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 278.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3830.16 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3830.16 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.33s/it, est. speed input: 3830.16 toks/s, output: 0.60 toks/s]
+===== qa_2_001_len31871.json =====
+Cached generation: Shirley Temple
+TTFT with cache: 8.334039442241192
+Normal generation: Shirley Temple
+TTFT with full prefill: 8.334039442241192
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 466.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3846.94 toks/s, output: 1.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3846.94 toks/s, output: 1.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.85s/it, est. speed input: 3846.94 toks/s, output: 1.02 toks/s]
+===== qa_2_002_len30167.json =====
+Cached generation: The Hork-Bajir Chronicles
+TTFT with cache: 7.853398599661887
+Normal generation: The Hork-Bajir Chronicles
+TTFT with full prefill: 7.853398599661887
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 419.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.19s/it, est. speed input: 3887.75 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.19s/it, est. speed input: 3887.75 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.19s/it, est. speed input: 3887.75 toks/s, output: 0.24 toks/s]
+===== qa_2_003_len31814.json =====
+Cached generation: No
+TTFT with cache: 8.194406307302415
+Normal generation: No
+TTFT with full prefill: 8.194406307302415
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 399.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.34s/it, est. speed input: 3848.47 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.34s/it, est. speed input: 3848.47 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.34s/it, est. speed input: 3848.47 toks/s, output: 0.48 toks/s]
+===== qa_2_004_len32050.json =====
+Cached generation: Greenwich Village
+TTFT with cache: 8.339350043796003
+Normal generation: Greenwich Village
+TTFT with full prefill: 8.339350043796003
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.42s/it, est. speed input: 3845.23 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.42s/it, est. speed input: 3845.23 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.42s/it, est. speed input: 3845.23 toks/s, output: 0.36 toks/s]
+===== qa_2_005_len32340.json =====
+Cached generation: YG Entertainment
+TTFT with cache: 8.421926282346249
+Normal generation: YG Entertainment
+TTFT with full prefill: 8.421926282346249
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 382.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3814.03 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3814.03 toks/s, output: 0.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3814.03 toks/s, output: 0.72 toks/s]
+===== qa_2_006_len31806.json =====
+Cached generation: Eenasul Fateh
+TTFT with cache: 8.350721390917897
+Normal generation: Eenasul Fateh
+TTFT with full prefill: 8.350721390917897
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 406.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3837.50 toks/s, output: 0.73 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3837.50 toks/s, output: 0.73 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.18s/it, est. speed input: 3837.50 toks/s, output: 0.73 toks/s]
+===== qa_2_007_len31346.json =====
+Cached generation: 1,400
+TTFT with cache: 8.179757956415415
+Normal generation: 1,400
+TTFT with full prefill: 8.179757956415415
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 402.22it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3847.79 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3847.79 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.36s/it, est. speed input: 3847.79 toks/s, output: 0.48 toks/s]
+===== qa_2_008_len32138.json =====
+Cached generation: Annie Morton
+TTFT with cache: 8.363775153644383
+Normal generation: Annie Morton
+TTFT with full prefill: 8.363775153644383
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 416.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3905.27 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3905.27 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3905.27 toks/s, output: 0.25 toks/s]
+===== qa_2_009_len31131.json =====
+Cached generation: Yes
+TTFT with cache: 7.982739331200719
+Normal generation: Yes
+TTFT with full prefill: 7.982739331200719
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 406.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3863.91 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3863.91 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3863.91 toks/s, output: 0.36 toks/s]
+===== qa_2_010_len31807.json =====
+Cached generation: Kansas Song
+TTFT with cache: 8.243116970174015
+Normal generation: Kansas Song
+TTFT with full prefill: 8.243116970174015
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 323.21it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3840.23 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3840.23 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3840.23 toks/s, output: 0.48 toks/s]
+===== qa_2_011_len31916.json =====
+Cached generation: David Weissman
+TTFT with cache: 8.323389614000916
+Normal generation: David Weissman
+TTFT with full prefill: 8.323389614000916
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 410.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3828.97 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3828.97 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.32s/it, est. speed input: 3828.97 toks/s, output: 0.60 toks/s]
+===== qa_2_012_len31839.json =====
+Cached generation: 1999
+TTFT with cache: 8.327013476751745
+Normal generation: 1999
+TTFT with full prefill: 8.327013476751745
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 386.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3851.58 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3851.58 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3851.58 toks/s, output: 0.24 toks/s]
+===== qa_2_013_len32311.json =====
+Cached generation: Yes
+TTFT with cache: 8.400459645316005
+Normal generation: Yes
+TTFT with full prefill: 8.400459645316005
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 399.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.07s/it, est. speed input: 3544.28 toks/s, output: 2.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.07s/it, est. speed input: 3544.28 toks/s, output: 2.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.07s/it, est. speed input: 3544.28 toks/s, output: 2.65 toks/s]
+===== qa_2_014_len32118.json =====
+Cached generation: 1903–1912 and then again from 1912–1924
+TTFT with cache: 9.073922645300627
+Normal generation: 1903–1912 and then again from 1912–1924
+TTFT with full prefill: 9.073922645300627
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 395.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.89s/it, est. speed input: 3608.29 toks/s, output: 2.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.89s/it, est. speed input: 3608.29 toks/s, output: 2.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.89s/it, est. speed input: 3608.29 toks/s, output: 2.14 toks/s]
+===== qa_2_015_len32037.json =====
+Cached generation: The document does not provide the population of the country where Brown State Fishing Lake is located.
+TTFT with cache: 8.890685885213315
+Normal generation: The document does not provide the population of the country where Brown State Fishing Lake is located.
+TTFT with full prefill: 8.890685885213315
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 396.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3818.44 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3818.44 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.48s/it, est. speed input: 3818.44 toks/s, output: 0.47 toks/s]
+===== qa_2_016_len32351.json =====
+Cached generation: America East Conference
+TTFT with cache: 8.483798515982926
+Normal generation: America East Conference
+TTFT with full prefill: 8.483798515982926
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 444.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3909.32 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3909.32 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.98s/it, est. speed input: 3909.32 toks/s, output: 0.25 toks/s]
+===== qa_2_017_len31167.json =====
+Cached generation: Yes
+TTFT with cache: 7.9838153049349785
+Normal generation: Yes
+TTFT with full prefill: 7.9838153049349785
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 439.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3747.31 toks/s, output: 1.18 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3747.31 toks/s, output: 1.18 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3747.31 toks/s, output: 1.18 toks/s]
+===== qa_2_018_len31835.json =====
+Cached generation: 1969-1974
+TTFT with cache: 8.506965522654355
+Normal generation: 1969-1974
+TTFT with full prefill: 8.506965522654355
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 409.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3838.53 toks/s, output: 0.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3838.53 toks/s, output: 0.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3838.53 toks/s, output: 0.87 toks/s]
+===== qa_2_019_len30786.json =====
+Cached generation: Robert Erskine Childers
+TTFT with cache: 8.031586369499564
+Normal generation: Robert Erskine Childers
+TTFT with full prefill: 8.031586369499564
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 414.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3883.90 toks/s, output: 0.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3883.90 toks/s, output: 0.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3883.90 toks/s, output: 0.77 toks/s]
+===== qa_2_020_len30327.json =====
+Cached generation: Sergio Pérez
+TTFT with cache: 7.819519380107522
+Normal generation: Sergio Pérez
+TTFT with full prefill: 7.819519380107522
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 402.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3856.00 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3856.00 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3856.00 toks/s, output: 0.36 toks/s]
+===== qa_2_021_len32159.json =====
+Cached generation: Pooh
+TTFT with cache: 8.351398898288608
+Normal generation: Pooh
+TTFT with full prefill: 8.351398898288608
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 410.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.21s/it, est. speed input: 3867.73 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.21s/it, est. speed input: 3867.73 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.21s/it, est. speed input: 3867.73 toks/s, output: 0.37 toks/s]
+===== qa_2_022_len31724.json =====
+Cached generation: Apple TV
+TTFT with cache: 8.213579747825861
+Normal generation: Apple TV
+TTFT with full prefill: 8.213579747825861
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 414.13it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.00s/it, est. speed input: 3464.92 toks/s, output: 3.56 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.00s/it, est. speed input: 3464.92 toks/s, output: 3.56 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.00s/it, est. speed input: 3464.92 toks/s, output: 3.56 toks/s]
+===== qa_2_023_len31158.json =====
+Cached generation: Based on the information provided, Badly Drawn Boy is a solo artist and Wolf Alice is a four-piece alternative rock band. Therefore, Wolf Alice has a
+TTFT with cache: 9.004478689283133
+Normal generation: Based on the information provided, Badly Drawn Boy is a solo artist and Wolf Alice is a four-piece alternative rock band. Therefore, Wolf Alice has a
+TTFT with full prefill: 9.004478689283133
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 438.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3881.86 toks/s, output: 0.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3881.86 toks/s, output: 0.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3881.86 toks/s, output: 0.77 toks/s]
+===== qa_2_024_len30318.json =====
+Cached generation: World's Best Goalkeeper
+TTFT with cache: 7.821652461774647
+Normal generation: World's Best Goalkeeper
+TTFT with full prefill: 7.821652461774647
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 450.42it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3575.64 toks/s, output: 2.80 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3575.64 toks/s, output: 2.80 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.57s/it, est. speed input: 3575.64 toks/s, output: 2.80 toks/s]
+===== qa_2_025_len30613.json =====
+Cached generation: Lee Hazlewood died in 2007 and wrote "These Boots Are Made for Walkin'".
+TTFT with cache: 8.57344141509384
+Normal generation: Lee Hazlewood died in 2007 and wrote "These Boots Are Made for Walkin'".
+TTFT with full prefill: 8.57344141509384
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 441.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3802.08 toks/s, output: 0.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3802.08 toks/s, output: 0.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.61s/it, est. speed input: 3802.08 toks/s, output: 0.58 toks/s]
+===== qa_2_026_len32716.json =====
+Cached generation: 1838
+TTFT with cache: 8.616239135153592
+Normal generation: 1838
+TTFT with full prefill: 8.616239135153592
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 395.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3850.40 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3850.40 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.41s/it, est. speed input: 3850.40 toks/s, output: 0.24 toks/s]
+===== qa_2_027_len32343.json =====
+Cached generation: yes
+TTFT with cache: 8.411382651887834
+Normal generation: yes
+TTFT with full prefill: 8.411382651887834
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 463.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.70s/it, est. speed input: 3906.48 toks/s, output: 0.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.70s/it, est. speed input: 3906.48 toks/s, output: 0.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.70s/it, est. speed input: 3906.48 toks/s, output: 0.65 toks/s]
+===== qa_2_028_len30034.json =====
+Cached generation: Henry J. Kaiser
+TTFT with cache: 7.699436564929783
+Normal generation: Henry J. Kaiser
+TTFT with full prefill: 7.699436564929783
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 473.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.39s/it, est. speed input: 3930.31 toks/s, output: 0.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.39s/it, est. speed input: 3930.31 toks/s, output: 0.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.39s/it, est. speed input: 3930.31 toks/s, output: 0.81 toks/s]
+===== qa_2_029_len29006.json =====
+Cached generation: Arena of Khazan
+TTFT with cache: 7.391372358426452
+Normal generation: Arena of Khazan
+TTFT with full prefill: 7.391372358426452
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 406.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.75s/it, est. speed input: 3707.08 toks/s, output: 1.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.75s/it, est. speed input: 3707.08 toks/s, output: 1.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.75s/it, est. speed input: 3707.08 toks/s, output: 1.26 toks/s]
+===== qa_2_030_len32408.json =====
+Cached generation: March 14, 2000
+TTFT with cache: 8.753749425522983
+Normal generation: March 14, 2000
+TTFT with full prefill: 8.753749425522983
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 456.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.49s/it, est. speed input: 3750.11 toks/s, output: 1.18 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.49s/it, est. speed input: 3750.11 toks/s, output: 1.18 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.49s/it, est. speed input: 3750.11 toks/s, output: 1.18 toks/s]
+===== qa_2_031_len31794.json =====
+Cached generation: Buck-Tick hails from Japan.
+TTFT with cache: 8.48965365998447
+Normal generation: Buck-Tick hails from Japan.
+TTFT with full prefill: 8.48965365998447
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 406.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3789.89 toks/s, output: 1.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3789.89 toks/s, output: 1.09 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.24s/it, est. speed input: 3789.89 toks/s, output: 1.09 toks/s]
+===== qa_2_032_len31191.json =====
+Cached generation: Charles Nungesser and François Coli
+TTFT with cache: 8.241453705355525
+Normal generation: Charles Nungesser and François Coli
+TTFT with full prefill: 8.241453705355525
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 410.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3880.02 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3880.02 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.22s/it, est. speed input: 3880.02 toks/s, output: 0.24 toks/s]
+===== qa_2_033_len31857.json =====
+Cached generation: Yes
+TTFT with cache: 8.221848769113421
+Normal generation: Yes
+TTFT with full prefill: 8.221848769113421
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 458.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.02s/it, est. speed input: 3865.26 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.02s/it, est. speed input: 3865.26 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.02s/it, est. speed input: 3865.26 toks/s, output: 0.62 toks/s]
+===== qa_2_034_len30981.json =====
+Cached generation: Letters to Cleo
+TTFT with cache: 8.026546228677034
+Normal generation: Letters to Cleo
+TTFT with full prefill: 8.026546228677034
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 411.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.06s/it, est. speed input: 3864.65 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.06s/it, est. speed input: 3864.65 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.06s/it, est. speed input: 3864.65 toks/s, output: 0.62 toks/s]
+===== qa_2_035_len31102.json =====
+Cached generation: 1924
+TTFT with cache: 8.059325502254069
+Normal generation: 1924
+TTFT with full prefill: 8.059325502254069
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 399.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3828.08 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3828.08 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.40s/it, est. speed input: 3828.08 toks/s, output: 0.60 toks/s]
+===== qa_2_036_len32115.json =====
+Cached generation: 2000
+TTFT with cache: 8.400669110007584
+Normal generation: 2000
+TTFT with full prefill: 8.400669110007584
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 444.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3851.58 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3851.58 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it, est. speed input: 3851.58 toks/s, output: 0.49 toks/s]
+===== qa_2_037_len31683.json =====
+Cached generation: World War II
+TTFT with cache: 8.237387505359948
+Normal generation: World War II
+TTFT with full prefill: 8.237387505359948
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 444.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3847.05 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3847.05 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3847.05 toks/s, output: 0.24 toks/s]
+===== qa_2_038_len32687.json =====
+Cached generation: No
+TTFT with cache: 8.507985084317625
+Normal generation: No
+TTFT with full prefill: 8.507985084317625
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3844.44 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3844.44 toks/s, output: 0.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3844.44 toks/s, output: 0.48 toks/s]
+===== qa_2_039_len32205.json =====
+Cached generation: Ithaca
+TTFT with cache: 8.388455954380333
+Normal generation: Ithaca
+TTFT with full prefill: 8.388455954380333
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 483.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.59s/it, est. speed input: 3918.55 toks/s, output: 0.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.59s/it, est. speed input: 3918.55 toks/s, output: 0.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.59s/it, est. speed input: 3918.55 toks/s, output: 0.66 toks/s]
+===== qa_2_040_len29707.json =====
+Cached generation: Scotch Collie
+TTFT with cache: 7.592269244603813
+Normal generation: Scotch Collie
+TTFT with full prefill: 7.592269244603813
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 413.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.79s/it, est. speed input: 3479.02 toks/s, output: 3.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.79s/it, est. speed input: 3479.02 toks/s, output: 3.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.79s/it, est. speed input: 3479.02 toks/s, output: 3.64 toks/s]
+===== qa_2_041_len30563.json =====
+Cached generation: Tata Consultancy Services is headquartered in Mumbai, Maharashtra. Since Sachin Warrier worked as a software engineer for Tata Consultancy Services, his workplace would be
+TTFT with cache: 8.796995097771287
+Normal generation: Tata Consultancy Services is headquartered in Mumbai, Maharashtra. Since Sachin Warrier worked as a software engineer for Tata Consultancy Services, his workplace would be
+TTFT with full prefill: 8.796995097771287
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 389.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3805.38 toks/s, output: 0.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3805.38 toks/s, output: 0.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.55s/it, est. speed input: 3805.38 toks/s, output: 0.58 toks/s]
+===== qa_2_042_len32525.json =====
+Cached generation: 1962
+TTFT with cache: 8.558780933730304
+Normal generation: 1962
+TTFT with full prefill: 8.558780933730304
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 401.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.70s/it, est. speed input: 3563.00 toks/s, output: 2.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.70s/it, est. speed input: 3563.00 toks/s, output: 2.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.70s/it, est. speed input: 3563.00 toks/s, output: 2.76 toks/s]
+===== qa_2_043_len30954.json =====
+Cached generation: The battle in which Giuseppe Arimondi lost his life secured Ethiopian sovereignty and freedom from colonization for Ethiopia.
+TTFT with cache: 8.699676403775811
+Normal generation: The battle in which Giuseppe Arimondi lost his life secured Ethiopian sovereignty and freedom from colonization for Ethiopia.
+TTFT with full prefill: 8.699676403775811
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 409.16it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3873.82 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3873.82 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3873.82 toks/s, output: 0.49 toks/s]
+===== qa_2_044_len31499.json =====
+Cached generation: Nelson Rockefeller
+TTFT with cache: 8.142573675140738
+Normal generation: Nelson Rockefeller
+TTFT with full prefill: 8.142573675140738
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 425.13it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.03s/it, est. speed input: 3618.42 toks/s, output: 1.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.03s/it, est. speed input: 3618.42 toks/s, output: 1.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.04s/it, est. speed input: 3618.42 toks/s, output: 1.88 toks/s]
+===== qa_2_045_len32664.json =====
+Cached generation: Dirleton Castle borders on the south side of the Firth of Forth.
+TTFT with cache: 9.03908711578697
+Normal generation: Dirleton Castle borders on the south side of the Firth of Forth.
+TTFT with full prefill: 9.03908711578697
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.20s/it, est. speed input: 3849.55 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.20s/it, est. speed input: 3849.55 toks/s, output: 0.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.20s/it, est. speed input: 3849.55 toks/s, output: 0.49 toks/s]
+===== qa_2_046_len31525.json =====
+Cached generation: Phil Spector
+TTFT with cache: 8.200641206465662
+Normal generation: Phil Spector
+TTFT with full prefill: 8.200641206465662
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 411.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.76s/it, est. speed input: 3559.30 toks/s, output: 2.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.76s/it, est. speed input: 3559.30 toks/s, output: 2.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.76s/it, est. speed input: 3559.30 toks/s, output: 2.74 toks/s]
+===== qa_2_047_len31157.json =====
+Cached generation: a forum in which the Nobel Peace Laureates and the Peace Laureate Organizations could come together to address global issues.
+TTFT with cache: 8.765894275158644
+Normal generation: a forum in which the Nobel Peace Laureates and the Peace Laureate Organizations could come together to address global issues.
+TTFT with full prefill: 8.765894275158644
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 408.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3939.27 toks/s, output: 0.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3939.27 toks/s, output: 0.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.81s/it, est. speed input: 3939.27 toks/s, output: 0.26 toks/s]
+===== qa_2_048_len30718.json =====
+Cached generation: Yes
+TTFT with cache: 7.809258335269988
+Normal generation: Yes
+TTFT with full prefill: 7.809258335269988
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 358.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3816.16 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3816.16 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.50s/it, est. speed input: 3816.16 toks/s, output: 0.47 toks/s]
+===== qa_2_049_len32426.json =====
+Cached generation: English Electric Canberra
+TTFT with cache: 8.508903106674552
+Normal generation: English Electric Canberra
+TTFT with full prefill: 8.508903106674552
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 467.07it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.12s/it, est. speed input: 3769.56 toks/s, output: 1.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.12s/it, est. speed input: 3769.56 toks/s, output: 1.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.12s/it, est. speed input: 3769.56 toks/s, output: 1.48 toks/s]
+===== qa_2_050_len30583.json =====
+Cached generation: 2009 Big 12 Conference football season
+TTFT with cache: 8.124545011669397
+Normal generation: 2009 Big 12 Conference football season
+TTFT with full prefill: 8.124545011669397
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 478.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.37s/it, est. speed input: 3956.16 toks/s, output: 0.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.37s/it, est. speed input: 3956.16 toks/s, output: 0.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.37s/it, est. speed input: 3956.16 toks/s, output: 0.54 toks/s]
+===== qa_2_051_len29134.json =====
+Cached generation: 539
+TTFT with cache: 7.375317324884236
+Normal generation: 539
+TTFT with full prefill: 7.375317324884236
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 398.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3812.65 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3812.65 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3812.65 toks/s, output: 0.59 toks/s]
+===== qa_2_052_len32148.json =====
+Cached generation: Darlington Raceway
+TTFT with cache: 8.443474896252155
+Normal generation: Darlington Raceway
+TTFT with full prefill: 8.443474896252155
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 410.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3857.09 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3857.09 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.01s/it, est. speed input: 3857.09 toks/s, output: 0.50 toks/s]
+===== qa_2_053_len30874.json =====
+Cached generation: New York City
+TTFT with cache: 8.015760972164571
+Normal generation: New York City
+TTFT with full prefill: 8.015760972164571
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 414.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.72s/it, est. speed input: 3638.06 toks/s, output: 1.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.72s/it, est. speed input: 3638.06 toks/s, output: 1.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.72s/it, est. speed input: 3638.06 toks/s, output: 1.84 toks/s]
+===== qa_2_054_len31684.json =====
+Cached generation: Max Martin, Savan Kotecha, Ilya Salmanzadeh
+TTFT with cache: 8.72069236356765
+Normal generation: Max Martin, Savan Kotecha, Ilya Salmanzadeh
+TTFT with full prefill: 8.72069236356765
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 424.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3857.47 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3857.47 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.35s/it, est. speed input: 3857.47 toks/s, output: 0.36 toks/s]
+===== qa_2_055_len32186.json =====
+Cached generation: Princeton
+TTFT with cache: 8.355272458866239
+Normal generation: Princeton
+TTFT with full prefill: 8.355272458866239
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 377.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3831.40 toks/s, output: 0.35 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3831.40 toks/s, output: 0.35 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3831.40 toks/s, output: 0.35 toks/s]
+===== qa_2_056_len32706.json =====
+Cached generation: Drifting
+TTFT with cache: 8.547870666719973
+Normal generation: Drifting
+TTFT with full prefill: 8.547870666719973
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 385.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3830.65 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3830.65 toks/s, output: 0.60 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3830.65 toks/s, output: 0.60 toks/s]
+===== qa_2_057_len31681.json =====
+Cached generation: Keith Bostic
+TTFT with cache: 8.282000521197915
+Normal generation: Keith Bostic
+TTFT with full prefill: 8.282000521197915
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 427.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.63s/it, est. speed input: 3787.06 toks/s, output: 0.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.63s/it, est. speed input: 3787.06 toks/s, output: 0.70 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.63s/it, est. speed input: 3787.06 toks/s, output: 0.70 toks/s]
+===== qa_2_058_len32641.json =====
+Cached generation: 1,146
+TTFT with cache: 8.630719046108425
+Normal generation: 1,146
+TTFT with full prefill: 8.630719046108425
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 413.31it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3885.14 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3885.14 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3885.14 toks/s, output: 0.25 toks/s]
+===== qa_2_059_len31590.json =====
+Cached generation: No
+TTFT with cache: 8.142249484546483
+Normal generation: No
+TTFT with full prefill: 8.142249484546483
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 414.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.17s/it, est. speed input: 3866.02 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.17s/it, est. speed input: 3866.02 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.17s/it, est. speed input: 3866.02 toks/s, output: 0.37 toks/s]
+===== qa_2_060_len31574.json =====
+Cached generation: Larry Johnson
+TTFT with cache: 8.178385078907013
+Normal generation: Larry Johnson
+TTFT with full prefill: 8.178385078907013
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 469.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3879.64 toks/s, output: 0.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3879.64 toks/s, output: 0.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.82s/it, est. speed input: 3879.64 toks/s, output: 0.77 toks/s]
+===== qa_2_061_len30328.json =====
+Cached generation: Ronald Shusett
+TTFT with cache: 7.828467881307006
+Normal generation: Ronald Shusett
+TTFT with full prefill: 7.828467881307006
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 401.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.52s/it, est. speed input: 3817.55 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.52s/it, est. speed input: 3817.55 toks/s, output: 0.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.52s/it, est. speed input: 3817.55 toks/s, output: 0.47 toks/s]
+===== qa_2_062_len32496.json =====
+Cached generation: Virginia Woolf
+TTFT with cache: 8.523708505555987
+Normal generation: Virginia Woolf
+TTFT with full prefill: 8.523708505555987
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 395.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3905.34 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3905.34 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3905.34 toks/s, output: 0.51 toks/s]
+===== qa_2_063_len30735.json =====
+Cached generation: 821
+TTFT with cache: 7.881377976387739
+Normal generation: 821
+TTFT with full prefill: 7.881377976387739
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 449.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3712.15 toks/s, output: 1.67 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3712.15 toks/s, output: 1.67 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it, est. speed input: 3712.15 toks/s, output: 1.67 toks/s]
+===== qa_2_064_len31090.json =====
+Cached generation: ExxonMobil operates in more than 70 countries.
+TTFT with cache: 8.38679706119001
+Normal generation: ExxonMobil operates in more than 70 countries.
+TTFT with full prefill: 8.38679706119001
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 421.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3914.62 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3914.62 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3914.62 toks/s, output: 0.38 toks/s]
+===== qa_2_065_len30489.json =====
+Cached generation: Charmed
+TTFT with cache: 7.799740131944418
+Normal generation: Charmed
+TTFT with full prefill: 7.799740131944418
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 431.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3841.58 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3841.58 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it, est. speed input: 3841.58 toks/s, output: 0.74 toks/s]
+===== qa_2_066_len31221.json =====
+Cached generation: International Boxing Hall of Fame
+TTFT with cache: 8.138618442229927
+Normal generation: International Boxing Hall of Fame
+TTFT with full prefill: 8.138618442229927
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 401.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3855.67 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3855.67 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.28s/it, est. speed input: 3855.67 toks/s, output: 0.36 toks/s]
+===== qa_2_067_len31901.json =====
+Cached generation: Usher
+TTFT with cache: 8.28515297267586
+Normal generation: Usher
+TTFT with full prefill: 8.28515297267586
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 470.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3910.82 toks/s, output: 0.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3910.82 toks/s, output: 0.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.61s/it, est. speed input: 3910.82 toks/s, output: 0.66 toks/s]
+===== qa_2_068_len29747.json =====
+Cached generation: Brian Doyle-Murray
+TTFT with cache: 7.617574994452298
+Normal generation: Brian Doyle-Murray
+TTFT with full prefill: 7.617574994452298
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 409.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.07s/it, est. speed input: 3459.09 toks/s, output: 3.53 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.07s/it, est. speed input: 3459.09 toks/s, output: 3.53 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.07s/it, est. speed input: 3459.09 toks/s, output: 3.53 toks/s]
+===== qa_2_069_len31334.json =====
+Cached generation: The 2017–18 Wigan Athletic F.C. season will be a year in which the team competes in the league cup known as
+TTFT with cache: 9.070540783926845
+Normal generation: The 2017–18 Wigan Athletic F.C. season will be a year in which the team competes in the league cup known as
+TTFT with full prefill: 9.070540783926845
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 402.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.75s/it, est. speed input: 3926.44 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.75s/it, est. speed input: 3926.44 toks/s, output: 0.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.75s/it, est. speed input: 3926.44 toks/s, output: 0.39 toks/s]
+===== qa_2_070_len30409.json =====
+Cached generation: Teen Titans
+TTFT with cache: 7.756031882017851
+Normal generation: Teen Titans
+TTFT with full prefill: 7.756031882017851
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3893.88 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3893.88 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.95s/it, est. speed input: 3893.88 toks/s, output: 0.38 toks/s]
+===== qa_2_071_len30940.json =====
+Cached generation: Strasbourg
+TTFT with cache: 7.957167032174766
+Normal generation: Strasbourg
+TTFT with full prefill: 7.957167032174766
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 415.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3880.20 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.25s/it, est. speed input: 3880.20 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.26s/it, est. speed input: 3880.20 toks/s, output: 0.24 toks/s]
+===== qa_2_072_len32001.json =====
+Cached generation: orange
+TTFT with cache: 8.258680856786668
+Normal generation: orange
+TTFT with full prefill: 8.258680856786668
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 434.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.65s/it, est. speed input: 3784.44 toks/s, output: 0.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.65s/it, est. speed input: 3784.44 toks/s, output: 0.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.65s/it, est. speed input: 3784.44 toks/s, output: 0.69 toks/s]
+===== qa_2_073_len32695.json =====
+Cached generation: Tromeo and Juliet
+TTFT with cache: 8.650797311216593
+Normal generation: Tromeo and Juliet
+TTFT with full prefill: 8.650797311216593
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 479.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.25s/it, est. speed input: 3992.25 toks/s, output: 0.41 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.25s/it, est. speed input: 3992.25 toks/s, output: 0.41 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.25s/it, est. speed input: 3992.25 toks/s, output: 0.41 toks/s]
+===== qa_2_074_len28897.json =====
+Cached generation: Bill Clinton
+TTFT with cache: 7.249340518377721
+Normal generation: Bill Clinton
+TTFT with full prefill: 7.249340518377721
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 415.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3903.66 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3903.66 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.88s/it, est. speed input: 3903.66 toks/s, output: 0.51 toks/s]
+===== qa_2_075_len30720.json =====
+Cached generation: John John Florence
+TTFT with cache: 7.880682021379471
+Normal generation: John John Florence
+TTFT with full prefill: 7.880682021379471
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 373.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3887.61 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3887.61 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3887.61 toks/s, output: 0.37 toks/s]
+===== qa_2_076_len31469.json =====
+Cached generation: Sela
+TTFT with cache: 8.106313042342663
+Normal generation: Sela
+TTFT with full prefill: 8.106313042342663
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 397.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3890.79 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3890.79 toks/s, output: 0.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.03s/it, est. speed input: 3890.79 toks/s, output: 0.37 toks/s]
+===== qa_2_077_len31196.json =====
+Cached generation: Ais
+TTFT with cache: 8.029278276488185
+Normal generation: Ais
+TTFT with full prefill: 8.029278276488185
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 414.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.92s/it, est. speed input: 3911.45 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.92s/it, est. speed input: 3911.45 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.92s/it, est. speed input: 3911.45 toks/s, output: 0.25 toks/s]
+===== qa_2_078_len30936.json =====
+Cached generation: British
+TTFT with cache: 7.920268757268786
+Normal generation: British
+TTFT with full prefill: 7.920268757268786
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 391.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3803.59 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3803.59 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.54s/it, est. speed input: 3803.59 toks/s, output: 0.59 toks/s]
+===== qa_2_079_len32456.json =====
+Cached generation: 1895
+TTFT with cache: 8.544440910220146
+Normal generation: 1895
+TTFT with full prefill: 8.544440910220146
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 413.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3907.41 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3907.41 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3907.41 toks/s, output: 0.51 toks/s]
+===== qa_2_080_len30443.json =====
+Cached generation: Lempster
+TTFT with cache: 7.802307181060314
+Normal generation: Lempster
+TTFT with full prefill: 7.802307181060314
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 430.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3910.39 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3910.39 toks/s, output: 0.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.80s/it, est. speed input: 3910.39 toks/s, output: 0.51 toks/s]
+===== qa_2_081_len30467.json =====
+Cached generation: Bob Seger
+TTFT with cache: 7.802413730882108
+Normal generation: Bob Seger
+TTFT with full prefill: 7.802413730882108
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 401.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.83s/it, est. speed input: 3701.84 toks/s, output: 1.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.83s/it, est. speed input: 3701.84 toks/s, output: 1.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.83s/it, est. speed input: 3701.84 toks/s, output: 1.36 toks/s]
+===== qa_2_082_len32651.json =====
+Cached generation: the practice of requiring only men to register for the draft
+TTFT with cache: 8.831916709430516
+Normal generation: the practice of requiring only men to register for the draft
+TTFT with full prefill: 8.831916709430516
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 394.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3856.75 toks/s, output: 0.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3856.75 toks/s, output: 0.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3856.75 toks/s, output: 0.61 toks/s]
+===== qa_2_083_len31347.json =====
+Cached generation: Mondelez International
+TTFT with cache: 8.13935532886535
+Normal generation: Mondelez International
+TTFT with full prefill: 8.13935532886535
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 447.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3849.88 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3849.88 toks/s, output: 0.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.10s/it, est. speed input: 3849.88 toks/s, output: 0.62 toks/s]
+===== qa_2_084_len31142.json =====
+Cached generation: Mimi Alford
+TTFT with cache: 8.10041917860508
+Normal generation: Mimi Alford
+TTFT with full prefill: 8.10041917860508
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 417.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3681.79 toks/s, output: 1.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3681.79 toks/s, output: 1.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.44s/it, est. speed input: 3681.79 toks/s, output: 1.89 toks/s]
+===== qa_2_085_len31063.json =====
+Cached generation: Paul Manafort was born on April 1, 1949.
+TTFT with cache: 8.448539231903851
+Normal generation: Paul Manafort was born on April 1, 1949.
+TTFT with full prefill: 8.448539231903851
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 390.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3808.87 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3808.87 toks/s, output: 0.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.51s/it, est. speed input: 3808.87 toks/s, output: 0.59 toks/s]
+===== qa_2_086_len32396.json =====
+Cached generation: 1970
+TTFT with cache: 8.516966522671282
+Normal generation: 1970
+TTFT with full prefill: 8.516966522671282
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 429.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.95s/it, est. speed input: 3463.95 toks/s, output: 3.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.95s/it, est. speed input: 3463.95 toks/s, output: 3.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.95s/it, est. speed input: 3463.95 toks/s, output: 3.58 toks/s]
+===== qa_2_087_len30960.json =====
+Cached generation: Teide National Park is located in Tenerife, Canary Islands, Spain. Garajonay National Park is located in the center and north of the island
+TTFT with cache: 8.949826557189226
+Normal generation: Teide National Park is located in Tenerife, Canary Islands, Spain. Garajonay National Park is located in the center and north of the island
+TTFT with full prefill: 8.949826557189226
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 442.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.17s/it, est. speed input: 3555.73 toks/s, output: 2.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.17s/it, est. speed input: 3555.73 toks/s, output: 2.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:09<00:00,  9.17s/it, est. speed input: 3555.73 toks/s, output: 2.40 toks/s]
+===== qa_2_088_len32564.json =====
+Cached generation: The given documents do not provide specific sales figures for Roald Dahl's variation on the popular anecdote.
+TTFT with cache: 9.170170698314905
+Normal generation: The given documents do not provide specific sales figures for Roald Dahl's variation on the popular anecdote.
+TTFT with full prefill: 9.170170698314905
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 463.20it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.43s/it, est. speed input: 3969.24 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.43s/it, est. speed input: 3969.24 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.43s/it, est. speed input: 3969.24 toks/s, output: 0.40 toks/s]
+===== qa_2_089_len29446.json =====
+Cached generation: film director
+TTFT with cache: 7.429626073688269
+Normal generation: film director
+TTFT with full prefill: 7.429626073688269
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 456.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.97s/it, est. speed input: 3895.59 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.97s/it, est. speed input: 3895.59 toks/s, output: 0.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.97s/it, est. speed input: 3895.59 toks/s, output: 0.38 toks/s]
+===== qa_2_090_len31022.json =====
+Cached generation: The Conversation
+TTFT with cache: 7.974585672840476
+Normal generation: The Conversation
+TTFT with full prefill: 7.974585672840476
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 412.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.46s/it, est. speed input: 3961.51 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.46s/it, est. speed input: 3961.51 toks/s, output: 0.40 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.46s/it, est. speed input: 3961.51 toks/s, output: 0.40 toks/s]
+===== qa_2_091_len29529.json =====
+Cached generation: John Waters
+TTFT with cache: 7.465359256602824
+Normal generation: John Waters
+TTFT with full prefill: 7.465359256602824
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 391.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3860.15 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3860.15 toks/s, output: 0.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.31s/it, est. speed input: 3860.15 toks/s, output: 0.36 toks/s]
+===== qa_2_092_len32060.json =====
+Cached generation: Las Vegas
+TTFT with cache: 8.316765632480383
+Normal generation: Las Vegas
+TTFT with full prefill: 8.316765632480383
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 403.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.20s/it, est. speed input: 3880.00 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.20s/it, est. speed input: 3880.00 toks/s, output: 0.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.20s/it, est. speed input: 3880.00 toks/s, output: 0.24 toks/s]
+===== qa_2_093_len31803.json =====
+Cached generation: No
+TTFT with cache: 8.20802490413189
+Normal generation: No
+TTFT with full prefill: 8.20802490413189
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 435.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.52s/it, est. speed input: 3846.23 toks/s, output: 0.23 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.52s/it, est. speed input: 3846.23 toks/s, output: 0.23 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.52s/it, est. speed input: 3846.23 toks/s, output: 0.23 toks/s]
+===== qa_2_094_len32728.json =====
+Cached generation: November
+TTFT with cache: 8.520694071426988
+Normal generation: November
+TTFT with full prefill: 8.520694071426988
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 480.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3734.89 toks/s, output: 1.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3734.89 toks/s, output: 1.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.14s/it, est. speed input: 3734.89 toks/s, output: 1.72 toks/s]
+===== qa_2_095_len30382.json =====
+Cached generation: Tysons Galleria is located in Fairfax County, Virginia.
+TTFT with cache: 8.146149924956262
+Normal generation: Tysons Galleria is located in Fairfax County, Virginia.
+TTFT with full prefill: 8.146149924956262
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 447.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.30s/it, est. speed input: 3650.91 toks/s, output: 2.41 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.30s/it, est. speed input: 3650.91 toks/s, output: 2.41 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.30s/it, est. speed input: 3650.91 toks/s, output: 2.41 toks/s]
+===== qa_2_096_len30281.json =====
+Cached generation: Bordan Tkachuk was the CEO of Viglen, which provides IT products and services.
+TTFT with cache: 8.305853963829577
+Normal generation: Bordan Tkachuk was the CEO of Viglen, which provides IT products and services.
+TTFT with full prefill: 8.305853963829577
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 404.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.11s/it, est. speed input: 3846.78 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.11s/it, est. speed input: 3846.78 toks/s, output: 0.74 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.11s/it, est. speed input: 3846.78 toks/s, output: 0.74 toks/s]
+===== qa_2_097_len31183.json =====
+Cached generation: Lev Yilmaz
+TTFT with cache: 8.11759822908789
+Normal generation: Lev Yilmaz
+TTFT with full prefill: 8.11759822908789
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 437.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3882.79 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3882.79 toks/s, output: 0.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.04s/it, est. speed input: 3882.79 toks/s, output: 0.50 toks/s]
+===== qa_2_098_len31177.json =====
+Cached generation: Rabat
+TTFT with cache: 8.040871432982385
+Normal generation: Rabat
+TTFT with full prefill: 8.040871432982385
+------------
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 406.07it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3921.35 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3921.35 toks/s, output: 0.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.93s/it, est. speed input: 3921.35 toks/s, output: 0.25 toks/s]
+===== qa_2_099_len31084.json =====
+Cached generation: no
+TTFT with cache: 7.938083793967962
+Normal generation: no
+TTFT with full prefill: 7.938083793967962
+------------
+[全部完成] 100 条
+INFO 09-24 00:34:32 [core_client.py:744] [shutdown] MPClient: start timeout=60s
+INFO 09-24 00:34:32 [core_client.py:746] [shutdown] MPClient: stopping engine manager
+INFO 09-24 00:34:32 [utils.py:632] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=545815) INFO 09-24 00:34:32 [core.py:1342] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=545815) INFO 09-24 00:34:32 [core.py:1493] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=545815) INFO 09-24 00:34:32 [core.py:1524] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=545815) INFO 09-24 00:34:32 [core.py:1355] [shutdown] EngineCore: exiting busy loop
+INFO 09-24 00:34:33 [core_client.py:748] [shutdown] MPClient: engine manager stopped
+INFO 09-24 00:34:33 [core_client.py:749] [shutdown] MPClient: cleaning up background resources
+INFO 09-24 00:34:33 [core_client.py:751] [shutdown] MPClient: complete

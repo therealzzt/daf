@@ -115,6 +115,8 @@ DAF/CB 比值随长度单调下降（Mistral 1.75→1.73→1.45；Qwen 1.14→1.
 
 **flash 后端对照（daf1.6，2026-09-23）**：同样本同配置只换 `VLLM_ATTENTION_BACKEND=FLASH_ATTN` 重跑 500×2（脚本 `run_ruler500_flash_resume.sh`，日志 `experiments/logs/qwen_ruler30k_500_flash/`）。DAF/CB 0.948/0.949 与 xformers 轮（0.947/0.946）不动，三方法 TTFT 变化 <0.5%——**kernel 红利在 sm86（3090Ti）上趋近于零，0.946 vs 论文 0.77 的差距主体是硬件代差（A100 vs 3090Ti）而非 kernel**。精度一致性：CB/全量臂 SM/EM 逐分相同，DAF 臂 ΔSM ≤0.014（CI 内）。详见 `experiments/reports/em_report_qwen_ruler30k_500_flash.md`。
 
+**路线 A 排雷：新版 vLLM 基线（2026-09-23 跑批，10-07 收尾）**：独立 conda 环境 `vllm_new`（**不入库**；vllm 0.30.0 + torch 2.13.0+cu130），同一组 RULER 500 样本、RULER 官方 prompt 口径，两臂（max_tokens 32/128）× 两任务共 2000 条生成（脚本 `experiments/scripts/run_newvllm_ruler_baseline.py` + `run_newvllm_baseline_resume.sh`，日志 `experiments/logs/newvllm_baseline/`）。**结论：引擎因素与截断因素双双排除**——新引擎 mt32 与 0.4.1 基线精度逐分一致（qa_2 SM 0.554 vs 0.550），mt128 只多翻正 5 题（+0.010）；qa_2 距论文 0.765 的 ~0.20 差距归因转向评测口径/数据版本。**路线 B（LMCache 迁移）以精度为动机的必要性不成立，优先级下调**。vllm 0.30 踩坑（flashinfer JIT 需 `VLLM_USE_FLASHINFER_SAMPLER=0`、退出挂死需显式 shutdown+os._exit、孤儿 EngineCore 占显存、`VLLM_ATTENTION_BACKEND` 环境变量已移除）详见 `experiments/reports/newvllm_baseline_ruler30k.md` 第五节。
+
 ## 文档索引
 
 - `docs/DAF改造计划_v2_校正版.md` —— 实现方案的权威文档（改动前先读）
@@ -122,3 +124,4 @@ DAF/CB 比值随长度单调下降（Mistral 1.75→1.73→1.45；Qwen 1.14→1.
 - `docs/daf1.0.md` / `daf1.1.md` / `daf1.2.md` / `daf1.3.md` / `daf1.4.md` / `daf1.5.md` —— 各阶段实验记录与教训（1.4 = 目标 B 三档总记录；1.5 = ChatML/K+V 消融 + 500 样本放量最终结论）
 - `docs/服务器复现指南.md` —— 环境搭建权威指南
 - `experiments/README.md` —— 实验工作区索引与命令链
+- `experiments/reports/newvllm_baseline_ruler30k.md` —— 路线 A 排雷：新版 vLLM 基线对照与路线 B 必要性判断

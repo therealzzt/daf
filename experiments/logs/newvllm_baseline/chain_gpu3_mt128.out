@@ -1,0 +1,46 @@
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_1 mt128 第 0 片（样本 0:100）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c00.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c00.log exit=0（完成度以 '===== ' 计数为准）
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_1 mt128 第 1 片（样本 100:200）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c01.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c01.log exit=0（完成度以 '===== ' 计数为准）
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_1 mt128 第 2 片（样本 200:300）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c02.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c02.log exit=0（完成度以 '===== ' 计数为准）
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_1 mt128 第 3 片（样本 300:400）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c03.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c03.log exit=0（完成度以 '===== ' 计数为准）
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_1 mt128 第 4 片（样本 400:500）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c04.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa1_c04.log exit=0（完成度以 '===== ' 计数为准）
+GPU3 qa_1 mt128 全部 5 片完成
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_2 mt128 第 0 片（样本 0:100）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c00.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c00.log exit=0（完成度以 '===== ' 计数为准）
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_2 mt128 第 1 片（样本 100:200）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c01.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c01.log exit=0（完成度以 '===== ' 计数为准）
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_2 mt128 第 2 片（样本 200:300）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c02.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c02.log exit=0（完成度以 '===== ' 计数为准）
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_2 mt128 第 3 片（样本 300:400）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c03.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c03.log exit=0（完成度以 '===== ' 计数为准）
+experiments/scripts/run_newvllm_baseline_resume.sh: 第 53 行： [: 0
+0: 需要整数表达式
+[开跑] GPU3 qa_2 mt128 第 4 片（样本 400:500）→ experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c04.log
+[完成] experiments/logs/newvllm_baseline/run_newvllm_mt128_qa2_c04.log exit=0（完成度以 '===== ' 计数为准）
+GPU3 qa_2 mt128 全部 5 片完成
