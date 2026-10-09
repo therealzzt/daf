@@ -22,7 +22,7 @@
 set -u
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate vllm_new          # 注意：不是 cacheblend
-cd /home/therealzzt/daf
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"   # 仓库根目录：按本脚本位置（experiments/scripts/ 的上两级）自动定位，媒体盘挂载点变化也不受影响
 export HF_ENDPOINT=https://hf-mirror.com
 export HF_HUB_OFFLINE=1          # 模型已在本地 HF 缓存，禁止联网
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True

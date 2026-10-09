@@ -17,12 +17,14 @@ wsl_setup/      ← WSL/服务器环境搭建与诊断脚本、冒烟测试
 
 ## 环境（权威步骤见 `docs/服务器复现指南.md`）
 
+> ⚠️ 2026-10-09 仓库已从 `~/daf`（即 `/home/therealzzt/daf`，已删除）迁到媒体盘 `/media/yunlin/6t/zhenzengtao/daf/zzt`。`vllm_blend` 是 editable（`pip install -e .`）源码安装，conda 环境里记录的是旧绝对路径——**迁移后首次跑实验前必须重跑一次下方编译安装命令**（已编译过的话只需 `pip install -e . --no-build-isolation` 一步），否则 `import vllm` 指向失效路径。媒体盘挂载点若因重启变化，同样要重装。`experiments/scripts/` 下的续跑/看门狗脚本已改为按脚本位置自动定位仓库根，不受挂载点影响。
+
 - conda 环境名 **`cacheblend`**，Python 必须 3.10；CUDA 12.1（用 `nvidia/label/cuda-12.1.1` 显式钉住，裸 `cuda-toolkit=12.1` 可能解析出 13.x 导致编译失败）。
 - 钉版依赖：`torch==2.2.1+cu121`、`xformers==0.0.25`、`transformers==4.41.2`（新版 transformers 会让 vllm 0.4.1 崩溃）。
 - 编译安装（10~30 分钟）：
 
 ```bash
-conda activate cacheblend && cd ~/daf/vllm_blend
+conda activate cacheblend && cd /media/yunlin/6t/zhenzengtao/daf/zzt/vllm_blend
 export CUDA_HOME=$HOME/miniconda3/envs/cacheblend
 export MAX_JOBS=$(nproc)
 export TORCH_CUDA_ARCH_LIST="8.0"   # V100=7.0 A100=8.0 3090=8.6 4060/4090=8.9 H100=9.0
@@ -52,7 +54,7 @@ python -c "import vllm; print(vllm.__version__)"   # 应输出 0.4.1
 - **后端切换**：`VLLM_ATTENTION_BACKEND=FLASH_ATTN`（别名 `FLASH_ATTENTION`）/ `XFORMERS`（`selector.py`）。**默认后端已改为 XFORMERS**（防装 flash_attn 后静默切换）；显式请求 flash 但包未装会大声报错。flash_attn 2.5.8（cu122torch2.2 cp310 wheel，装在 cacheblend 环境）。两个后端的 DAF/CB 输出已交叉验证一致（SM 级别 10/10）。
 - **`example/blend.py`**：主驱动。`DAF=0|1` 环境变量切换对照；DAF 模式下 `sel_layers=[1,2,3]`、`recomp_ratio=0.3`、`check_layers=[4]`；`BLEND_KV_DEV=1` 开 K+V 打分（默认关）。原作者 bug 已修：`last_len=len(q_ids+s_end)`（原恒为 1）、`num_layer` 动态获取。
 
-## 运行实验（所有脚本从仓库根 `~/daf` 运行）
+## 运行实验（所有脚本从仓库根 `/media/yunlin/6t/zhenzengtao/daf/zzt` 运行）
 
 冒烟测试：`bash wsl_setup/run_smoke.sh 0|1`（0=CacheBlend，1=DAF）。
 

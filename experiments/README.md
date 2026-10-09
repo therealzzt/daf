@@ -1,7 +1,7 @@
 # experiments/ —— DAF 长上下文实验工作区
 
 > 2026-09-16 整理：把此前散落在仓库根目录的实验脚本、样本、日志、报告统一收入此处。
-> 所有脚本**从仓库根目录（~/daf）运行**，路径均为相对仓库根。
+> 所有脚本**从仓库根目录（/media/yunlin/6t/zhenzengtao/daf/zzt）运行**，路径均为相对仓库根。
 
 ## 目录结构
 
@@ -49,7 +49,7 @@ experiments/
 ## 目标 B 第三档（RULER qa_1/qa_2 ≈30k，Qwen2.5）命令链
 
 ```bash
-conda activate cacheblend && cd ~/daf
+conda activate cacheblend && cd /media/yunlin/6t/zhenzengtao/daf/zzt
 # 1. 生成 RULER 数据（repo 已 clone 在 experiments/ruler_src/（含自身 .git，不入库），
 #    源数据 squad.json/hotpotqa.json 在 scripts/data/synthetic/json/；
 #    生成命令见报告第四节；生成的 validation.jsonl 归档副本在 experiments/ruler_data_gen/）
@@ -70,15 +70,15 @@ python experiments/scripts/score_em_long_6k10k.py --dir experiments/inputs_qwen_
 ## 500 样本放量（daf1.5 最终阶段，RULER qa_1/qa_2 各 500）命令链
 
 ```bash
-conda activate cacheblend && cd ~/daf
+conda activate cacheblend && cd /media/yunlin/6t/zhenzengtao/daf/zzt
 # 1. RULER 官方生成（模板必须以 " Answer:" 结尾，用 $'...' 传真实换行）
 cd experiments/ruler_src/scripts/data/synthetic && export HF_ENDPOINT=https://hf-mirror.com
-python qa.py --save_dir ~/daf/experiments/ruler_src/data_gen_500 --save_name qa_1 \
+python qa.py --save_dir /media/yunlin/6t/zhenzengtao/daf/zzt/experiments/ruler_src/data_gen_500 --save_name qa_1 \
     --tokenizer_path Qwen/Qwen2.5-7B-Instruct --tokenizer_type hf \
     --max_seq_length 32768 --tokens_to_generate 32 --num_samples 500 \
     --random_seed 42 --dataset squad --template $'...官方 qa 模板... Question: {query} Answer:'
 #    qa_2 同上改 --save_name qa_2 --dataset hotpotqa
-cd ~/daf
+cd /media/yunlin/6t/zhenzengtao/daf/zzt
 # 2. 转 blend 样本（新目录，不覆盖 24 样本目录）
 python experiments/scripts/make_inputs_qwen_ruler30k.py \
     --source-dir experiments/ruler_src/data_gen_500 \
@@ -100,7 +100,7 @@ python experiments/scripts/score_em_long_6k10k.py --dir experiments/inputs_qwen_
 ## 复现一条命令链（以 30k 档为例）
 
 ```bash
-conda activate cacheblend && cd ~/daf
+conda activate cacheblend && cd /media/yunlin/6t/zhenzengtao/daf/zzt
 python experiments/scripts/make_inputs_long_30k_buriedqa.py     # 1. 生成样本
 nohup bash experiments/scripts/run_long30k_resume.sh \
     > experiments/logs/long30k/resume.out 2>&1 &                # 2. 跑 6 轮（可断线）

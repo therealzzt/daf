@@ -120,11 +120,11 @@ python experiments/scripts/score_em_long_6k10k.py --dir experiments/inputs_qwen_
 # 1. RULER 官方生成（repo 在 experiments/ruler_src/，含自身 .git 不入库；
 #    生成的 validation.jsonl 归档在 experiments/ruler_data_gen/）
 cd experiments/ruler_src/scripts/data/synthetic
-python qa.py --save_dir ~/daf/experiments/ruler_src/data_gen --save_name qa_1 \
+python qa.py --save_dir /media/yunlin/6t/zhenzengtao/daf/zzt/experiments/ruler_src/data_gen --save_name qa_1 \
     --tokenizer_path Qwen/Qwen2.5-7B-Instruct --tokenizer_type hf \
     --max_seq_length 32768 --tokens_to_generate 32 --num_samples 24 --dataset squad \
     --template "<官方 qa 模板，以 'Question: {query} Answer:' 结尾>"   # qa_2 改 hotpotqa
-cd ~/daf
+cd /media/yunlin/6t/zhenzengtao/daf/zzt
 # 2. 转样本 → 3. 4 卡并行 3 轮跑批 → 4. 评分（命令全文见 experiments/README.md）
 python experiments/scripts/make_inputs_qwen_ruler30k.py
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
