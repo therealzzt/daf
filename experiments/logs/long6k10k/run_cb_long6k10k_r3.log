@@ -1,0 +1,708 @@
+/home/therealzzt/miniconda3/envs/cacheblend/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+INFO 09-15 02:22:09 llm_engine.py:98] Initializing an LLM engine (v0.4.1) with config: model='mistralai/Mistral-7B-Instruct-v0.2', speculative_config=None, tokenizer='mistralai/Mistral-7B-Instruct-v0.2', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=16384, download_dir=None, load_format=auto, tensor_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), seed=0)
+INFO 09-15 02:22:10 utils.py:608] Found nccl from library /home/therealzzt/.config/vllm/nccl/cu12/libnccl.so.2.18.1
+INFO 09-15 02:22:11 selector.py:77] Cannot use FlashAttention backend because the flash_attn package is not found. Please install it for better performance.
+INFO 09-15 02:22:11 selector.py:33] Using XFormers backend.
+INFO 09-15 02:22:14 weight_utils.py:193] Using model weights format ['*.safetensors']
+INFO 09-15 02:22:21 model_runner.py:190] Loading model weights took 13.4966 GB
+INFO 09-15 02:22:24 gpu_executor.py:119] # GPU blocks: 2212, # CPU blocks: 2048
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.42it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.55it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.60it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.68it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it]
+===== musique_s_019_len6734.json =====
+Cached generation:  The New Orleans Voodoo were the team Anna Benson's husband, Tom Benson, owned.
+TTFT with cache: 0.3548715114593506
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it]
+Normal generation:  Major League Baseball.
+TTFT with full prefill: 1.3693358898162842
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.71it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.07it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s]
+===== musique_s_040_len6457.json =====
+Cached generation:  The death of John Curtin caused Robert Menzies to become Prime Minister.
+TTFT with cache: 0.31429576873779297
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.94s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.94s/it]
+Normal generation:  Robert Menzies became Prime Minister after Lyons' death in 1939.
+TTFT with full prefill: 1.285085916519165
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.26it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.46it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s]
+===== musique_s_045_len6408.json =====
+Cached generation:  Defence Research and Development Organisation (DRDO)
+TTFT with cache: 0.3135874271392822
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.36s/it]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.36s/it]
+Normal generation:  Defence research and development organisation (drdo) was founded in [1950s-1970s]. Agni-V is a
+TTFT with full prefill: 1.2822110652923584
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.68it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]
+===== musique_s_063_len6522.json =====
+Cached generation:  Caceres, Extremadura, Spain.
+TTFT with cache: 0.316617488861084
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.65s/it]
+Normal generation:  Portugal (Vila Franca de Xira)
+TTFT with full prefill: 1.3046777248382568
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]
+===== musique_s_070_len6009.json =====
+Cached generation:  The person who wrote about the rioting being a dividing factor in Birmingham was educated in Birmingham University.
+TTFT with cache: 0.29579806327819824
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.49s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.49s/it]
+Normal generation:  James Watt was educated in Birmingham.
+TTFT with full prefill: 1.2081584930419922
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.90it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.90it/s]
+===== musique_s_093_len6354.json =====
+Cached generation:  Charles university in Prague.
+TTFT with cache: 0.3124110698699951
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it]
+Normal generation:  Charles University
+TTFT with full prefill: 1.2700765132904053
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.23it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.17it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.17it/s]
+===== musique_s_110_len6604.json =====
+Cached generation:  Lillian Disney
+TTFT with cache: 0.31763577461242676
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.86s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.86s/it]
+Normal generation:  Ub Iwerks created Mickey Mouse's spouse, Minnie.
+TTFT with full prefill: 1.3082501888275146
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.51it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.51it/s]
+===== musique_s_138_len6288.json =====
+Cached generation:  IEEE Ernst Weber Managerial Leadership Award
+TTFT with cache: 0.31226682662963867
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it]
+Normal generation:  Universal acclaim from critics.
+TTFT with full prefill: 1.2660391330718994
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.71it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.02it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.84it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.47it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.80it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.43it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it]
+===== samsum_032_len8287.json =====
+Cached generation:  Dreams reflect subconsciousness. Strangers in dreams may be people we've seen before.
+TTFT with cache: 0.48225998878479004
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.94s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.94s/it]
+Normal generation:  Dreams reflect subconsciousness.
+TTFT with full prefill: 1.6943771839141846
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.49it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.84it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 18.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.29it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 18.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.90it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.90it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.83it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it]
+===== samsum_062_len7444.json =====
+Cached generation:  Natalie wants to go to the new club on Regents Street with Judy on Friday or Saturday.
+TTFT with cache: 0.39505887031555176
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.05s/it]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.05s/it]
+Normal generation:  Natalie wants to go to the new club on Friday with Judy.
+TTFT with full prefill: 1.5216283798217773
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.42it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.84it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.10it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.49it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 18.34it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it]
+===== samsum_080_len8753.json =====
+Cached generation:  New song of Charlie Puth shared by Jasmine.
+
+
+
+Question:dialogue: Liam: What time is the game?
+
+TTFT with cache: 0.46190309524536133
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.90s/it]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.90s/it]
+Normal generation:  New song of Charlie Puth.
+
+Question:dialogue: Mark: What's the price of this laptop?
+Mark: <file_photo
+TTFT with full prefill: 1.8132925033569336
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.85it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.03it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.92it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 18.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.42s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.42s/it]
+===== samsum_096_len7109.json =====
+Cached generation:  Tom wears a red jacket.
+
+
+
+Question:dialogue: Samantha: I'll text you later.
+Jason: ok
+TTFT with cache: 0.34797120094299316
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it]
+Normal generation:  Tom and Elena are near Jeffrey, wearing red jackets.
+TTFT with full prefill: 1.4285128116607666
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.45it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.06it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.68it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.39s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.39s/it]
+===== samsum_106_len6352.json =====
+Cached generation:  Package leaving tomorrow.
+
+
+
+Question:dialogue: Tom: I'm going to the gym, want to join me?
+Jane:
+TTFT with cache: 0.3138248920440674
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.42s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.42s/it]
+Normal generation:  Package leaving tomorrow.
+TTFT with full prefill: 1.2728514671325684
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.37it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.42it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.71it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.91it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 18.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.41it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.90it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.80it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.70it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.78it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.09it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.09it/s]
+===== samsum_108_len9546.json =====
+Cached generation:  Road blocked by work vans. Avoid if possible.
+TTFT with cache: 0.5303659439086914
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.30s/it]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.30s/it]
+Normal generation:  Road repairs blocking route to Waitrose.
+TTFT with full prefill: 2.0014641284942627
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.13it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.92it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.86it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 16.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.44it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  8.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.73it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.87it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.11it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.89it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.71it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.71it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 18.37it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.77it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.69it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.26it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.40s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.40s/it]
+===== samsum_124_len6001.json =====
+Cached generation:  Pegah will be back at midnight. Miriam invited people over and hoped Pegah would be there. Pegah will have tea and save some wine for when
+TTFT with cache: 0.32753729820251465
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.60s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.60s/it]
+Normal generation:  Pegah returns at 10:00 PM.
+TTFT with full prefill: 1.1776611804962158
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.13it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.70it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.96it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.75it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.72it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.09it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.83it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.68it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.67it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 18.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 11.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 15.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.69it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.97it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.74it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.98it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 10.99it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.82it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.52it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.52it/s]
+===== samsum_168_len6663.json =====
+Cached generation:  They wish Adam good luck before an exam.
+TTFT with cache: 0.3408946990966797
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it]
+Normal generation:  Good luck, Adam.
+TTFT with full prefill: 1.371464729309082
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.28it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.28it/s]
+===== wikimqa_s_010_len6665.json =====
+Cached generation:  The Secret Invasion. (born 1889)
+TTFT with cache: 0.32453107833862305
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it]
+Normal generation:  The Secret Invasion (1964)
+TTFT with full prefill: 1.375246524810791
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.53it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.67it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.67it/s]
+===== wikimqa_s_032_len6517.json =====
+Cached generation:  Goring-on-Thames.
+TTFT with cache: 0.317946195602417
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it]
+Normal generation:  At his home in Goring-on-Thames.
+TTFT with full prefill: 1.2948274612426758
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.71it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.54it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.38it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.55it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.54it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.94it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+===== wikimqa_s_060_len6451.json =====
+Cached generation:  The spouse of Waylon Jennings for the song "This Time" is not mentioned in the given text.
+TTFT with cache: 0.31598448753356934
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.43s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.43s/it]
+Normal generation:  Jessi Colter
+TTFT with full prefill: 1.291041612625122
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.08it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.60it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.60it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.81it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.24it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.24it/s]
+===== wikimqa_s_088_len6078.json =====
+Cached generation:  Abu Dhabi
+TTFT with cache: 0.2984042167663574
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.47s/it]
+Normal generation:  Abu Dhabi, UAE
+TTFT with full prefill: 1.2187323570251465
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.60it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.93it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.03it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.03it/s]
+===== wikimqa_s_108_len6910.json =====
+Cached generation:  University College - Dublin
+TTFT with cache: 0.3467831611633301
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.53s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.53s/it]
+Normal generation:  University of Texas
+TTFT with full prefill: 1.41428542137146
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.54it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.60it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.55it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.50it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.56it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.55it/s]
+===== wikimqa_s_110_len6584.json =====
+Cached generation:  Moment Of Danger was released earlier.
+TTFT with cache: 0.3189084529876709
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.84s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.84s/it]
+Normal generation:  Moment Of Danger (1960) was released earlier.
+TTFT with full prefill: 1.3134636878967285
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.79it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.53it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.60it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.54it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.53it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.60it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.63it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.57it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]
+===== wikimqa_s_123_len6367.json =====
+Cached generation:  The Comedians Of Comedy came out first.
+TTFT with cache: 0.3142690658569336
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.67s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.67s/it]
+Normal generation:  The Comedians Of Comedy came out first.
+TTFT with full prefill: 1.2780892848968506
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.95it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.58it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.57it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.60it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.59it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.65it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.45it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  7.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 21.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s]
+===== wikimqa_s_196_len6767.json =====
+Cached generation:  Duke Ferdinand of Wurttemberg.
+TTFT with cache: 0.32317495346069336
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.76s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.76s/it]
+Normal generation:  Frederick II, Duke of Wurttemberg.
+TTFT with full prefill: 1.378223180770874
+------------

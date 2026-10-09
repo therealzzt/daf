@@ -1,0 +1,156 @@
+/home/therealzzt/miniconda3/envs/cacheblend/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+WARNING 09-14 16:47:04 config.py:173] awq quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+INFO 09-14 16:47:04 llm_engine.py:98] Initializing an LLM engine (v0.4.1) with config: model='TheBloke/Mistral-7B-Instruct-v0.2-AWQ', speculative_config=None, tokenizer='TheBloke/Mistral-7B-Instruct-v0.2-AWQ', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, disable_custom_all_reduce=False, quantization=awq, enforce_eager=True, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), seed=0)
+INFO 09-14 16:47:06 utils.py:608] Found nccl from library /home/therealzzt/.config/vllm/nccl/cu12/libnccl.so.2.18.1
+INFO 09-14 16:47:06 selector.py:77] Cannot use FlashAttention backend because the flash_attn package is not found. Please install it for better performance.
+INFO 09-14 16:47:06 selector.py:33] Using XFormers backend.
+INFO 09-14 16:47:10 weight_utils.py:193] Using model weights format ['*.safetensors']
+INFO 09-14 16:47:13 model_runner.py:190] Loading model weights took 3.8814 GB
+INFO 09-14 16:47:14 gpu_executor.py:119] # GPU blocks: 8422, # CPU blocks: 2048
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 12.66it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.89it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.88it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.03it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.01it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.18it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.17it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.31it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.45it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.20it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.39it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.39it/s]
+Cached generation:  Carnegie Mellon University
+TTFT with cache: 0.4273545742034912
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it]
+Normal generation:  Carnegie Mellon University
+TTFT with full prefill: 0.759850263595581
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 19.84it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.17it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.16it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.41it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.20it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.51it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.50it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 18.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s]
+Cached generation:  Hell Up In Harlem (1973
+TTFT with cache: 0.3311929702758789
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.05it/s]
+Normal generation:  The Soviet Story was made first.
+TTFT with full prefill: 0.6837544441223145
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.32it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.31it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.42it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.41it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.53it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.44it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.50it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.51it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s]
+Cached generation:  Cipriano Castro was born first.
+TTFT with cache: 0.32968640327453613
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]
+Normal generation:  Cipriano Castro was born first.
+TTFT with full prefill: 0.6829051971435547
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.56it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.26it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.25it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.07it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.05it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.30it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.30it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.46it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.46it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.35it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.34it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.28it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.80it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s]
+Cached generation:  "Jugband Blues" came out first.
+TTFT with cache: 0.36926913261413574
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]
+Normal generation:  Jugband Blues came out first.
+TTFT with full prefill: 0.7813715934753418
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.16it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.15it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.15it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.25it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.19it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.20it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.19it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.24it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.23it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.61it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.59it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.59it/s]
+Cached generation:  Ducal house of Bourbon.
+TTFT with cache: 0.36151790618896484
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+Normal generation:  Yakshya Malla's birthplace
+TTFT with full prefill: 0.7594408988952637
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.37it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.36it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.35it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.48it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.40it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.44it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.72it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  4.71it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.04it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]
+Cached generation:  Arthur Acheson, 1st Earl of
+TTFT with cache: 0.3631174564361572
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+Normal generation:  Arthur Acheson, 1st Earl of
+TTFT with full prefill: 0.7631978988647461
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.31it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.29it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.16it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.15it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.24it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.48it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.44it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.43it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.80it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.80it/s]
+Cached generation:  Died in bed.
+TTFT with cache: 0.36505603790283203
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.12s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.12s/it]
+Normal generation:  At home in Goring-on-Thames
+TTFT with full prefill: 0.7827188968658447
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.27it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.46it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.45it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.15it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.25it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.14it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.13it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.23it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.22it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.44it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.44it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.58it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.68it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.68it/s]
+Cached generation:  Yes, both are French.
+TTFT with cache: 0.3690643310546875
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it]
+Normal generation:  Yes, both are French.
+TTFT with full prefill: 0.7802815437316895
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.53it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.42it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.40it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.39it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.38it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.19it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.18it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.37it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.36it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.64it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s]
+Cached generation:  Wooden Crosses (1932)
+TTFT with cache: 0.33463287353515625
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]
+Normal generation:  Wooden Crosses (1932)
+TTFT with full prefill: 0.7059595584869385
+------------
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.53it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.50it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.25it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  6.24it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.48it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.48it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.34it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  5.33it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 20.39it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s]
+Cached generation:  The Magic Aster came out earlier.
+TTFT with cache: 0.3688178062438965
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.12s/it]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.12s/it]
+Normal generation:  Above Rubies came out earlier. (19
+TTFT with full prefill: 0.7852699756622314
+------------

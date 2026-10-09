@@ -1,0 +1,13 @@
+[开跑] DAF=0 第 1 轮 → run_cb_long6k10k_r1.log
+[完成] run_cb_long6k10k_r1.log exit=0
+[开跑] DAF=0 第 2 轮 → run_cb_long6k10k_r2.log
+[完成] run_cb_long6k10k_r2.log exit=0
+[开跑] DAF=0 第 3 轮 → run_cb_long6k10k_r3.log
+[完成] run_cb_long6k10k_r3.log exit=0
+[开跑] DAF=1 第 1 轮 → run_daf_long6k10k_r1.log
+[完成] run_daf_long6k10k_r1.log exit=0
+[开跑] DAF=1 第 2 轮 → run_daf_long6k10k_r2.log
+[完成] run_daf_long6k10k_r2.log exit=0
+[开跑] DAF=1 第 3 轮 → run_daf_long6k10k_r3.log
+[完成] run_daf_long6k10k_r3.log exit=0
+全部轮次结束

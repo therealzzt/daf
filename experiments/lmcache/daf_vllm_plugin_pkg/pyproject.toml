@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "daf-vllm-plugin"
+version = "0.1.0"
+description = "DAF: vllm general plugin —— 补齐 LMCache blending 的模型注册接线，并为 DAF 移植提供挂载点"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.entry-points."vllm.general_plugins"]
+daf_vllm_plugin = "daf_vllm_plugin:load"
+
+[tool.setuptools]
+py-modules = ["daf_vllm_plugin"]

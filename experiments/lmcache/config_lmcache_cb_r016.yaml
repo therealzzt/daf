@@ -1,0 +1,9 @@
+# LMCache 配置：原版 CacheBlend 默认口径（重算比例 r=0.16）
+# 用途：与 r=0.3 配置对照，跑"原版默认 vs 论文公平"两组 CB 基线
+chunk_size: 256
+local_cpu: true
+max_local_cpu_size: 40
+enable_blending: true
+blend_special_str: "<|blend_sep|>"
+blend_recompute_ratios: [0.16]
+blend_check_layers: [1]

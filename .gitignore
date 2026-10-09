@@ -1,4 +1,5 @@
 **/__pycache__
+*.egg-info/
 outputs/
 # 大文件不上传 GitHub（超过 100MB 会被拒）
 wsl_setup/ubuntu2204.rootfs.tar.gz

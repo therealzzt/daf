@@ -1,0 +1,9 @@
+# LMCache 配置：CacheBlend 基线（重算比例 r=0.3，与 DAF 论文公平对比口径一致）
+# 用法：LMCACHE_CONFIG_FILE=本文件 python xxx.py；blend_special_str 必须同时出现在 prompt 的文档分隔处
+chunk_size: 256
+local_cpu: true
+max_local_cpu_size: 40          # GB，KV 缓存放 CPU 内存
+enable_blending: true
+blend_special_str: "<|blend_sep|>"
+blend_recompute_ratios: [0.3]   # 论文公平对比口径：CB 也用 r=0.3（原版 CB 默认 0.16 见 config_blend_cb_r016.yaml）
+blend_check_layers: [1]         # 原版 CacheBlend：第 1 层（0 起）单层偏差选人

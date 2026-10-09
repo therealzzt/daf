@@ -1,0 +1,52 @@
+[2026-09-15 10:48:45] GPU 0 空闲 24104 MiB ≥ 22000，启动 30k 实验
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=0 第 1 轮 → run_cb_long30k_r1.log
+[完成] run_cb_long30k_r1.log exit=1
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=0 第 2 轮 → run_cb_long30k_r2.log
+[完成] run_cb_long30k_r2.log exit=1
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=0 第 3 轮 → run_cb_long30k_r3.log
+[完成] run_cb_long30k_r3.log exit=1
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=1 第 1 轮 → run_daf_long30k_r1.log
+[完成] run_daf_long30k_r1.log exit=1
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=1 第 2 轮 → run_daf_long30k_r2.log
+[完成] run_daf_long30k_r2.log exit=1
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=1 第 3 轮 → run_daf_long30k_r3.log
+[完成] run_daf_long30k_r3.log exit=1
+全部轮次结束
+[2026-09-15 17:52:28] GPU 0 空闲 24104 MiB ≥ 23000，启动 30k 实验
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=0 第 1 轮 → run_cb_long30k_r1.log
+[完成] run_cb_long30k_r1.log exit=0
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=0 第 2 轮 → run_cb_long30k_r2.log
+[完成] run_cb_long30k_r2.log exit=0
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=0 第 3 轮 → run_cb_long30k_r3.log
+[完成] run_cb_long30k_r3.log exit=0
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=1 第 1 轮 → run_daf_long30k_r1.log
+[完成] run_daf_long30k_r1.log exit=0
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=1 第 2 轮 → run_daf_long30k_r2.log
+[完成] run_daf_long30k_r2.log exit=0
+/home/therealzzt/daf/run_long30k_resume.sh: 第 26 行： [: 0
+0: 需要整数表达式
+[开跑] DAF=1 第 3 轮 → run_daf_long30k_r3.log
+[完成] run_daf_long30k_r3.log exit=0
+全部轮次结束
